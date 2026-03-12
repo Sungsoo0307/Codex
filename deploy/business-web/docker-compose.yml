@@ -1,0 +1,62 @@
+services:
+  openclaw-gateway:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: ${OPENCLAW_IMAGE_NAME:-openclaw-business-local}
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+      NODE_ENV: production
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENCLAW_CONFIG_PATH: /home/node/config/openclaw.json5
+      OPENCLAW_STATE_DIR: /home/node/.openclaw
+      OPENCLAW_GATEWAY_PASSWORD: ${OPENCLAW_GATEWAY_PASSWORD}
+      OPENCLAW_HOOKS_TOKEN: ${OPENCLAW_HOOKS_TOKEN}
+    volumes:
+      - openclaw_state:/home/node/.openclaw
+      - ./openclaw.json5:/home/node/config/openclaw.json5:ro
+      - ./hooks:/home/node/config/hooks:ro
+      - ./workspace:/home/node/workspace
+    expose:
+      - "18789"
+    command:
+      [
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "lan",
+        "--port",
+        "18789",
+      ]
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:18789/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  web:
+    image: caddy:2.10
+    depends_on:
+      openclaw-gateway:
+        condition: service_healthy
+    environment:
+      OPENCLAW_HOOKS_TOKEN: ${OPENCLAW_HOOKS_TOKEN}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./site:/srv/site:ro
+    restart: unless-stopped
+
+volumes:
+  openclaw_state:

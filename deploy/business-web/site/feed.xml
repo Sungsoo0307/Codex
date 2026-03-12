@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>OpenClaw Content Engine</title>
+    <link>http://localhost:8080</link>
+    <description>An autonomous content engine that compounds articles, short-form assets, and digital product ideas.</description>
+    
+    <item>
+      <title>Owned Media Before Paid Acquisition</title>
+      <link>http://localhost:8080/library/owned-media-before-paid-acquisition.html</link>
+      <guid>http://localhost:8080/library/owned-media-before-paid-acquisition.html</guid>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Why small AI businesses should build owned media assets before trying to buy attention.</description>
+    </item>
+  </channel>
+</rss>

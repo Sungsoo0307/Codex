@@ -1,0 +1,5 @@
+{
+  "operatorUrl": "/openclaw/",
+  "subscribeApiUrl": "./api/subscribe",
+  "baseUrl": "http://localhost:8080"
+}

@@ -1,0 +1,48 @@
+services:
+  openclaw-content:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile
+    image: ${OPENCLAW_IMAGE_NAME:-openclaw-content-isolated}
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+      NODE_ENV: production
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENCLAW_CONFIG_PATH: /home/node/config/openclaw-content.json5
+      OPENCLAW_STATE_DIR: /home/node/.openclaw
+      OPENCLAW_GATEWAY_PASSWORD: ${OPENCLAW_GATEWAY_PASSWORD}
+      OPENCLAW_HOOKS_TOKEN: ${OPENCLAW_HOOKS_TOKEN}
+    volumes:
+      - openclaw_content_state:/home/node/.openclaw
+      - ./openclaw-content.json5:/home/node/config/openclaw-content.json5:ro
+      - ./hooks:/home/node/config/hooks:ro
+      - ./workspace-content:/home/node/workspace
+    ports:
+      - "${HOST_GATEWAY_PORT:-127.0.0.1:19889}:18789"
+    command:
+      [
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "lan",
+        "--port",
+        "18789",
+      ]
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:18789/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  openclaw_content_state:

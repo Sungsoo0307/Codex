@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Operator Studio</title>
+    <meta
+      name="description"
+      content="An autonomous content engine that compounds articles, short-form assets, and digital product ideas."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <p class="eyebrow">OpenClaw Content Engine</p>
+        <h1>An AI operator that turns blank pages into compounding content assets.</h1>
+        <p class="lede">
+          This deployment gives OpenClaw a public brand page and a private operator console
+          so it can keep drafting essays, short-form derivatives, product angles, and revenue hooks.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#flywheel">See the flywheel</a>
+          <a id="operatorLink" class="button button-secondary" href="/openclaw/">Open operator console</a>
+        </div>
+        <ul class="trust-strip">
+          <li>Owned media assets</li>
+          <li>Private editorial workspace</li>
+          <li>Hourly content heartbeat</li>
+        </ul>
+      </header>
+
+      <main>
+        <section class="panel grid">
+          <article>
+            <p class="section-label">What this stack builds</p>
+            <h2>A content machine designed for essays, social derivatives, and digital products.</h2>
+            <p>
+              The default workspace is tuned for a niche content business: pick a market,
+              ship useful ideas consistently, and translate recurring patterns into monetizable assets.
+            </p>
+          </article>
+          <article class="card-list">
+            <div class="card">
+              <h3>Flagship Essays</h3>
+              <p>Long-form drafts that can become newsletter issues, blog posts, or video scripts.</p>
+            </div>
+            <div class="card">
+              <h3>Short-Form Splits</h3>
+              <p>Each strong angle gets broken into threads, captions, hooks, and micro-posts.</p>
+            </div>
+            <div class="card">
+              <h3>Digital Product Angles</h3>
+              <p>Recurring pain points become checklists, templates, mini-guides, and lightweight offers.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel metrics">
+          <div>
+            <span class="metric-value">1 niche</span>
+            <span class="metric-label">to dominate with repetition</span>
+          </div>
+          <div>
+            <span class="metric-value">3 asset types</span>
+            <span class="metric-label">essays, shorts, products</span>
+          </div>
+          <div>
+            <span class="metric-value">0 dependence</span>
+            <span class="metric-label">on inbound leads to start</span>
+          </div>
+        </section>
+
+        <section class="panel grid" id="flywheel">
+          <div>
+            <p class="section-label">Flywheel</p>
+            <h2>Start with a thesis, then compound into a library.</h2>
+            <p>
+              The operator is meant to keep working even when nobody sends it input. It mines
+              your thesis, drafts the next article, pulls out derivatives, and logs monetization ideas.
+            </p>
+          </div>
+          <article class="card-list">
+            <div class="card">
+              <h3>1. Thesis</h3>
+              <p>Define the niche, enemy, reader problem, and voice in the workspace strategy docs.</p>
+            </div>
+            <div class="card">
+              <h3>2. Production</h3>
+              <p>Generate long-form drafts and add them to the publishing queue.</p>
+            </div>
+            <div class="card">
+              <h3>3. Extraction</h3>
+              <p>Turn each draft into shorter assets and future product hooks.</p>
+            </div>
+            <div class="card">
+              <h3>4. Monetization</h3>
+              <p>Log sponsor angles, affiliate opportunities, paid templates, and premium spin-offs.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel library-panel" id="library">
+          <div class="library-header">
+            <div>
+              <p class="section-label">Public Library</p>
+              <h2>Published assets generated from the workspace.</h2>
+            </div>
+            <p class="library-note">
+              Articles marked <code>status: published</code> in
+              <code>workspace/content/articles/*.md</code> appear here after running the publication build script.
+            </p>
+          </div>
+          <div id="libraryList" class="library-grid">
+            <article class="card">
+              <h3>Library not built yet</h3>
+              <p>Run <code>./deploy/business-web/publish-content.sh</code> after OpenClaw writes published articles.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel monetization-panel" id="offers">
+          <div class="library-header">
+            <div>
+              <p class="section-label">Monetization</p>
+              <h2>What this content engine can turn into revenue.</h2>
+            </div>
+            <p class="library-note">
+              These cards are generated from the workspace business files, so OpenClaw can keep tightening them over time.
+            </p>
+          </div>
+          <div class="monetization-layout">
+            <section>
+              <h3>Latest published asset</h3>
+              <div id="latestArticle" class="card">
+                <p>Build the publication assets to feature the newest public piece.</p>
+              </div>
+            </section>
+            <section>
+              <h3>Product candidates</h3>
+              <div id="productList" class="chip-grid">
+                <span class="chip">No products generated yet</span>
+              </div>
+            </section>
+            <section>
+              <h3>Near-term offers</h3>
+              <div id="nearTermList" class="card-list">
+                <article class="card"><p>No monetization ideas published yet.</p></article>
+              </div>
+            </section>
+            <section>
+              <h3>Brand rules</h3>
+              <div id="rulesList" class="card-list">
+                <article class="card"><p>No operating rules published yet.</p></article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="panel subscribe-panel" id="subscribe">
+          <div class="library-header">
+            <div>
+              <p class="section-label">Newsletter</p>
+              <h2>Turn readers into an owned audience.</h2>
+            </div>
+            <p class="library-note">
+              This form writes subscriber intent back into the OpenClaw workspace, so the content system can learn what readers care about.
+            </p>
+          </div>
+          <form id="subscribeForm" class="subscribe-form">
+            <label>
+              Name
+              <input name="name" type="text" placeholder="Optional" />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" required placeholder="you@example.com" />
+            </label>
+            <label class="full">
+              What do you want more of?
+              <input
+                name="interest"
+                type="text"
+                placeholder="AI leverage, content systems, digital products..."
+              />
+            </label>
+            <button class="button button-primary" type="submit">Join the list</button>
+            <p id="subscribeStatus" class="form-note">No external email platform required yet.</p>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="site-app.js" type="module"></script>
+  </body>
+  </html>

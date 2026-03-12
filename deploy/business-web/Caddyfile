@@ -1,0 +1,28 @@
+{
+  auto_https off
+}
+
+:8080 {
+  encode gzip zstd
+
+  @subscribe path /api/subscribe
+  handle @subscribe {
+    rewrite * /hooks/subscribe
+    reverse_proxy openclaw-gateway:18789 {
+      header_up Authorization "Bearer {env.OPENCLAW_HOOKS_TOKEN}"
+    }
+  }
+
+  @openclaw path /openclaw /openclaw/*
+  handle @openclaw {
+    reverse_proxy openclaw-gateway:18789
+  }
+
+  @health path /health /healthz
+  handle @health {
+    reverse_proxy openclaw-gateway:18789
+  }
+
+  root * /srv/site
+  file_server
+}

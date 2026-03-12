@@ -1,0 +1,23 @@
+# Replace with the VPS-facing domain that should front the isolated content instance.
+# Example: ops.example.com
+ops.example.com {
+  encode gzip zstd
+
+  @openclaw path /openclaw /openclaw/*
+  handle @openclaw {
+    reverse_proxy 127.0.0.1:19889
+  }
+
+  @subscribe path /api/subscribe
+  handle @subscribe {
+    rewrite * /hooks/subscribe
+    reverse_proxy 127.0.0.1:19889 {
+      header_up Authorization "Bearer REPLACE_WITH_OPENCLAW_HOOKS_TOKEN"
+    }
+  }
+
+  @health path /healthz
+  handle @health {
+    reverse_proxy 127.0.0.1:19889
+  }
+}

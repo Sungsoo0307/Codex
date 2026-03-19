@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Overkill M3 Lite Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <canvas id="game" aria-label="Overkill prototype"></canvas>
+
+      <section class="overlay overlay--title" id="titleOverlay">
+        <div class="panel panel--title">
+          <div class="panel__eyebrow" id="titleEyebrow">MOBILE DEMO // VERTICAL SLICE</div>
+          <h1 class="title-mark">OVERKILL</h1>
+          <p class="title-subtitle" id="titleSubtitle">Kill the god. Harvest the heart. Go back stronger.</p>
+          <p class="panel__body" id="titleBody">
+            Hyper-action mobile RPG prototype with hunter choice, region choice, boss kills, loot drops, and build spikes.
+          </p>
+          <div class="button-row">
+            <button class="primary-button" id="titleStartButton" type="button">Start Sequence</button>
+            <button class="secondary-button" id="titleSkipButton" type="button">Skip To Base</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="overlay overlay--intro hidden" id="introOverlay">
+        <div class="panel panel--title">
+          <div class="panel__eyebrow" id="introEyebrow">PROLOGUE // 01</div>
+          <h1 class="panel__title" id="introTitle">The world already lost.</h1>
+          <p class="panel__body" id="introBody">
+            Cities fell first. Then armies. Then physics.
+          </p>
+          <div class="button-row">
+            <button class="primary-button" id="introNextButton" type="button">Next</button>
+            <button class="secondary-button" id="introSkipButton" type="button">Skip</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="overlay overlay--base hidden" id="baseOverlay">
+        <div class="panel panel--base">
+          <div class="base-hero">
+            <div>
+              <div class="panel__eyebrow" id="baseEyebrow">OVERKILL // BASE LOOP</div>
+              <h1 class="panel__title" id="baseTitle">Cain in the Red City</h1>
+              <p class="panel__body" id="baseBody">
+                Break the titan, bring home scrap, and mutate before the next run.
+              </p>
+            </div>
+            <button class="primary-button" id="startRunButton" type="button">Enter Red City</button>
+          </div>
+
+          <div class="selector-grid">
+            <section class="base-card">
+              <span class="base-card__label" id="hunterLabel">HUNTER</span>
+              <div class="selector-row" id="characterSelect"></div>
+            </section>
+            <section class="base-card">
+              <span class="base-card__label" id="modeLabel">MODE</span>
+              <div class="selector-row" id="modeSelect"></div>
+            </section>
+            <section class="base-card">
+              <span class="base-card__label" id="regionLabel">REGION</span>
+              <div class="selector-row" id="regionSelect"></div>
+            </section>
+          </div>
+
+          <div class="resource-strip">
+            <div class="resource-card">
+              <span class="resource-card__label" id="goldLabel">GOLD</span>
+              <strong class="resource-card__value" id="goldText">0</strong>
+            </div>
+            <div class="resource-card">
+              <span class="resource-card__label" id="coreLabel">CORES</span>
+              <strong class="resource-card__value" id="coreText">0</strong>
+            </div>
+            <div class="resource-card">
+              <span class="resource-card__label" id="dataLabel">DATA</span>
+              <strong class="resource-card__value" id="dataText">0</strong>
+            </div>
+            <div class="resource-card">
+              <span class="resource-card__label" id="genesLabel">GENES</span>
+              <strong class="resource-card__value" id="genesText">0</strong>
+            </div>
+          </div>
+
+          <div class="results-grid results-grid--base">
+            <div class="result-card">
+              <span class="result-card__label" id="powerLabel">Power</span>
+              <strong class="result-card__value" id="powerText">0</strong>
+            </div>
+            <div class="result-card">
+              <span class="result-card__label" id="runsLabel">Runs</span>
+              <strong class="result-card__value" id="runsText">0</strong>
+            </div>
+            <div class="result-card">
+              <span class="result-card__label" id="bestKillsLabel">Best Kills</span>
+              <strong class="result-card__value" id="bestKillsText">0</strong>
+            </div>
+          </div>
+
+          <article class="base-card">
+            <span class="base-card__label" id="objectiveLabel">OBJECTIVE</span>
+            <h2 class="base-card__title" id="objectiveTitle">Start the hunt</h2>
+            <p class="base-card__body" id="objectiveBody">
+              Clear one run to open the real loop.
+            </p>
+          </article>
+
+          <article class="base-card">
+            <span class="base-card__label" id="launchTrackLabel">LAUNCH TRACK</span>
+            <div class="ftue-track" id="ftueTrack"></div>
+          </article>
+
+          <div class="tab-row">
+            <button class="tab-button" data-tab="equipment" id="tabEquipment" type="button">Equipment</button>
+            <button class="tab-button" data-tab="relics" id="tabRelics" type="button">Relics</button>
+            <button class="tab-button" data-tab="research" id="tabResearch" type="button">Research</button>
+            <button class="tab-button" data-tab="ascension" id="tabAscension" type="button">Ascension</button>
+            <button class="tab-button" data-tab="season" id="tabSeason" type="button">Season</button>
+            <button class="tab-button" data-tab="settings" id="tabSettings" type="button">Settings</button>
+          </div>
+
+          <div class="base-content" id="baseContent"></div>
+        </div>
+      </section>
+
+      <section class="hud">
+        <div class="hud__top">
+          <div class="stat-card">
+            <span class="stat-card__label">HP</span>
+            <div class="meter">
+              <div class="meter__fill meter__fill--hp" id="hpFill"></div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label" id="resourceLabel">RAGE</span>
+            <div class="meter">
+              <div class="meter__fill meter__fill--rage" id="rageFill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud__mid">
+          <div class="pill" id="timerText">02:00</div>
+          <div class="pill" id="killsText">KILLS 0</div>
+          <div class="pill" id="levelText">LV 1</div>
+        </div>
+
+        <div class="hud__mid hud__mid--objective">
+          <div class="pill pill--objective" id="runObjectiveText">SURVIVE THE SWARM</div>
+        </div>
+
+        <div class="hud__mid hud__mid--objective">
+          <div class="pill pill--event hidden" id="eventText">CAIN AUTO-ATTACKS NEARBY TARGETS</div>
+        </div>
+
+        <div class="hud__boss hidden" id="bossWrap">
+          <div class="boss-label" id="bossLabel">APOSTATE TITAN</div>
+          <div class="meter meter--boss">
+            <div class="meter__fill meter__fill--boss" id="bossFill"></div>
+          </div>
+          <div class="boss-parts" id="bossPartsText">WEAKPOINTS 2</div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="joystick" id="joystickBase">
+          <div class="joystick__thumb" id="joystickThumb"></div>
+        </div>
+        <button class="action-button" id="dashButton" type="button">DASH</button>
+      </section>
+
+      <section class="overlay overlay--level hidden" id="levelOverlay">
+        <div class="panel">
+          <div class="panel__eyebrow" id="levelEyebrow">LEVEL UP</div>
+          <h1 class="panel__title" id="levelTitle">Choose a mutation</h1>
+          <div class="choices" id="levelChoices"></div>
+        </div>
+      </section>
+
+      <section class="overlay overlay--finish hidden" id="finishOverlay">
+        <div class="panel panel--title panel--finish" id="finishPanel">
+          <div class="panel__eyebrow" id="finishEyebrow">FINISHER</div>
+          <h1 class="finish-title" id="finishTitle">TITAN EXECUTED</h1>
+          <p class="finish-subtitle" id="finishSubtitle">Heart harvested. Loop advanced.</p>
+        </div>
+      </section>
+
+      <section class="overlay overlay--results hidden" id="resultsOverlay">
+        <div class="panel panel--results">
+          <div class="panel__eyebrow" id="resultEyebrow">RUN OVER</div>
+          <h1 class="panel__title" id="resultTitle">You survived</h1>
+          <div class="results-grid">
+            <div class="result-card">
+              <span class="result-card__label" id="resultKillsLabel">Kills</span>
+              <strong class="result-card__value" id="resultKills">0</strong>
+            </div>
+            <div class="result-card">
+              <span class="result-card__label" id="resultLevelLabel">Level</span>
+              <strong class="result-card__value" id="resultLevel">1</strong>
+            </div>
+            <div class="result-card">
+              <span class="result-card__label" id="resultBossLabel">Boss</span>
+              <strong class="result-card__value" id="resultBoss">Alive</strong>
+            </div>
+          </div>
+          <p class="panel__body" id="resultBody">
+            Restart and push deeper into the red city.
+          </p>
+          <p class="panel__body panel__body--bonus hidden" id="resultBonus">
+            Starter cache recovered.
+          </p>
+          <div class="reward-strip" id="resultRewardStrip"></div>
+          <div class="loot-grid" id="resultLootGrid"></div>
+          <div class="loot-grid" id="resultSeasonProgress"></div>
+          <div class="button-row">
+            <button class="primary-button" id="restartButton" type="button">Retry Now</button>
+            <button class="secondary-button" id="baseButton" type="button">Back To Base</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -7,7 +7,8 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Four playable hunters: Cain, Dex, Ria, and Sera
 - Virtual joystick movement
 - Auto-attacks
-- Dash button
+- Dash button plus a hunter-specific ultimate button
+- Hunter-specific ultimate cut-in overlay during live combat
 - Enemy waves with grunt / charger / shooter / elite
 - Boss with weakpoint break flow
 - Level-up mutation choices
@@ -18,7 +19,7 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Relic loadout with unlock progression
 - Research upgrades that affect the next run
 - Character select: Cain, Dex, Ria, and Sera
-- Mode select: Main Hunt and World Boss
+- Mode select: Main Hunt, World Boss, and Abyss Rift
 - FTUE-style objective card and in-run objective tracker
 - FTUE launch track with one-time milestone caches
 - Scripted first-run event prompts during combat
@@ -28,8 +29,11 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Hunter affinity on gear with Cain/Dex/Ria/Sera-specific synergies
 - Two-piece and three-piece gear set bonuses
 - Hunter-specific mutation pools during level-up
-- Region selection with Red City / Iron Sanctuary presentation split
-- Region-specific boss patterns and pacing
+- Region selection with Red City / Iron Sanctuary / Black Tide presentation split
+- Region-specific boss patterns and pacing, including the new Black Tide Leviathan mortar/fan/ring set
+- Black Tide-exclusive drops and the new Abyss Current mini-set
+- Black Tide-exclusive `drifter` enemy that orbits and fires twin volleys
+- Black Tide-exclusive `warden` elite that heals nearby enemies and throws triple spreads
 - Boss telegraphs and warning prompts for major titan attacks
 - Screen shake and floating combat text for hits, breaks, and titan kills
 - Title screen and short intro sequence before the base loop
@@ -37,6 +41,7 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Season pass track with claimable tier rewards
 - Live contract missions with claimable short-session rewards
 - World Boss-exclusive gene resource and Titanforged drops
+- Abyss Rift-exclusive contract/resource lane with tracked seal count
 - Ascension tab that spends genes on permanent upgrades
 - Character-specific awakening nodes purchased with genes
 - Boss finisher overlay before rewards resolve
@@ -63,8 +68,8 @@ Then open:
 
 ## Controls
 
-- Mobile: left virtual joystick to move, right `DASH` button to burst
-- Desktop fallback: `WASD` or arrow keys, `Space` to dash
+- Mobile: left virtual joystick to move, right `DASH` plus `ULT` buttons
+- Desktop fallback: `WASD` or arrow keys, `Space` to dash, `F` to fire ultimate
 
 ## Loop
 
@@ -84,5 +89,7 @@ Then open:
 - `Sera`: blink assassin with dash refunds and execution chains
 - `Main Hunt`: classic wave build-up into the titan
 - `World Boss`: faster boss spawn with heavier payout
+- `Abyss Rift`: longer collapse run with denser waves and richer salvage
+- `Abyss Rift Drops`: `Collapseforged`, `Fracturecast`, and `Undertow` prefixes by region
 - `Launch Track`: first 30-minute reward ladder with guaranteed gear spikes
 - `Set Bonuses`: Reaver / Signal / Ruin / Blink mini-sets across weapon, armor, and reactor

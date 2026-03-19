@@ -19,8 +19,10 @@
   const introNextButton = document.getElementById("introNextButton");
   const introSkipButton = document.getElementById("introSkipButton");
   const baseOverlay = document.getElementById("baseOverlay");
+  const basePanel = document.querySelector(".panel--base");
   const startRunButton = document.getElementById("startRunButton");
   const baseContent = document.getElementById("baseContent");
+  const baseShowcase = document.getElementById("baseShowcase");
   const baseEyebrow = document.getElementById("baseEyebrow");
   const baseTitle = document.getElementById("baseTitle");
   const baseBody = document.getElementById("baseBody");
@@ -80,6 +82,11 @@
   const finishEyebrow = document.getElementById("finishEyebrow");
   const finishTitle = document.getElementById("finishTitle");
   const finishSubtitle = document.getElementById("finishSubtitle");
+  const ultOverlay = document.getElementById("ultOverlay");
+  const ultPanel = document.getElementById("ultPanel");
+  const ultEyebrow = document.getElementById("ultEyebrow");
+  const ultTitle = document.getElementById("ultTitle");
+  const ultSubtitle = document.getElementById("ultSubtitle");
 
   const resultsOverlay = document.getElementById("resultsOverlay");
   const resultEyebrow = document.getElementById("resultEyebrow");
@@ -99,6 +106,7 @@
   const baseButton = document.getElementById("baseButton");
 
   const dashButton = document.getElementById("dashButton");
+  const ultimateButton = document.getElementById("ultimateButton");
   const joystickBase = document.getElementById("joystickBase");
   const joystickThumb = document.getElementById("joystickThumb");
 
@@ -125,6 +133,22 @@
       titleSubtitle: "Kill the god. Harvest the heart. Go back stronger.",
       titleBody:
         "Hyper-action mobile RPG prototype with hunter choice, region choice, boss kills, loot drops, and build spikes.",
+      showcaseLabel: "HUNTER PROFILE",
+      showcaseRoleLabel: "COMBAT LOOP",
+      showcaseWeaponLabel: "WEAPON SIGNATURE",
+      showcaseRegionLabel: "ACTIVE REGION",
+      showcaseRewardLabel: "PRIME PAYOUT",
+      showcaseBackdropHunt: "Field route // loot and tempo spike",
+      showcaseBackdropBoss: "Boss route // genes and titanforged drops",
+      showcaseBackdropRift: "Rift route // data and Riftcut salvage",
+      cainShowcaseRole: "Frontline berserker with self-sustain and execute pressure.",
+      cainShowcaseWeapon: "Cleaver-class overkill blade",
+      dexShowcaseRole: "Ranged suppression loop with drones and overdrive rhythm.",
+      dexShowcaseWeapon: "Pulse rig and drone lattice",
+      riaShowcaseRole: "Curse propagation, burst detonation, and boss melt setup.",
+      riaShowcaseWeapon: "Hex focus and ruin prism",
+      seraShowcaseRole: "Blink chaining assassin with reset-heavy execution lines.",
+      seraShowcaseWeapon: "Twin blink blades and void marks",
       startSequence: "Start Sequence",
       skipToBase: "Skip To Base",
       next: "Next",
@@ -155,6 +179,9 @@
       retryNow: "Retry Now",
       backToBase: "Back To Base",
       settings: "SETTINGS",
+      settingsFeedbackTitle: "Prototype feedback controls",
+      settingsFeedbackBody:
+        "Tune the mobile feel here. Sound drives short synth cues, and vibration lands on dash, level-up, boss spawn, and finish moments.",
       language: "LANGUAGE",
       languageTitle: "Interface language",
       languageBody: "Switch the shell UI between English and Korean instantly.",
@@ -272,10 +299,22 @@
       modeHuntBody: "Build from weak mobs into a late titan showdown.",
       modeBossName: "World Boss",
       modeBossBody: "Start under pressure. Boss arrives almost immediately with fewer adds.",
+      modeRiftName: "Abyss Rift",
+      modeRiftBody: "Longer collapse run. Denser waves, later titan, richer loot and data.",
+      modeBossUnlockRule: "Unlocked after the first titan kill",
+      modeRiftUnlockRule: "Unlocked after the second titan kill",
+      regionRedcityName: "Red City",
+      regionSanctuaryName: "Iron Sanctuary",
+      regionBlacktideName: "Black Tide",
+      regionRedcityBossName: "APOSTATE TITAN",
+      regionSanctuaryBossName: "SANCTUARY ARCHON",
+      regionBlacktideBossName: "ABYSS LEVIATHAN",
       regionRedcityBody: "Collapsing streets, bio-mass stains, and feral swarm pressure.",
       regionSanctuaryBody: "Cold steel corridors, signal noise, and machine cult constructs.",
+      regionBlacktideBody: "Black tide flats, abyss bloom pools, and leviathan pressure from every angle.",
       regionStarter: "Starter region",
       regionAfterFirstTitan: "Unlocked after first titan kill",
+      regionAfterSeasonBreak: "Unlocked after the first season breakpoint clear",
       starterHunter: "Starter hunter",
       afterFirstTitanHunter: "Unlock after the first titan kill",
       afterSecondTitanHunter: "Unlock after the second titan kill",
@@ -305,9 +344,11 @@
       riaResource: "ECHO",
       seraResource: "MOMENTUM",
       baseBossSummary: "{body} World Boss mode starts almost immediately in {region} and pays out harder.",
+      baseRiftSummary: "{body} Abyss Rift keeps the collapse open longer in {region} and pays out richer salvage.",
       baseRegionSummary: "{body} Current region: {regionBody}",
       baseBossTitle: "{hunter} vs {boss}",
       baseRegionTitle: "{hunter} in {region}",
+      deployRift: "Dive Into Abyss Rift",
       ftueClaimed: "CLAIMED",
       ftueReady: "READY TO CACHE",
       ftueProgress: "PROGRESS // {progress}",
@@ -360,6 +401,8 @@
       contractTitansBody: "Kill 2 titans in any mode.",
       contractSalvageTitle: "Scrap Refinery",
       contractSalvageBody: "Salvage 2 dropped items.",
+      contractRiftTitle: "Rift Lockdown",
+      contractRiftBody: "Seal 2 Abyss Rift runs.",
       resultEquipNow: "Equip now",
       resultEquippedNextRun: "Equipped for next run",
       resultAlreadyActive: "This drop is already active.",
@@ -393,6 +436,10 @@
       genomeBank: "Genome bank: {genes}",
       worldBossResourceBody: "Genes only drop in World Boss mode. This is the mode's exclusive progression lane, alongside Titanforged drops with stronger boss stats.",
       worldBossExclusive: "WORLD BOSS EXCLUSIVE // Genes + Titanforged gear",
+      riftResourceLabel: "ABYSS RIFT LANE",
+      riftBank: "Rift seals: {count}",
+      riftResourceBody: "Abyss Rift is the long salvage lane. It pays richer drops, more data, and mode-specific forged gear.",
+      riftExclusive: "ABYSS RIFT EXCLUSIVE // RIFTCUT gear + salvage spikes",
       howItPlaysLabel: "HOW IT PLAYS",
       howItPlaysTitle: "Kill fast, stay hot",
       howItPlaysBody: "Every kill refreshes the blood echo timer. While active, your auto-attack rhythm accelerates and payouts creep upward, so the best loop is constant aggression.",
@@ -423,6 +470,7 @@
       firstRunCacheLine: "First run cache: +120 gold / +6 cores / +10 data",
       firstTitanBountyLine: "First titan kill bounty: +220 gold / +10 cores / +24 data",
       worldBossPayoutLine: "World Boss payout boosted by 35%",
+      riftPayoutLine: "Abyss Rift payout boosted by 22%",
       genomeSampleLine: "Genome sample secured: +{genes} genes",
       seasonBreakpointBonusLine: "Season breakpoint cleared: +90 gold / +16 data",
       seasonRelicUnlockedLine: "Season relic unlocked: {title}",
@@ -432,13 +480,34 @@
       resultNewRelicLine: " New relic unlocked: {title}.",
       resultNewSeasonRelicLine: " Season relic unlocked: {title}.",
       resultLootLine: " Loot: {items}.",
+      resultModeLabel: "MODE",
+      resultModeHuntTitle: "Main Hunt sweep",
+      resultModeHuntBody: "Standard field payout. Build tempo and lane control decide the run.",
+      resultModeBossTitle: "World Boss harvest",
+      resultModeBossBody: "Gene payout and Titanforged drops spike here. This is the permanent power lane.",
+      resultModeRiftTitle: "Abyss Rift collapse",
+      resultModeRiftBody: "Long-form salvage lane. More drops, more data, and denser collapse pressure.",
       hudKills: "KILLS {count}",
       hudLevel: "LV {level}",
       hudDashReady: "DASH",
       hudDashCooldown: "DASH {time}",
+      hudUltReady: "{name}",
+      hudUltCooldown: "{name} {time}",
+      ultimateEyebrow: "ULTIMATE // CUT-IN",
       hudWeakpoints: "WEAKPOINTS {count}",
       hudCoreExposed: "CORE EXPOSED",
+      ultCain: "BLOODLUST",
+      ultDex: "ZERO",
+      ultRia: "GOSPEL",
+      ultSera: "FINAL",
+      ultCainEvent: "BLOODLUST ONLINE. CAIN CLEAVES THE WHOLE SCREEN.",
+      ultDexEvent: "ZERO FACTORY ONLINE. DRONE OVERDRIVE ENGAGED.",
+      ultRiaEvent: "BLACK GOSPEL ONLINE. CURSE DETONATIONS CHAIN WIDE.",
+      ultSeraEvent: "FINAL FRAME ONLINE. EXECUTION WINDOW WIDENS.",
       floatTitanDown: "TITAN DOWN",
+      lootSourceHunt: "FIELD DROP",
+      lootSourceBoss: "TITANFORGED",
+      lootSourceRift: "RIFTCUT",
       eventIntroCain: "MOVE WITH THE LEFT PAD. CAIN ATTACKS AUTOMATICALLY.",
       eventIntroDex: "MOVE WITH THE LEFT PAD. DEX SUPPRESSES TARGETS FROM RANGE.",
       eventIntroRia: "MOVE WITH THE LEFT PAD. RIA TAGS TARGETS WITH CURSE MARKS.",
@@ -450,15 +519,65 @@
       eventElite: "ELITE CONTACT. BURST IT DOWN FOR A BIGGER POWER SPIKE.",
       eventBossSanctuary: "ARCHON ONLINE. STAY MOBILE, DODGE THE VOLLEYS, THEN BREAK THE WEAKPOINTS.",
       eventBossWorld: "WORLD BOSS LIVE. BREAK BOTH WEAKPOINTS TO EXPOSE THE CORE.",
+      eventBossRift: "RIFT TITAN ONLINE. HOLD THE COLLAPSE, BREAK THE SHELL, THEN SEAL THE CORE.",
       eventBossTitan: "TITAN DESCENDING. SHATTER THE ARMOR, THEN CUT THE CORE.",
+      eventArchonVolley: "ARCHON VOLLEY LOCKING IN. DODGE SIDEWAYS.",
+      eventArchonRing: "SIGNAL RINGS EXPANDING. DON'T DRIFT CENTER.",
+      eventArchonImpact: "ARCHON IMPACT MARKED. BREAK LINE NOW.",
+      eventTitanRing: "TITAN RING CHARGE. DASH THROUGH THE GAP.",
+      eventTitanLeap: "TITAN LEAP MARKED. LEAVE THE IMPACT ZONE.",
+      riftCollapseInbound: "RIFT COLLAPSE INBOUND",
+      holdTheRift: "HOLD THE RIFT {seconds}",
+      collapseRiftArmor: "COLLAPSE THE RIFT ARMOR",
+      sealRiftCore: "SEAL THE RIFT CORE",
+      riftSealed: "RIFT SEALED",
+      eventAbyssVolley: "ABYSS VOLLEY LOCKED. CUT OUTSIDE THE FAN.",
+      eventAbyssRing: "TIDE RINGS EXPANDING. DON'T SIT ON THE CENTER LINE.",
+      eventAbyssMortar: "ABYSS MORTAR MARKED. CLEAR ALL THREE BLACK ZONES.",
+      finishEyebrowSanctuaryBoss: "WORLD BOSS // SANCTUARY",
+      finishEyebrowSanctuaryHunt: "IRON SANCTUARY // FINISHER",
+      finishTitleSanctuaryBoss: "ARCHON DISMANTLED",
+      finishTitleSanctuaryHunt: "SANCTUARY TITAN SHATTERED",
+      finishSubtitleSanctuary: "{boss} // signal spine cracked // archive harvested",
+      finishEyebrowBlacktideBoss: "WORLD BOSS // BLACK TIDE",
+      finishEyebrowBlacktideHunt: "BLACK TIDE // FINISHER",
+      finishTitleBlacktideBoss: "LEVIATHAN DROWNED",
+      finishTitleBlacktideHunt: "ABYSS LEVIATHAN SHORN",
+      finishSubtitleBlacktide: "{boss} // abyss spine severed // tide bank drained",
+      finishEyebrowRedcityBoss: "WORLD BOSS // RED CITY",
+      finishEyebrowRedcityHunt: "RED CITY // FINISHER",
+      finishTitleRedcityBoss: "APOSTATE PURGED",
+      finishTitleRedcityHunt: "APOSTATE TITAN SUNDERED",
+      finishSubtitleRedcity: "{boss} // heart ripped free // bloodline advanced",
+      resetConfirm: "Reset all prototype progress and restart the FTUE?",
       shellEnglish: "UI shell in English",
       shellKorean: "UI shell in Korean",
+      hunterCainName: "Cain",
+      hunterDexName: "Dex",
+      hunterRiaName: "Ria",
+      hunterSeraName: "Sera",
     },
     ko: {
       titleEyebrow: "모바일 데모 // 버티컬 슬라이스",
       titleSubtitle: "신을 죽이고, 심장을 수확하고, 더 강해져 돌아와라.",
       titleBody:
         "헌터 선택, 지역 선택, 보스 처치, 루트 드랍, 빌드 스파이크를 담은 하이퍼 액션 모바일 RPG 프로토타입.",
+      showcaseLabel: "헌터 프로필",
+      showcaseRoleLabel: "전투 루프",
+      showcaseWeaponLabel: "핵심 무장",
+      showcaseRegionLabel: "현재 지역",
+      showcaseRewardLabel: "주요 보상",
+      showcaseBackdropHunt: "현장 루트 // 드랍과 템포 스파이크",
+      showcaseBackdropBoss: "보스 루트 // 유전자와 타이탄단조 드랍",
+      showcaseBackdropRift: "균열 루트 // 데이터와 균열단조 분해 보상",
+      cainShowcaseRole: "전열을 박살내며 버티는 광전사. 흡혈과 처형 압박이 강하다.",
+      cainShowcaseWeapon: "클리버 계열 오버킬 대형 무기",
+      dexShowcaseRole: "드론과 오버드라이브 리듬으로 라인을 잠그는 원거리 제압형.",
+      dexShowcaseWeapon: "펄스 병기 리그와 드론 격자",
+      riaShowcaseRole: "저주 전이, 폭발 연쇄, 보스 용해 세팅에 특화된 의식형.",
+      riaShowcaseWeapon: "헥스 포커스와 루인 프리즘",
+      seraShowcaseRole: "점멸 연계와 리셋을 굴리는 고속 처형 암살자.",
+      seraShowcaseWeapon: "쌍점멸 블레이드와 보이드 표식",
       startSequence: "시작 시퀀스",
       skipToBase: "바로 베이스",
       next: "다음",
@@ -489,6 +608,9 @@
       retryNow: "즉시 재도전",
       backToBase: "베이스 복귀",
       settings: "설정",
+      settingsFeedbackTitle: "프로토타입 피드백 제어",
+      settingsFeedbackBody:
+        "모바일 손맛을 여기서 조정한다. 사운드는 짧은 신스 효과음으로, 진동은 대시, 레벨업, 보스 등장, 피니시 순간에 들어간다.",
       language: "언어",
       languageTitle: "인터페이스 언어",
       languageBody: "쉘 UI를 영어와 한국어 사이에서 즉시 전환한다.",
@@ -606,10 +728,22 @@
       modeHuntBody: "약한 몹을 뚫고 후반 타이탄 결전까지 이어진다.",
       modeBossName: "월드 보스",
       modeBossBody: "처음부터 압박 상태로 시작한다. 잡몹은 적고 보스가 거의 즉시 등장한다.",
+      modeRiftName: "심연 균열",
+      modeRiftBody: "더 길게 버티는 붕괴 런. 웨이브는 더 빽빽하고 드랍과 데이터가 더 크다.",
+      modeBossUnlockRule: "첫 타이탄 처치 후 해금",
+      modeRiftUnlockRule: "두 번째 타이탄 처치 후 해금",
+      regionRedcityName: "붉은 폐도",
+      regionSanctuaryName: "철신 성역",
+      regionBlacktideName: "검은 조수",
+      regionRedcityBossName: "배교 타이탄",
+      regionSanctuaryBossName: "성역 아콘",
+      regionBlacktideBossName: "심연 레비아탄",
       regionRedcityBody: "붕괴한 도로, 생체 오염 얼룩, 야생 군체 압박.",
       regionSanctuaryBody: "차가운 금속 회랑, 신호 잡음, 기계 교단 구조체.",
+      regionBlacktideBody: "검은 조수 평원, 심연 개화 수역, 전 방향에서 덮쳐오는 레비아탄 압박.",
       regionStarter: "시작 지역",
       regionAfterFirstTitan: "첫 타이탄 처치 후 해금",
+      regionAfterSeasonBreak: "첫 시즌 브레이크포인트 클리어 후 해금",
       starterHunter: "시작 헌터",
       afterFirstTitanHunter: "첫 타이탄 처치 후 해금",
       afterSecondTitanHunter: "두 번째 타이탄 처치 후 해금",
@@ -639,9 +773,11 @@
       riaResource: "메아리",
       seraResource: "모멘텀",
       baseBossSummary: "{body} 월드 보스 모드는 {region}에서 거의 즉시 시작되고 보상도 더 세다.",
+      baseRiftSummary: "{body} 심연 균열은 {region}의 붕괴를 더 오래 열어두고 더 좋은 분해 보상을 준다.",
       baseRegionSummary: "{body} 현재 지역: {regionBody}",
       baseBossTitle: "{hunter} vs {boss}",
       baseRegionTitle: "{hunter} // {region}",
+      deployRift: "심연 균열 진입",
       ftueClaimed: "수령 완료",
       ftueReady: "캐시 수령 가능",
       ftueProgress: "진행도 // {progress}",
@@ -694,6 +830,8 @@
       contractTitansBody: "아무 모드에서나 타이탄 2마리를 처치하라.",
       contractSalvageTitle: "스크랩 정제소",
       contractSalvageBody: "드랍 아이템 2개를 분해하라.",
+      contractRiftTitle: "균열 봉쇄",
+      contractRiftBody: "심연 균열 런을 2회 봉인하라.",
       resultEquipNow: "지금 장착",
       resultEquippedNextRun: "다음 런 장착 완료",
       resultAlreadyActive: "이 드랍은 이미 활성 상태다.",
@@ -727,6 +865,10 @@
       genomeBank: "유전자 은행: {genes}",
       worldBossResourceBody: "유전자는 월드 보스 모드에서만 떨어진다. 타이탄포지드 장비와 함께 이 모드 전용 성장 축을 이룬다.",
       worldBossExclusive: "월드 보스 전용 // 유전자 + 타이탄포지드 장비",
+      riftResourceLabel: "심연 균열 라인",
+      riftBank: "균열 봉인 수: {count}",
+      riftResourceBody: "심연 균열은 장기 분해 파밍 라인이다. 더 좋은 드랍, 더 많은 데이터, 전용 단조 장비를 준다.",
+      riftExclusive: "심연 균열 전용 // 균열단조 장비 + 분해 스파이크",
       howItPlaysLabel: "플레이 방식",
       howItPlaysTitle: "빠르게 죽이고, 열기를 유지하라",
       howItPlaysBody: "적을 죽일 때마다 블러드 에코 타이머가 갱신된다. 활성 중에는 자동 공격 리듬이 빨라지고 보상도 조금씩 올라가므로 최적 루프는 끊임없는 공격이다.",
@@ -757,6 +899,7 @@
       firstRunCacheLine: "첫 런 캐시: +120 골드 / +6 코어 / +10 데이터",
       firstTitanBountyLine: "첫 타이탄 처치 보상: +220 골드 / +10 코어 / +24 데이터",
       worldBossPayoutLine: "월드 보스 보상 35% 증폭",
+      riftPayoutLine: "심연 균열 보상 22% 증폭",
       genomeSampleLine: "유전자 샘플 확보: +{genes} 유전자",
       seasonBreakpointBonusLine: "시즌 브레이크포인트 보상: +90 골드 / +16 데이터",
       seasonRelicUnlockedLine: "시즌 리릭 해금: {title}",
@@ -766,13 +909,34 @@
       resultNewRelicLine: " 신규 리릭 해금: {title}.",
       resultNewSeasonRelicLine: " 시즌 리릭 해금: {title}.",
       resultLootLine: " 드랍: {items}.",
+      resultModeLabel: "모드",
+      resultModeHuntTitle: "메인 사냥 정리",
+      resultModeHuntBody: "기본 현장 보상 루프다. 빌드 템포와 라인 제어가 성패를 가른다.",
+      resultModeBossTitle: "월드 보스 수확",
+      resultModeBossBody: "유전자와 타이탄단조 드랍이 여기서 크게 튄다. 영구 성장의 핵심 라인이다.",
+      resultModeRiftTitle: "심연 균열 붕괴",
+      resultModeRiftBody: "장기 분해 파밍 라인이다. 드랍과 데이터가 더 크고 압박도 더 빽빽하다.",
       hudKills: "처치 {count}",
       hudLevel: "레벨 {level}",
       hudDashReady: "대시",
       hudDashCooldown: "대시 {time}",
+      hudUltReady: "{name}",
+      hudUltCooldown: "{name} {time}",
+      ultimateEyebrow: "궁극기 // 컷인",
       hudWeakpoints: "약점 {count}",
       hudCoreExposed: "코어 노출",
+      ultCain: "광란",
+      ultDex: "제로",
+      ultRia: "복음",
+      ultSera: "종결",
+      ultCainEvent: "광란 발동. 카인이 화면째 찢어버린다.",
+      ultDexEvent: "제로 팩토리 발동. 드론 과부하 진입.",
+      ultRiaEvent: "블랙 가스펠 발동. 저주 폭발이 넓게 연쇄된다.",
+      ultSeraEvent: "파이널 프레임 발동. 처형 창이 크게 열린다.",
       floatTitanDown: "타이탄 격파",
+      lootSourceHunt: "현장 드랍",
+      lootSourceBoss: "타이탄단조",
+      lootSourceRift: "균열단조",
       eventIntroCain: "왼쪽 패드로 이동한다. 카인은 자동으로 공격한다.",
       eventIntroDex: "왼쪽 패드로 이동한다. 덱스는 원거리에서 적을 제압한다.",
       eventIntroRia: "왼쪽 패드로 이동한다. 리아는 적에게 저주 표식을 남긴다.",
@@ -784,9 +948,43 @@
       eventElite: "엘리트 접촉. 빠르게 터뜨려 더 큰 파워 스파이크를 가져가라.",
       eventBossSanctuary: "아콘 가동. 계속 움직이며 탄막을 피하고 약점을 먼저 부숴라.",
       eventBossWorld: "월드 보스 활성. 양쪽 약점을 부숴 코어를 노출시켜라.",
+      eventBossRift: "균열 타이탄 활성. 붕괴를 버티고 껍질을 부숴 코어를 봉인해라.",
       eventBossTitan: "타이탄 강하. 장갑을 깨고 코어를 베어라.",
+      eventArchonVolley: "아콘 일제사격 조준 중. 옆으로 빠져라.",
+      eventArchonRing: "신호 고리 확장 중. 중앙선에 오래 머물지 마라.",
+      eventArchonImpact: "아콘 충돌 지점 고정. 전열에서 벗어나라.",
+      eventTitanRing: "타이탄 고리 충전 중. 빈틈을 대시로 뚫어라.",
+      eventTitanLeap: "타이탄 도약 표식. 착지 지점에서 벗어나라.",
+      riftCollapseInbound: "균열 붕괴 접근",
+      holdTheRift: "균열 유지 {seconds}",
+      collapseRiftArmor: "균열 장갑 붕괴",
+      sealRiftCore: "균열 코어 봉인",
+      riftSealed: "균열 봉인 완료",
+      eventAbyssVolley: "심연 일제사격 잠금. 부채꼴 바깥으로 빠져라.",
+      eventAbyssRing: "조수 고리 확장 중. 안쪽 중심선에 오래 머물지 마라.",
+      eventAbyssMortar: "심연 박격포 표식. 검은 원 3개를 모두 벗어나라.",
+      finishEyebrowSanctuaryBoss: "월드 보스 // 철신 성역",
+      finishEyebrowSanctuaryHunt: "철신 성역 // 피니시",
+      finishTitleSanctuaryBoss: "성역 아콘 해체",
+      finishTitleSanctuaryHunt: "성역 타이탄 분쇄",
+      finishSubtitleSanctuary: "{boss} // 신호 척추 파손 // 기록 코어 회수",
+      finishEyebrowBlacktideBoss: "월드 보스 // 검은 조수",
+      finishEyebrowBlacktideHunt: "검은 조수 // 피니시",
+      finishTitleBlacktideBoss: "레비아탄 수장",
+      finishTitleBlacktideHunt: "심연 레비아탄 절단",
+      finishSubtitleBlacktide: "{boss} // 심연 척추 절단 // 조수 저장고 고갈",
+      finishEyebrowRedcityBoss: "월드 보스 // 붉은 폐도",
+      finishEyebrowRedcityHunt: "붉은 폐도 // 피니시",
+      finishTitleRedcityBoss: "배교체 정화",
+      finishTitleRedcityHunt: "배교 타이탄 절개",
+      finishSubtitleRedcity: "{boss} // 심장 적출 완료 // 혈계 강화",
+      resetConfirm: "프로토타입 진행을 전부 초기화하고 FTUE부터 다시 시작할까?",
       shellEnglish: "UI를 영어로 표시",
       shellKorean: "UI를 한국어로 표시",
+      hunterCainName: "카인",
+      hunterDexName: "덱스",
+      hunterRiaName: "리아",
+      hunterSeraName: "세라",
     },
   };
 
@@ -802,6 +1000,94 @@
     return t(key).replace(/\{(\w+)\}/g, (_match, token) => String(vars[token] ?? ""));
   }
 
+  function lt(value) {
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      if ("ko" in value || "en" in value) {
+        return value[lang()] ?? value.en ?? value.ko ?? "";
+      }
+    }
+    return value ?? "";
+  }
+
+  function localizeItemName(name) {
+    if (lang() !== "ko") return name;
+    if (!name) return "";
+
+    const prefixMap = {
+      COMMON: "일반",
+      RARE: "희귀",
+      EPIC: "영웅",
+      LEGEND: "전설",
+      Titanforged: "타이탄단조",
+      Leviathanforged: "레비아탄단조",
+      Collapseforged: "붕괴단조",
+      Fracturecast: "균열주조",
+      Undertow: "언더토우",
+      Tideworn: "조수깃든",
+    };
+
+    const baseMap = {
+      Cleaver: "클리버",
+      Ripper: "리퍼",
+      "Pulse Lance": "펄스 랜스",
+      "Burst Carbine": "버스트 카빈",
+      "Hex Lantern": "헥스 랜턴",
+      "Ruin Censer": "루인 센서",
+      "Twin Scythes": "트윈 사이드",
+      "Phantom Blade": "팬텀 블레이드",
+      "Tideglass Spear": "타이드글라스 스피어",
+      "Red Plate": "레드 플레이트",
+      "Bone Weave": "본 위브",
+      "Titan Hide": "타이탄 하이드",
+      "Signal Mesh": "시그널 메쉬",
+      "Veil Mantle": "베일 맨틀",
+      "Choir Wrap": "콰이어 랩",
+      "Night Weave": "나이트 위브",
+      "Ghost Mesh": "고스트 메쉬",
+      "Abyss Shell": "어비스 셸",
+      "Rage Reactor": "레이지 리액터",
+      "Overdrive Cell": "오버드라이브 셀",
+      "Kill Coil": "킬 코일",
+      "Target Uplink": "타깃 업링크",
+      "Echo Core": "에코 코어",
+      "Ruin Prism": "루인 프리즘",
+      "Reaper Relay": "리퍼 릴레이",
+      "Void Mark": "보이드 마크",
+      "Current Heart": "커런트 하트",
+      "Riot Cleaver": "라이엇 클리버",
+      "Hex Needle": "헥스 니들",
+      "Blink Edge": "블링크 엣지",
+      "Launch Coil": "런치 코일",
+      "Operator Mesh": "오퍼레이터 메쉬",
+      "Factory Pulse Lance": "팩토리 펄스 랜스",
+      "Genome Cell": "유전체 셀",
+      "Crimson Archive": "크림슨 아카이브",
+      "Eclipse Relay": "이클립스 릴레이",
+      "Moon Archive Plate": "문 아카이브 플레이트",
+      "Junker Cleaver": "정크 클리버",
+      "Street Plate": "스트리트 플레이트",
+      "Scrap Reactor": "스크랩 리액터",
+    };
+
+    const direct = baseMap[name];
+    if (direct) return direct;
+
+    const parts = String(name).split(" ");
+    if (parts.length >= 2 && prefixMap[parts[0]]) {
+      const rest = parts.slice(1).join(" ");
+      return `${prefixMap[parts[0]]} ${baseMap[rest] ?? rest}`;
+    }
+
+    for (const [prefix, translated] of Object.entries(prefixMap)) {
+      if (String(name).startsWith(`${prefix} `)) {
+        const rest = String(name).slice(prefix.length + 1);
+        return `${translated} ${baseMap[rest] ?? rest}`;
+      }
+    }
+
+    return baseMap[name] ?? name;
+  }
+
   function slotTitle(slotId) {
     return t(`slot${slotId[0].toUpperCase()}${slotId.slice(1)}`);
   }
@@ -809,49 +1095,128 @@
   function getCharacterCopy(id, field) {
     const table = {
       cain: {
+        name: t("hunterCainName"),
         cardBody: t("cainCardBody"),
         baseBody: t("cainBaseBody"),
         startLabel: t("cainStartLabel"),
         resourceLabel: t("cainResource"),
+        ultLabel: t("ultCain"),
         unlockRule: t("starterHunter"),
       },
       dex: {
+        name: t("hunterDexName"),
         cardBody: t("dexCardBody"),
         baseBody: t("dexBaseBody"),
         startLabel: t("dexStartLabel"),
         resourceLabel: t("dexResource"),
+        ultLabel: t("ultDex"),
         unlockRule: t("afterFirstTitanHunter"),
       },
       ria: {
+        name: t("hunterRiaName"),
         cardBody: t("riaCardBody"),
         baseBody: t("riaBaseBody"),
         startLabel: t("riaStartLabel"),
         resourceLabel: t("riaResource"),
+        ultLabel: t("ultRia"),
         unlockRule: t("afterSecondTitanHunter"),
       },
       sera: {
+        name: t("hunterSeraName"),
         cardBody: t("seraCardBody"),
         baseBody: t("seraBaseBody"),
         startLabel: t("seraStartLabel"),
         resourceLabel: t("seraResource"),
+        ultLabel: t("ultSera"),
         unlockRule: t("afterThirdTitanHunter"),
       },
     };
     return table[id]?.[field] ?? "";
   }
 
+  function getCharacterName(id) {
+    return getCharacterCopy(id, "name") || characterDefs[id]?.name || "";
+  }
+
+  function getCharacterShowcase(id, field) {
+    const table = {
+      cain: {
+        role: t("cainShowcaseRole"),
+        weapon: t("cainShowcaseWeapon"),
+        sigil: "C01",
+      },
+      dex: {
+        role: t("dexShowcaseRole"),
+        weapon: t("dexShowcaseWeapon"),
+        sigil: "D02",
+      },
+      ria: {
+        role: t("riaShowcaseRole"),
+        weapon: t("riaShowcaseWeapon"),
+        sigil: "R03",
+      },
+      sera: {
+        role: t("seraShowcaseRole"),
+        weapon: t("seraShowcaseWeapon"),
+        sigil: "S04",
+      },
+    };
+    return table[id]?.[field] ?? "";
+  }
+
+  function getCharacterSyncLabel(id) {
+    const table = {
+      cain: t("syncCain"),
+      dex: t("syncDex"),
+      ria: t("syncRia"),
+      sera: t("syncSera"),
+    };
+    return table[id] ?? t("anyHunter");
+  }
+
+  function getModeShowcasePayout(id) {
+    if (id === "boss") return t("showcaseBackdropBoss");
+    if (id === "rift") return t("showcaseBackdropRift");
+    return t("showcaseBackdropHunt");
+  }
+
   function getModeCopy(id, field) {
     const table = {
-      hunt: { name: t("modeHuntName"), body: t("modeHuntBody") },
-      boss: { name: t("modeBossName"), body: t("modeBossBody") },
+      hunt: { name: t("modeHuntName"), body: t("modeHuntBody"), unlockRule: "" },
+      boss: {
+        name: t("modeBossName"),
+        body: t("modeBossBody"),
+        unlockRule: t("modeBossUnlockRule"),
+      },
+      rift: {
+        name: t("modeRiftName"),
+        body: t("modeRiftBody"),
+        unlockRule: t("modeRiftUnlockRule"),
+      },
     };
     return table[id]?.[field] ?? "";
   }
 
   function getRegionCopy(id, field) {
     const table = {
-      redcity: { body: t("regionRedcityBody"), unlockRule: t("regionStarter") },
-      sanctuary: { body: t("regionSanctuaryBody"), unlockRule: t("regionAfterFirstTitan") },
+      redcity: {
+        name: t("regionRedcityName"),
+        bossName: t("regionRedcityBossName"),
+        body: t("regionRedcityBody"),
+        unlockRule: t("regionStarter"),
+      },
+      sanctuary: {
+        name: t("regionSanctuaryName"),
+        bossName: t("regionSanctuaryBossName"),
+        body: t("regionSanctuaryBody"),
+        unlockRule: t("regionAfterFirstTitan"),
+      },
+      blacktide: {
+        name: t("regionBlacktideName"),
+        bossName: t("regionBlacktideBossName"),
+        body: t("regionBlacktideBody"),
+        unlockRule: t("regionAfterSeasonBreak"),
+      },
     };
     return table[id]?.[field] ?? "";
   }
@@ -887,6 +1252,7 @@
       "contract-runs": { title: t("contractRunsTitle"), body: t("contractRunsBody") },
       "contract-titans": { title: t("contractTitansTitle"), body: t("contractTitansBody") },
       "contract-salvage": { title: t("contractSalvageTitle"), body: t("contractSalvageBody") },
+      "contract-rift": { title: t("contractRiftTitle"), body: t("contractRiftBody") },
     };
     return table[id]?.[field] ?? "";
   }
@@ -895,10 +1261,11 @@
     cain: {
       id: "cain",
       name: "Cain",
-      eyebrow: "OVERKILL // BERSERKER",
+      eyebrow: { en: "OVERKILL // BERSERKER", ko: "오버킬 // 광전사" },
       title: "Cain in the Red City",
       body: "Dive into the pack, rip them apart, and snowball rage into a titan kill.",
       resourceLabel: "RAGE",
+      ultCooldown: 24,
       startLabel: "Enter Red City",
       attackStyle: "melee",
       color: "#78d2ff",
@@ -921,10 +1288,11 @@
     dex: {
       id: "dex",
       name: "Dex",
-      eyebrow: "OVERKILL // WEAPON ENGINEER",
+      eyebrow: { en: "OVERKILL // WEAPON ENGINEER", ko: "오버킬 // 병기 설계자" },
       title: "Dex in the Iron Sanctuary",
       body: "Flood the lane with pulse fire and drones, then pin the boss down from range.",
       resourceLabel: "OVERDRIVE",
+      ultCooldown: 22,
       startLabel: "Deploy To Sanctuary",
       attackStyle: "ranged",
       color: "#82e8d2",
@@ -949,10 +1317,11 @@
     ria: {
       id: "ria",
       name: "Ria",
-      eyebrow: "OVERKILL // CURSE WITCH",
+      eyebrow: { en: "OVERKILL // CURSE WITCH", ko: "오버킬 // 저주 마녀" },
       title: "Ria in the Iron Sanctuary",
       body: "Brand the pack, trigger ruin blooms, and watch the lane collapse in chained detonations.",
       resourceLabel: "ECHO",
+      ultCooldown: 23,
       startLabel: "Cast Into Sanctuary",
       attackStyle: "hex",
       color: "#d88cff",
@@ -977,10 +1346,11 @@
     sera: {
       id: "sera",
       name: "Sera",
-      eyebrow: "OVERKILL // REAPER RUNNER",
+      eyebrow: { en: "OVERKILL // REAPER RUNNER", ko: "오버킬 // 사신 러너" },
       title: "Sera in the Red City",
       body: "Blink through the front line, harvest low targets, and keep the kill chain hot enough to outrun the boss.",
       resourceLabel: "MOMENTUM",
+      ultCooldown: 20,
       startLabel: "Drop Into Red City",
       attackStyle: "blink",
       color: "#8cc8ff",
@@ -1019,6 +1389,13 @@
       duration: 95,
       bossTime: 4,
     },
+    rift: {
+      id: "rift",
+      name: "Abyss Rift",
+      body: "Longer collapse run with denser waves and richer salvage.",
+      duration: 150,
+      bossTime: 100,
+    },
   };
 
   const regionDefs = {
@@ -1037,6 +1414,8 @@
         charger: "#ff7a57",
         shooter: "#f4c35a",
         elite: "#ffb35c",
+        drifter: "#f0dd88",
+        warden: "#ffd8a6",
       },
       bossName: "APOSTATE TITAN",
       bossColor: "#96503e",
@@ -1058,43 +1437,68 @@
         charger: "#7ee4f0",
         shooter: "#b8fff4",
         elite: "#8fd4ff",
+        drifter: "#d9fffb",
+        warden: "#e4ffff",
       },
       bossName: "SANCTUARY ARCHON",
       bossColor: "#3f7e90",
       coreColor: "#b8fff4",
       bossBurst: "rgba(120, 235, 255, 0.2)",
     },
+    blacktide: {
+      id: "blacktide",
+      name: "Black Tide",
+      body: "Black tide flats, abyss bloom pools, and leviathan pressure from every angle.",
+      unlockRule: "Unlocked after the first season breakpoint clear",
+      palette: {
+        bg: "#050b10",
+        stain: "rgba(64, 167, 176, 0.1)",
+        grid: "rgba(128, 238, 228, 0.035)",
+      },
+      enemyColors: {
+        grunt: "#4ac0b3",
+        charger: "#89fff0",
+        shooter: "#72d0ff",
+        elite: "#b1f8ff",
+        drifter: "#c4fff8",
+        warden: "#ecfffb",
+      },
+      bossName: "ABYSS LEVIATHAN",
+      bossColor: "#275865",
+      coreColor: "#a9fff2",
+      bossBurst: "rgba(130, 255, 236, 0.22)",
+    },
   };
 
   const commonUpgradeDefs = [
     {
       id: "damage",
-      title: "Brutal Swing",
-      description: "Heavy arc damage increases by 18.",
+      title: { en: "Brutal Swing", ko: "난폭한 참격" },
+      description: { en: "Heavy arc damage increases by 18.", ko: "넓게 휘두르는 자동 참격 피해가 18 증가한다." },
       apply: (player) => {
         player.damage += 18;
       },
     },
     {
       id: "range",
-      title: "Wider Arc",
-      description: "Auto-slash radius increases by 22.",
+      title: { en: "Wider Arc", ko: "참격 궤적 확장" },
+      description: { en: "Auto-slash radius increases by 22.", ko: "자동 참격 범위가 22 늘어난다." },
       apply: (player) => {
         player.attackRange += 22;
       },
     },
     {
       id: "speed",
-      title: "Frenzy Cartilage",
-      description: "Attack speed increases by 14%.",
+      title: { en: "Frenzy Cartilage", ko: "광전 연골" },
+      description: { en: "Attack speed increases by 14%.", ko: "공격 속도가 14% 상승한다." },
       apply: (player) => {
         player.attackCooldown *= 0.86;
       },
     },
     {
       id: "hp",
-      title: "Iron Spine",
-      description: "Max HP increases by 140 and heal 70.",
+      title: { en: "Iron Spine", ko: "강철 척추" },
+      description: { en: "Max HP increases by 140 and heal 70.", ko: "최대 체력이 140 증가하고 즉시 70 회복한다." },
       apply: (player) => {
         player.maxHp += 140;
         player.hp = Math.min(player.maxHp, player.hp + 70);
@@ -1102,8 +1506,8 @@
     },
     {
       id: "explode",
-      title: "Shock Burst",
-      description: "Every 4 kills detonate nearby enemies.",
+      title: { en: "Shock Burst", ko: "충격 폭발" },
+      description: { en: "Every 4 kills detonate nearby enemies.", ko: "처치 4회마다 주변 적이 한 번 더 폭발한다." },
       apply: (player) => {
         player.explosionKillsThreshold = Math.max(
           2,
@@ -1113,16 +1517,16 @@
     },
     {
       id: "dash",
-      title: "Reactor Dash",
-      description: "Dash cooldown reduced by 18%.",
+      title: { en: "Reactor Dash", ko: "리액터 대시" },
+      description: { en: "Dash cooldown reduced by 18%.", ko: "대시 재사용 대기시간이 18% 감소한다." },
       apply: (player) => {
         player.dashCooldown *= 0.82;
       },
     },
     {
       id: "radius",
-      title: "Overkill Field",
-      description: "Slash width increases and enemies stagger longer.",
+      title: { en: "Overkill Field", ko: "오버킬 필드" },
+      description: { en: "Slash width increases and enemies stagger longer.", ko: "참격 폭이 넓어지고 적 경직이 더 길어진다." },
       apply: (player) => {
         player.attackArc += 0.16;
         player.staggerPower += 14;
@@ -1133,8 +1537,8 @@
   const cainUpgradeDefs = [
     {
       id: "cain-lifesteal",
-      title: "Blood Engine",
-      description: "Cain only. Gain 3% lifesteal and 40 max HP.",
+      title: { en: "Blood Engine", ko: "블러드 엔진" },
+      description: { en: "Cain only. Gain 3% lifesteal and 40 max HP.", ko: "카인 전용. 흡혈 3%와 최대 체력 40을 얻는다." },
       apply: (player) => {
         player.lifesteal += 0.03;
         player.maxHp += 40;
@@ -1143,8 +1547,8 @@
     },
     {
       id: "cain-rage",
-      title: "Rage Core",
-      description: "Cain only. Rage gain rises by 35% and damage by 8.",
+      title: { en: "Rage Core", ko: "분노 핵" },
+      description: { en: "Cain only. Rage gain rises by 35% and damage by 8.", ko: "카인 전용. 분노 수급이 35% 늘고 피해가 8 증가한다." },
       apply: (player) => {
         player.rageGainMultiplier += 0.35;
         player.damage += 8;
@@ -1152,16 +1556,16 @@
     },
     {
       id: "cain-execute",
-      title: "Execution Edge",
-      description: "Cain only. Deal 35% more damage below half HP.",
+      title: { en: "Execution Edge", ko: "처형의 칼끝" },
+      description: { en: "Cain only. Deal 35% more damage below half HP.", ko: "카인 전용. 체력이 절반 이하인 적에게 35% 추가 피해를 준다." },
       apply: (player) => {
         player.executeBonus += 0.35;
       },
     },
     {
       id: "cain-trail",
-      title: "Reaper Trail",
-      description: "Cain only. Dashes carve a burning trail and hit harder.",
+      title: { en: "Reaper Trail", ko: "사신의 궤적" },
+      description: { en: "Cain only. Dashes carve a burning trail and hit harder.", ko: "카인 전용. 대시가 불타는 궤적을 남기고 타격도 더 세진다." },
       apply: (player) => {
         player.hasDashTrail = true;
         player.damage += 6;
@@ -1172,8 +1576,8 @@
   const dexUpgradeDefs = [
     {
       id: "dex-orbit",
-      title: "Orbit Drone",
-      description: "Dex only. Add one orbit drone and +6 damage.",
+      title: { en: "Orbit Drone", ko: "오비트 드론" },
+      description: { en: "Dex only. Add one orbit drone and +6 damage.", ko: "덱스 전용. 공전 드론 1기를 추가하고 피해가 6 증가한다." },
       apply: (player) => {
         if (player.orbitCount < 4) player.orbitCount += 1;
         player.damage += 6;
@@ -1181,8 +1585,8 @@
     },
     {
       id: "dex-burst",
-      title: "Burst Array",
-      description: "Dex only. Extra burst shot and 8% fire rate.",
+      title: { en: "Burst Array", ko: "버스트 어레이" },
+      description: { en: "Dex only. Extra burst shot and 8% fire rate.", ko: "덱스 전용. 추가 버스트 탄이 붙고 연사 속도가 8% 빨라진다." },
       apply: (player) => {
         player.projectileBurst += 1;
         player.attackCooldown *= 0.92;
@@ -1190,8 +1594,8 @@
     },
     {
       id: "dex-overdrive",
-      title: "Overdrive Feed",
-      description: "Dex only. Gain 10% XP, 10% rewards, and +18 range.",
+      title: { en: "Overdrive Feed", ko: "오버드라이브 피드" },
+      description: { en: "Dex only. Gain 10% XP, 10% rewards, and +18 range.", ko: "덱스 전용. 경험치와 보상이 10%씩 늘고 사거리가 18 증가한다." },
       apply: (player) => {
         player.xpMultiplier += 0.1;
         player.rewardMultiplier += 0.1;
@@ -1200,8 +1604,8 @@
     },
     {
       id: "dex-targeting",
-      title: "Target Uplink",
-      description: "Dex only. Boss damage +14% and range +24.",
+      title: { en: "Target Uplink", ko: "타깃 업링크" },
+      description: { en: "Dex only. Boss damage +14% and range +24.", ko: "덱스 전용. 보스 피해가 14% 늘고 사거리가 24 증가한다." },
       apply: (player) => {
         player.bossDamageMultiplier += 0.14;
         player.attackRange += 24;
@@ -1212,8 +1616,8 @@
   const riaUpgradeDefs = [
     {
       id: "ria-bloom",
-      title: "Black Bloom",
-      description: "Ria only. Curse bursts deal +18 damage and cover a wider circle.",
+      title: { en: "Black Bloom", ko: "검은 개화" },
+      description: { en: "Ria only. Curse bursts deal +18 damage and cover a wider circle.", ko: "리아 전용. 저주 폭발 피해가 18 늘고 범위가 더 넓어진다." },
       apply: (player) => {
         player.curseBurstDamage += 18;
         player.curseBurstRadius += 22;
@@ -1221,8 +1625,8 @@
     },
     {
       id: "ria-lattice",
-      title: "Echo Lattice",
-      description: "Ria only. One extra chain target and +18 range.",
+      title: { en: "Echo Lattice", ko: "에코 격자" },
+      description: { en: "Ria only. One extra chain target and +18 range.", ko: "리아 전용. 연쇄 대상이 1명 늘고 사거리가 18 증가한다." },
       apply: (player) => {
         player.hexChains += 1;
         player.attackRange += 18;
@@ -1230,8 +1634,8 @@
     },
     {
       id: "ria-threshold",
-      title: "Ruin Choir",
-      description: "Ria only. Curse pops one stack earlier and attack speed rises 8%.",
+      title: { en: "Ruin Choir", ko: "파멸 합창" },
+      description: { en: "Ria only. Curse pops one stack earlier and attack speed rises 8%.", ko: "리아 전용. 저주가 한 단계 빨리 터지고 공격 속도가 8% 오른다." },
       apply: (player) => {
         player.curseThreshold = Math.max(2, player.curseThreshold - 1);
         player.attackCooldown *= 0.92;
@@ -1239,8 +1643,8 @@
     },
     {
       id: "ria-grave",
-      title: "Grave Chorus",
-      description: "Ria only. Boss damage +18% and every burst yields more echo.",
+      title: { en: "Grave Chorus", ko: "묘지의 합창" },
+      description: { en: "Ria only. Boss damage +18% and every burst yields more echo.", ko: "리아 전용. 보스 피해가 18% 늘고 폭발마다 메아리를 더 많이 얻는다." },
       apply: (player) => {
         player.bossDamageMultiplier += 0.18;
         player.curseEchoGain += 0.18;
@@ -1251,8 +1655,8 @@
   const seraUpgradeDefs = [
     {
       id: "sera-step",
-      title: "Shadow Step",
-      description: "Sera only. Dash cooldown falls 18% and blink strike range grows.",
+      title: { en: "Shadow Step", ko: "섀도우 스텝" },
+      description: { en: "Sera only. Dash cooldown falls 18% and blink strike range grows.", ko: "세라 전용. 대시 쿨이 18% 줄고 점멸 참격 사거리가 늘어난다." },
       apply: (player) => {
         player.dashCooldown *= 0.82;
         player.blinkStrikeRange += 28;
@@ -1260,8 +1664,8 @@
     },
     {
       id: "sera-edge",
-      title: "Execution Script",
-      description: "Sera only. Execute damage rises sharply and base damage +8.",
+      title: { en: "Execution Script", ko: "처형 스크립트" },
+      description: { en: "Sera only. Execute damage rises sharply and base damage +8.", ko: "세라 전용. 처형 피해가 크게 오르고 기본 피해가 8 증가한다." },
       apply: (player) => {
         player.executeBonus += 0.28;
         player.damage += 8;
@@ -1269,8 +1673,8 @@
     },
     {
       id: "sera-rush",
-      title: "Afterimage Drive",
-      description: "Sera only. Kill rush lasts longer and attack speed rises 10%.",
+      title: { en: "Afterimage Drive", ko: "잔상 드라이브" },
+      description: { en: "Sera only. Kill rush lasts longer and attack speed rises 10%.", ko: "세라 전용. 킬 러시 유지시간이 늘고 공격 속도가 10% 상승한다." },
       apply: (player) => {
         player.killRushBonus += 0.08;
         player.attackCooldown *= 0.9;
@@ -1278,8 +1682,8 @@
     },
     {
       id: "sera-lock",
-      title: "Reaper Lock",
-      description: "Sera only. Boss damage +16%, dash refund improves, range +18.",
+      title: { en: "Reaper Lock", ko: "리퍼 락" },
+      description: { en: "Sera only. Boss damage +16%, dash refund improves, range +18.", ko: "세라 전용. 보스 피해가 16% 늘고 대시 환급이 좋아지며 사거리가 18 증가한다." },
       apply: (player) => {
         player.bossDamageMultiplier += 0.16;
         player.dashRefundOnKill += 0.16;
@@ -1303,16 +1707,21 @@
 
   const seasonDef = {
     id: "blood-moon",
-    name: "Crimson Eclipse",
-    ruleTitle: "Blood Echo",
-    ruleBody:
-      "Kills drop blood echoes. Each pickup raises attack tempo and payout, but the lane gets louder and hotter.",
-    missionTitle: "Season Hunt",
-    missionBody: "Kill 40 enemies and break one titan weakpoint in a single run.",
+    name: { en: "Crimson Eclipse", ko: "크림슨 이클립스" },
+    ruleTitle: { en: "Blood Echo", ko: "블러드 에코" },
+    ruleBody: {
+      en: "Kills drop blood echoes. Each pickup raises attack tempo and payout, but the lane gets louder and hotter.",
+      ko: "적을 처치하면 블러드 에코가 떨어진다. 주울수록 공격 템포와 보상이 같이 오르지만, 전장은 더 시끄럽고 더 위험해진다.",
+    },
+    missionTitle: { en: "Season Hunt", ko: "시즌 사냥" },
+    missionBody: {
+      en: "Kill 40 enemies and break one titan weakpoint in a single run.",
+      ko: "한 번의 런에서 적 40마리를 처치하고 타이탄 약점 1개를 파괴하라.",
+    },
     killTarget: 40,
     weakpointTarget: 1,
-    rewardLabel: "SEASON REWARD",
-    rewardBody: "Epic relic shard + crimson execution trail",
+    rewardLabel: { en: "SEASON REWARD", ko: "시즌 보상" },
+    rewardBody: { en: "Epic relic shard + crimson execution trail", ko: "영웅 리릭 조각 + 크림슨 처형 궤적" },
     passTiers: [
       {
         id: "tier-1",
@@ -1322,7 +1731,7 @@
         claim: (meta) => {
           meta.gold += 120;
           meta.cores += 8;
-          return "Season Pass T1: +120 gold / +8 cores";
+          return lang() === "ko" ? "시즌 패스 1단계: +120 골드 / +8 코어" : "Season Pass T1: +120 gold / +8 cores";
         },
       },
       {
@@ -1332,7 +1741,7 @@
         body: "+26 data // Launch-track friendly",
         claim: (meta) => {
           meta.data += 26;
-          return "Season Pass T2: +26 data";
+          return lang() === "ko" ? "시즌 패스 2단계: +26 데이터" : "Season Pass T2: +26 data";
         },
       },
       {
@@ -1343,7 +1752,7 @@
         claim: (meta) => {
           meta.genes += 10;
           meta.gold += 140;
-          return "Season Pass T3: +10 genes / +140 gold";
+          return lang() === "ko" ? "시즌 패스 3단계: +10 유전자 / +140 골드" : "Season Pass T3: +10 genes / +140 gold";
         },
       },
       {
@@ -1359,7 +1768,7 @@
             affinity: "any",
             stats: { reward: 0.1, xp: 0.08, bossDamage: 0.08 },
           });
-          return `Season Pass T4: ${item.name}`;
+          return lang() === "ko" ? `시즌 패스 4단계: ${localizeItemName(item.name)}` : `Season Pass T4: ${item.name}`;
         },
       },
       {
@@ -1377,7 +1786,7 @@
             affinity: "any",
             stats: { hp: 136, reward: 0.12, bossDamage: 0.08 },
           });
-          return `Season Pass T5: ${item.name} + 180 gold / 20 data`;
+          return lang() === "ko" ? `시즌 패스 5단계: ${localizeItemName(item.name)} + 180 골드 / 20 데이터` : `Season Pass T5: ${item.name} + 180 gold / 20 data`;
         },
       },
     ],
@@ -1393,7 +1802,7 @@
       claim: (meta) => {
         meta.gold += 90;
         meta.data += 10;
-        return "Contract cleared: +90 gold / +10 data";
+        return lang() === "ko" ? "계약 완료: +90 골드 / +10 데이터" : "Contract cleared: +90 gold / +10 data";
       },
     },
     {
@@ -1404,7 +1813,7 @@
       isComplete: () => meta.bossKills >= 2,
       claim: (meta) => {
         meta.genes += 8;
-        return "Contract cleared: +8 genes";
+        return lang() === "ko" ? "계약 완료: +8 유전자" : "Contract cleared: +8 genes";
       },
     },
     {
@@ -1416,7 +1825,19 @@
       claim: (meta) => {
         meta.cores += 10;
         meta.gold += 60;
-        return "Contract cleared: +10 cores / +60 gold";
+        return lang() === "ko" ? "계약 완료: +10 코어 / +60 골드" : "Contract cleared: +10 cores / +60 gold";
+      },
+    },
+    {
+      id: "contract-rift",
+      title: "Rift Lockdown",
+      body: "Seal 2 Abyss Rift runs.",
+      progress: () => ({ current: Math.min(meta.riftWins, 2), target: 2 }),
+      isComplete: () => meta.riftWins >= 2,
+      claim: (meta) => {
+        meta.data += 22;
+        meta.cores += 8;
+        return lang() === "ko" ? "계약 완료: +22 데이터 / +8 코어" : "Contract cleared: +22 data / +8 cores";
       },
     },
   ];
@@ -1431,6 +1852,7 @@
       { name: "Ruin Censer", affinity: "ria", setId: "ruin", stats: { damage: 10, bossDamage: 0.08 } },
       { name: "Twin Scythes", affinity: "sera", setId: "blink", stats: { damage: 14, attackSpeed: 0.04 } },
       { name: "Phantom Blade", affinity: "sera", setId: "blink", stats: { damage: 12, executeBonus: 0.1 } },
+      { name: "Tideglass Spear", affinity: "any", setId: "abyss", regions: ["blacktide"], stats: { damage: 13, range: 22, reward: 0.05 } },
     ],
     armor: [
       { name: "Red Plate", affinity: "cain", setId: "reaver", stats: { hp: 90 } },
@@ -1441,6 +1863,7 @@
       { name: "Choir Wrap", affinity: "ria", setId: "ruin", stats: { hp: 74, xp: 0.08 } },
       { name: "Night Weave", affinity: "sera", setId: "blink", stats: { hp: 58, attackSpeed: 0.05 } },
       { name: "Ghost Mesh", affinity: "sera", setId: "blink", stats: { hp: 66, reward: 0.08 } },
+      { name: "Abyss Shell", affinity: "any", setId: "abyss", regions: ["blacktide"], stats: { hp: 82, reward: 0.06, bossDamage: 0.04 } },
     ],
     reactor: [
       { name: "Rage Reactor", affinity: "cain", setId: "reaver", stats: { rageGain: 0.12, dashReduction: 0.12 } },
@@ -1451,14 +1874,15 @@
       { name: "Ruin Prism", affinity: "ria", setId: "ruin", stats: { range: 20, reward: 0.08 } },
       { name: "Reaper Relay", affinity: "sera", setId: "blink", stats: { dashReduction: 0.14, damage: 6 } },
       { name: "Void Mark", affinity: "sera", setId: "blink", stats: { bossDamage: 0.08, reward: 0.06 } },
+      { name: "Current Heart", affinity: "any", setId: "abyss", regions: ["blacktide"], stats: { xp: 0.08, reward: 0.08, bossDamage: 0.06 } },
     ],
   };
 
   const gearSetDefs = {
     reaver: {
-      name: "Reaver Frame",
-      twoPiece: "Rage gain +20% // lifesteal +2%",
-      threePiece: "Damage +18 // boss damage +12%",
+      name: { en: "Reaver Frame", ko: "리버 프레임" },
+      twoPiece: { en: "Rage gain +20% // lifesteal +2%", ko: "분노 수급 +20% // 흡혈 +2%" },
+      threePiece: { en: "Damage +18 // boss damage +12%", ko: "피해 +18 // 보스 피해 +12%" },
       apply: (player, count) => {
         if (count >= 2) {
           player.rageGainMultiplier += 0.2;
@@ -1471,9 +1895,9 @@
       },
     },
     signal: {
-      name: "Signal Array",
-      twoPiece: "XP +12% // reward +10%",
-      threePiece: "Range +26 // extra burst line",
+      name: { en: "Signal Array", ko: "시그널 어레이" },
+      twoPiece: { en: "XP +12% // reward +10%", ko: "경험치 +12% // 보상 +10%" },
+      threePiece: { en: "Range +26 // extra burst line", ko: "사거리 +26 // 버스트 라인 +1" },
       apply: (player, count) => {
         if (count >= 2) {
           player.xpMultiplier += 0.12;
@@ -1486,9 +1910,9 @@
       },
     },
     ruin: {
-      name: "Ruin Choir",
-      twoPiece: "Curse threshold -1 // burst damage +12",
-      threePiece: "Extra hex chain // reward +8%",
+      name: { en: "Ruin Choir", ko: "파멸 합창" },
+      twoPiece: { en: "Curse threshold -1 // burst damage +12", ko: "저주 발동 단계 -1 // 폭발 피해 +12" },
+      threePiece: { en: "Extra hex chain // reward +8%", ko: "추가 연쇄 1회 // 보상 +8%" },
       apply: (player, count) => {
         if (count >= 2) {
           player.curseThreshold = Math.max(2, player.curseThreshold - 1);
@@ -1501,9 +1925,9 @@
       },
     },
     blink: {
-      name: "Blink Verdict",
-      twoPiece: "Dash cooldown -16% // execute +8%",
-      threePiece: "Dash refund on kill +20% // kill rush +8%",
+      name: { en: "Blink Verdict", ko: "블링크 버딕트" },
+      twoPiece: { en: "Dash cooldown -16% // execute +8%", ko: "대시 쿨 -16% // 처형 피해 +8%" },
+      threePiece: { en: "Dash refund on kill +20% // kill rush +8%", ko: "처치 시 대시 환급 +20% // 킬 러시 +8%" },
       apply: (player, count) => {
         if (count >= 2) {
           player.dashCooldown *= 0.84;
@@ -1515,29 +1939,44 @@
         }
       },
     },
+    abyss: {
+      name: { en: "Abyss Current", ko: "어비스 커런트" },
+      twoPiece: { en: "Reward +10% // XP +10%", ko: "보상 +10% // 경험치 +10%" },
+      threePiece: { en: "Boss damage +14% // blood echo cap +2", ko: "보스 피해 +14% // 블러드 에코 최대치 +2" },
+      apply: (player, count) => {
+        if (count >= 2) {
+          player.rewardMultiplier += 0.1;
+          player.xpMultiplier += 0.1;
+        }
+        if (count >= 3) {
+          player.bossDamageMultiplier += 0.14;
+          player.seasonStackCap += 2;
+        }
+      },
+    },
   };
 
   const researchTracks = [
     {
       id: "combat",
-      title: "Combat Lab",
-      description: "Permanent attack tuning for every run.",
+      title: { en: "Combat Lab", ko: "전투 실험동" },
+      description: { en: "Permanent attack tuning for every run.", ko: "모든 런에 적용되는 영구 화력 조정 노드." },
       maxLevel: 6,
       getCost: (level) => ({ data: 12 + level * 10 }),
       getEffect: (level) => `DMG +${level * 8}`,
     },
     {
       id: "recovery",
-      title: "Hemostasis",
-      description: "Permanent health and sustain upgrades.",
+      title: { en: "Hemostasis", ko: "지혈 프로토콜" },
+      description: { en: "Permanent health and sustain upgrades.", ko: "체력과 유지력을 올리는 영구 생존 노드." },
       maxLevel: 6,
       getCost: (level) => ({ data: 10 + level * 8 }),
       getEffect: (level) => `HP +${level * 35}`,
     },
     {
       id: "harvest",
-      title: "Harvest Matrix",
-      description: "More XP, better scrap, stronger post-run rewards.",
+      title: { en: "Harvest Matrix", ko: "수확 매트릭스" },
+      description: { en: "More XP, better scrap, stronger post-run rewards.", ko: "경험치, 분해 수익, 런 종료 보상을 함께 끌어올린다." },
       maxLevel: 6,
       getCost: (level) => ({ data: 14 + level * 12 }),
       getEffect: (level) => `GAIN +${Math.round(level * 8)}%`,
@@ -1547,8 +1986,8 @@
   const ascensionTracks = [
     {
       id: "overkill",
-      title: "Overkill Spine",
-      description: "Turn clean titan genes into permanent strike power and harder boss breaks.",
+      title: { en: "Overkill Spine", ko: "오버킬 척추" },
+      description: { en: "Turn clean titan genes into permanent strike power and harder boss breaks.", ko: "정제된 타이탄 유전자를 영구 화력과 강한 보스 파괴력으로 바꾼다." },
       maxLevel: 5,
       getCost: (level) => ({ genes: 6 + level * 4 }),
       getEffect: (level) =>
@@ -1556,8 +1995,8 @@
     },
     {
       id: "mobility",
-      title: "Blink Nerve",
-      description: "Faster repositioning, lower dash downtime, and more aggressive loop pace.",
+      title: { en: "Blink Nerve", ko: "점멸 신경" },
+      description: { en: "Faster repositioning, lower dash downtime, and more aggressive loop pace.", ko: "재배치 속도를 높이고 대시 공백을 줄여 전투 템포를 공격적으로 만든다." },
       maxLevel: 5,
       getCost: (level) => ({ genes: 5 + level * 4 }),
       getEffect: (level) =>
@@ -1565,8 +2004,8 @@
     },
     {
       id: "genome",
-      title: "Titan Marrow",
-      description: "Thicker health pool and stronger post-run harvest from every deployment.",
+      title: { en: "Titan Marrow", ko: "타이탄 골수" },
+      description: { en: "Thicker health pool and stronger post-run harvest from every deployment.", ko: "출격마다 더 두꺼운 체력선과 더 큰 종료 보상을 확보한다." },
       maxLevel: 5,
       getCost: (level) => ({ genes: 7 + level * 5 }),
       getEffect: (level) =>
@@ -1576,32 +2015,32 @@
 
   const awakeningDefs = {
     cain: {
-      title: "Blood Covenant",
+      title: { en: "Blood Covenant", ko: "혈계 계약" },
       cost: 18,
-      description: "Cain only. Rage gain surges, lifesteal climbs, and every overkill swing hits heavier.",
+      description: { en: "Cain only. Rage gain surges, lifesteal climbs, and every overkill swing hits heavier.", ko: "카인 전용. 분노 수급이 급증하고 흡혈이 늘며, 오버킬 일격마다 더 무겁게 꽂힌다." },
     },
     dex: {
-      title: "Zero Factory",
+      title: { en: "Zero Factory", ko: "제로 팩토리" },
       cost: 20,
-      description: "Dex only. Start with an extra burst line, one more orbit drone, and richer salvage output.",
+      description: { en: "Dex only. Start with an extra burst line, one more orbit drone, and richer salvage output.", ko: "덱스 전용. 추가 버스트 라인과 공전 드론으로 시작하고, 분해 수익도 더 좋아진다." },
     },
     ria: {
-      title: "Black Gospel",
+      title: { en: "Black Gospel", ko: "블랙 가스펠" },
       cost: 21,
-      description: "Ria only. Ruin chains spread farther and curse bursts trigger earlier and harder.",
+      description: { en: "Ria only. Ruin chains spread farther and curse bursts trigger earlier and harder.", ko: "리아 전용. 파멸 연쇄가 더 멀리 뻗고 저주 폭발이 더 빠르고 더 세게 터진다." },
     },
     sera: {
-      title: "Final Frame",
+      title: { en: "Final Frame", ko: "파이널 프레임" },
       cost: 22,
-      description: "Sera only. Kill resets sharpen, execute windows widen, and the rush stays online longer.",
+      description: { en: "Sera only. Kill resets sharpen, execute windows widen, and the rush stays online longer.", ko: "세라 전용. 처치 리셋이 더 날카로워지고 처형 창이 넓어지며 러시가 더 오래 유지된다." },
     },
   };
 
   const relicDefs = [
     {
       id: "blood-idol",
-      title: "Blood Idol",
-      description: "Start each run with +3% lifesteal.",
+      title: { en: "Blood Idol", ko: "혈각 우상" },
+      description: { en: "Start each run with +3% lifesteal.", ko: "매 런 시작 시 흡혈 3%를 얻는다." },
       unlockRule: "Starter relic",
       apply: (player) => {
         player.lifesteal += 0.03;
@@ -1609,8 +2048,8 @@
     },
     {
       id: "dash-fang",
-      title: "Dash Fang",
-      description: "Dash cooldown falls by 18% and leaves a reaper trail.",
+      title: { en: "Dash Fang", ko: "대시 송곳니" },
+      description: { en: "Dash cooldown falls by 18% and leaves a reaper trail.", ko: "대시 쿨이 18% 줄고 사신의 궤적을 남긴다." },
       unlockRule: "Starter relic",
       apply: (player) => {
         player.dashCooldown *= 0.82;
@@ -1619,8 +2058,8 @@
     },
     {
       id: "shock-core",
-      title: "Shock Core",
-      description: "Kill explosions trigger faster and hit harder.",
+      title: { en: "Shock Core", ko: "쇼크 코어" },
+      description: { en: "Kill explosions trigger faster and hit harder.", ko: "처치 폭발이 더 빨리 돌고 한 번에 더 세게 터진다." },
       unlockRule: "Unlocked after first titan kill",
       apply: (player) => {
         player.explosionKillsThreshold = Math.max(2, player.explosionKillsThreshold - 1);
@@ -1629,8 +2068,8 @@
     },
     {
       id: "orbit-shard",
-      title: "Orbit Shard",
-      description: "Begin with one orbit blade and +8 damage.",
+      title: { en: "Orbit Shard", ko: "오비트 샤드" },
+      description: { en: "Begin with one orbit blade and +8 damage.", ko: "공전 칼날 1개와 피해 8 증가 효과를 들고 시작한다." },
       unlockRule: "Unlocked after second titan kill",
       apply: (player) => {
         player.orbitCount += 1;
@@ -1639,8 +2078,8 @@
     },
     {
       id: "titan-spine",
-      title: "Titan Spine",
-      description: "Gain +100 max HP and deal 22% more damage to the boss core.",
+      title: { en: "Titan Spine", ko: "타이탄 척추" },
+      description: { en: "Gain +100 max HP and deal 22% more damage to the boss core.", ko: "최대 체력 100을 얻고 보스 코어에 22% 추가 피해를 준다." },
       unlockRule: "Unlocked after third titan kill",
       apply: (player) => {
         player.maxHp += 100;
@@ -1650,8 +2089,8 @@
     },
     {
       id: "harvest-lens",
-      title: "Harvest Lens",
-      description: "Gain 25% more XP and 18% more post-run rewards.",
+      title: { en: "Harvest Lens", ko: "수확 렌즈" },
+      description: { en: "Gain 25% more XP and 18% more post-run rewards.", ko: "경험치 25%와 런 종료 보상 18%를 추가로 얻는다." },
       unlockRule: "Unlocked after fourth titan kill",
       apply: (player) => {
         player.xpMultiplier += 0.25;
@@ -1660,8 +2099,8 @@
     },
     {
       id: "crimson-crown",
-      title: "Crimson Crown",
-      description: "Start each run with a live blood echo streak already active.",
+      title: { en: "Crimson Crown", ko: "크림슨 크라운" },
+      description: { en: "Start each run with a live blood echo streak already active.", ko: "매 런 시작 시 블러드 에코 연속 효과가 미리 켜진 상태로 시작한다." },
       unlockRule: "Unlocked after the first season breakpoint clear",
       apply: (player) => {
         player.seasonStacks = Math.max(player.seasonStacks, 3);
@@ -1670,8 +2109,8 @@
     },
     {
       id: "eclipse-coil",
-      title: "Eclipse Coil",
-      description: "Blood echo stacks cap higher and decay more slowly.",
+      title: { en: "Eclipse Coil", ko: "이클립스 코일" },
+      description: { en: "Blood echo stacks cap higher and decay more slowly.", ko: "블러드 에코 최대치가 늘고 사라지는 속도가 느려진다." },
       unlockRule: "Unlocked after the second season breakpoint clear",
       apply: (player) => {
         player.seasonStackCap += 4;
@@ -1680,8 +2119,8 @@
     },
     {
       id: "blood-archive",
-      title: "Blood Archive",
-      description: "While a blood echo streak is active, titan rewards and boss damage rise.",
+      title: { en: "Blood Archive", ko: "블러드 아카이브" },
+      description: { en: "While a blood echo streak is active, titan rewards and boss damage rise.", ko: "블러드 에코가 유지되는 동안 타이탄 보상과 보스 피해가 함께 오른다." },
       unlockRule: "Unlocked after the third season breakpoint clear",
       apply: (player) => {
         player.rewardMultiplier += 0.12;
@@ -1718,6 +2157,7 @@
   let eventBanner = { text: "", timer: 0 };
   let runFlags = { intro: false, levelHint: false, eliteHint: false, bossHint: false };
   let finisher = { active: false, timer: 0 };
+  let ultimateCutin = { active: false, timer: 0 };
   const introSlides = [1, 2, 3];
   let introIndex = 0;
 
@@ -1774,12 +2214,14 @@
   function isModeUnlocked(id) {
     if (id === "hunt") return true;
     if (id === "boss") return meta.bossKills >= 1;
+    if (id === "rift") return meta.bossKills >= 2;
     return false;
   }
 
   function isRegionUnlocked(id) {
     if (id === "redcity") return true;
     if (id === "sanctuary") return meta.bossKills >= 1;
+    if (id === "blacktide") return meta.seasonClears >= 1;
     return false;
   }
 
@@ -1908,7 +2350,7 @@
             affinity: "any",
             stats: { damage: 12, xp: 0.06, reward: 0.04 },
           });
-          return fmt("ftueLaunchSummary", { item: item.name });
+          return fmt("ftueLaunchSummary", { item: localizeItemName(item.name) });
         },
       },
       {
@@ -1928,7 +2370,7 @@
             affinity: "any",
             stats: { hp: 90, reward: 0.04 },
           });
-          return fmt("ftueResearchSummary", { item: item.name });
+          return fmt("ftueResearchSummary", { item: localizeItemName(item.name) });
         },
       },
       {
@@ -1941,7 +2383,7 @@
         claim: () => {
           meta.cores += 12;
           const item = createHunterGiftWeapon(meta.selectedCharacter);
-          return fmt("ftueArmorySummary", { item: item.name });
+          return fmt("ftueArmorySummary", { item: localizeItemName(item.name) });
         },
       },
       {
@@ -1962,7 +2404,7 @@
             stats: { damage: 24, range: 24, xp: 0.06 },
             setId: "signal",
           });
-          return fmt("ftueTitanSummary", { item: item.name });
+          return fmt("ftueTitanSummary", { item: localizeItemName(item.name) });
         },
       },
       {
@@ -1981,7 +2423,7 @@
             affinity: "any",
             stats: { hp: 72, bossDamage: 0.12, reward: 0.08 },
           });
-          return fmt("ftueGenomeSummary", { item: item.name });
+          return fmt("ftueGenomeSummary", { item: localizeItemName(item.name) });
         },
       },
       {
@@ -2001,7 +2443,7 @@
             affinity: "any",
             stats: { hp: 128, bossDamage: 0.1, reward: 0.1 },
           });
-          return fmt("ftueSeasonSummary", { item: item.name });
+          return fmt("ftueSeasonSummary", { item: localizeItemName(item.name) });
         },
       },
     ];
@@ -2155,6 +2597,7 @@
       seasonPassClaims: [],
       contractClaims: [],
       worldBossWins: 0,
+      riftWins: 0,
       runs: 0,
       bestKills: 0,
       bossKills: 0,
@@ -2268,7 +2711,7 @@
 
   function getSetName(setId) {
     if (!setId || !gearSetDefs[setId]) return null;
-    return gearSetDefs[setId].name;
+    return lt(gearSetDefs[setId].name);
   }
 
   function getAffinityMultiplier(item, characterId) {
@@ -2339,42 +2782,93 @@
     return Math.round(score);
   }
 
+  function getResultModeSummary(modeId) {
+    if (modeId === "boss") {
+      return {
+        title: t("resultModeBossTitle"),
+        body: t("resultModeBossBody"),
+        tone: "boss",
+      };
+    }
+    if (modeId === "rift") {
+      return {
+        title: t("resultModeRiftTitle"),
+        body: t("resultModeRiftBody"),
+        tone: "rift",
+      };
+    }
+    return {
+      title: t("resultModeHuntTitle"),
+      body: t("resultModeHuntBody"),
+      tone: "hunt",
+    };
+  }
+
   function renderResultRewards() {
+    const mode = getCurrentMode();
+    const modeSummary = getResultModeSummary(mode.id);
     resultRewardStrip.innerHTML = `
+      <article class="reward-chip reward-chip--mode reward-chip--${modeSummary.tone}">
+        <span class="reward-chip__label">${t("resultModeLabel")}</span>
+        <strong class="reward-chip__value">${getModeCopy(mode.id, "name")}</strong>
+      </article>
       <article class="reward-chip">
-        <span class="reward-chip__label">GOLD</span>
+        <span class="reward-chip__label">${t("gold").toUpperCase()}</span>
         <strong class="reward-chip__value">+${currentRewards.gold}</strong>
       </article>
       <article class="reward-chip">
-        <span class="reward-chip__label">CORES</span>
+        <span class="reward-chip__label">${t("cores").toUpperCase()}</span>
         <strong class="reward-chip__value">+${currentRewards.cores}</strong>
       </article>
       <article class="reward-chip">
-        <span class="reward-chip__label">DATA</span>
+        <span class="reward-chip__label">${t("data").toUpperCase()}</span>
         <strong class="reward-chip__value">+${currentRewards.data}</strong>
       </article>
       <article class="reward-chip">
-        <span class="reward-chip__label">GENES</span>
+        <span class="reward-chip__label">${t("genes").toUpperCase()}</span>
         <strong class="reward-chip__value">+${currentRewards.genes}</strong>
       </article>
     `;
 
     if (!currentRewards.droppedItems?.length) {
-      resultLootGrid.innerHTML = "";
+      resultLootGrid.innerHTML = `
+        <article class="loot-card loot-card--${modeSummary.tone === "boss" ? "epic" : modeSummary.tone === "rift" ? "rare" : "common"} loot-card--${modeSummary.tone}">
+          <span class="loot-card__label">${t("resultModeLabel")} // ${getModeCopy(mode.id, "name")}</span>
+          <h2 class="loot-card__title">${modeSummary.title}</h2>
+          <p class="loot-card__body">${modeSummary.body}</p>
+        </article>
+      `;
       return;
     }
 
     resultLootGrid.innerHTML = currentRewards.droppedItems
-      .map((item) => {
+      .map((item, index) => {
         const rarity = rarityDefs[item.rarity];
         const slot = gearSlots.find((entry) => entry.id === item.slot);
         const equipped = meta.equippedGear[item.slot] === item.id;
         const current = getEquippedItem(item.slot);
         const delta = estimateItemPower(item, meta.selectedCharacter) - (current ? estimateItemPower(current, meta.selectedCharacter) : 0);
+        const sourceLabel =
+          item.sourceMode === "boss"
+            ? t("lootSourceBoss")
+            : item.sourceMode === "rift"
+              ? t("lootSourceRift")
+              : t("lootSourceHunt");
+        const toneClass =
+          item.sourceMode === "boss"
+            ? "loot-card--boss"
+            : item.sourceMode === "rift"
+              ? "loot-card--rift"
+              : "loot-card--hunt";
         return `
-          <article class="loot-card loot-card--${item.rarity}">
-            <span class="loot-card__label">${rarity.label} ${slot ? slotTitle(slot.id).toUpperCase() : slotTitle(item.slot).toUpperCase()} // ${getAffinityLabel(item)}</span>
-            <h2 class="loot-card__title">${item.name}</h2>
+          ${index === 0 ? `<article class="loot-card loot-card--${modeSummary.tone === "boss" ? "epic" : modeSummary.tone === "rift" ? "rare" : "common"} ${toneClass}">
+            <span class="loot-card__label">${t("resultModeLabel")} // ${getModeCopy(mode.id, "name")}</span>
+            <h2 class="loot-card__title">${modeSummary.title}</h2>
+            <p class="loot-card__body">${modeSummary.body}</p>
+          </article>` : ""}
+          <article class="loot-card loot-card--${item.rarity} ${toneClass}">
+            <span class="loot-card__label">${rarity.label} ${slot ? slotTitle(slot.id).toUpperCase() : slotTitle(item.slot).toUpperCase()} // ${getAffinityLabel(item)} // ${sourceLabel}</span>
+            <h2 class="loot-card__title">${localizeItemName(item.name)}</h2>
             <p class="loot-card__body">${describeItemStats(item, meta.selectedCharacter)}</p>
             <p class="loot-card__body">${current ? fmt("powerVsEquipped", { delta: `${delta >= 0 ? "+" : ""}${delta}` }) : fmt("powerStandalone", { power: estimateItemPower(item, meta.selectedCharacter) })}</p>
             <button class="upgrade-button${equipped ? " is-equipped" : ""}" data-action="equip-result-item" data-id="${item.id}" type="button">
@@ -2425,7 +2919,10 @@
   function generateLootDrop({ victory, modeId }) {
     const slot = gearSlots[Math.floor(Math.random() * gearSlots.length)].id;
     const selectedCharacter = meta.selectedCharacter;
-    const pool = lootPools[slot];
+    const region = getCurrentRegion();
+    const pool = lootPools[slot].filter(
+      (entry) => !entry.regions || entry.regions.includes(region.id),
+    );
     const favored = pool.filter(
       (entry) => entry.affinity === "any" || entry.affinity === selectedCharacter,
     );
@@ -2459,11 +2956,12 @@
       name: `${rarityDef.label} ${base.name}`,
       affinity: base.affinity,
       setId: base.setId ?? null,
+      sourceMode: modeId,
       stats,
     };
 
     if (modeId === "boss") {
-      item.name = `Titanforged ${base.name}`;
+      item.name = region.id === "blacktide" ? `Leviathanforged ${base.name}` : `Titanforged ${base.name}`;
       if (slot === "weapon") {
         item.stats.damage = (item.stats.damage ?? 0) + 6;
         item.stats.bossDamage = Number(((item.stats.bossDamage ?? 0) + 0.08).toFixed(3));
@@ -2473,6 +2971,32 @@
       } else {
         item.stats.bossDamage = Number(((item.stats.bossDamage ?? 0) + 0.1).toFixed(3));
         item.stats.reward = Number(((item.stats.reward ?? 0) + 0.05).toFixed(3));
+      }
+    } else if (modeId === "rift") {
+      item.name =
+        region.id === "blacktide"
+          ? `Undertow ${base.name}`
+          : region.id === "sanctuary"
+            ? `Fracturecast ${base.name}`
+            : `Collapseforged ${base.name}`;
+      if (slot === "weapon") {
+        item.stats.damage = (item.stats.damage ?? 0) + 4;
+        item.stats.range = (item.stats.range ?? 0) + 10;
+      } else if (slot === "armor") {
+        item.stats.hp = (item.stats.hp ?? 0) + 24;
+        item.stats.reward = Number(((item.stats.reward ?? 0) + 0.05).toFixed(3));
+      } else {
+        item.stats.xp = Number(((item.stats.xp ?? 0) + 0.05).toFixed(3));
+        item.stats.reward = Number(((item.stats.reward ?? 0) + 0.04).toFixed(3));
+      }
+    } else if (region.id === "blacktide") {
+      item.name = `Tideworn ${base.name}`;
+      if (slot === "weapon") {
+        item.stats.range = (item.stats.range ?? 0) + 12;
+      } else if (slot === "armor") {
+        item.stats.reward = Number(((item.stats.reward ?? 0) + 0.04).toFixed(3));
+      } else {
+        item.stats.xp = Number(((item.stats.xp ?? 0) + 0.04).toFixed(3));
       }
     }
 
@@ -2517,6 +3041,7 @@
     }
     if (meta.selectedCharacter === "dex") score += 24;
     if (meta.selectedMode === "boss") score += 16;
+    if (meta.selectedMode === "rift") score += 12;
     return score;
   }
 
@@ -2566,6 +3091,9 @@
       maxRage: 100,
       rageGainMultiplier: 1,
       rageModeTimer: 0,
+      ultimateCooldown: 0,
+      ultimateMaxCooldown: base.ultCooldown ?? 22,
+      overdriveTimer: 0,
       dashCooldown: base.dashCooldown,
       dashTimer: 0,
       dashBurstTimer: 0,
@@ -2699,6 +3227,41 @@
       };
     }
 
+    if (type === "drifter") {
+      return {
+        kind: "enemy",
+        type,
+        x,
+        y,
+        radius: 17,
+        hp: 56,
+        maxHp: 56,
+        speed: 92,
+        color: region.enemyColors.drifter ?? region.enemyColors.shooter,
+        touchDamage: 12,
+        shotTimer: 1.5,
+        orbitDir: Math.random() < 0.5 ? -1 : 1,
+      };
+    }
+
+    if (type === "warden") {
+      return {
+        kind: "enemy",
+        type,
+        x,
+        y,
+        radius: 24,
+        hp: 176,
+        maxHp: 176,
+        speed: 74,
+        color: region.enemyColors.warden ?? region.enemyColors.elite,
+        touchDamage: 20,
+        shotTimer: 2.1,
+        pulseTimer: 2.8,
+        orbitDir: Math.random() < 0.5 ? -1 : 1,
+      };
+    }
+
     if (type === "elite") {
       return {
         kind: "enemy",
@@ -2732,28 +3295,30 @@
   function createBoss() {
     const region = getCurrentRegion();
     const isSanctuary = region.id === "sanctuary";
+    const isBlacktide = region.id === "blacktide";
     return {
       kind: "boss",
       regionId: region.id,
-      name: region.bossName,
+      name: getRegionCopy(region.id, "bossName") || region.bossName,
       bodyColor: region.bossColor,
       coreColor: region.coreColor,
-      projectileColor: isSanctuary ? "#b8fff4" : "#ffcb70",
-      projectileColorHot: isSanctuary ? "#dffffb" : "#ffe5a1",
+      projectileColor: isBlacktide ? "#a9fff2" : isSanctuary ? "#b8fff4" : "#ffcb70",
+      projectileColorHot: isBlacktide ? "#dbfffb" : isSanctuary ? "#dffffb" : "#ffe5a1",
       x: player.x + 420,
       y: player.y - 120,
       radius: 62,
-      hp: isSanctuary ? 1680 : 1800,
-      maxHp: isSanctuary ? 1680 : 1800,
-      speed: isSanctuary ? 42 : 48,
+      hp: isBlacktide ? 1760 : isSanctuary ? 1680 : 1800,
+      maxHp: isBlacktide ? 1760 : isSanctuary ? 1680 : 1800,
+      speed: isBlacktide ? 46 : isSanctuary ? 42 : 48,
       shielded: true,
-      bodyDamage: isSanctuary ? 14 : 18,
-      ringTimer: isSanctuary ? 2.6 : 3.2,
-      slamTimer: isSanctuary ? 6.4 : 5.5,
-      volleyTimer: isSanctuary ? 2.3 : 9.9,
+      bodyDamage: isBlacktide ? 16 : isSanctuary ? 14 : 18,
+      ringTimer: isBlacktide ? 2.9 : isSanctuary ? 2.6 : 3.2,
+      slamTimer: isBlacktide ? 5.8 : isSanctuary ? 6.4 : 5.5,
+      volleyTimer: isBlacktide ? 2.1 : isSanctuary ? 2.3 : 9.9,
       warningVolley: false,
       warningRing: false,
       warningSlam: false,
+      mortarTargets: [],
       weakpoints: [
         { id: "left", hp: 240, maxHp: 240, alive: true, ox: -74, oy: -44, radius: 24 },
         { id: "right", hp: 240, maxHp: 240, alive: true, ox: 74, oy: -44, radius: 24 },
@@ -2807,28 +3372,75 @@
     cameraShake.power = Math.max(cameraShake.power, power);
   }
 
+  function hideUltimateCutin() {
+    ultimateCutin = { active: false, timer: 0 };
+    ultOverlay.classList.add("hidden");
+  }
+
+  function triggerUltimateCutin(characterId) {
+    const toneClass =
+      characterId === "dex"
+        ? "ult-blue"
+        : characterId === "ria"
+          ? "ult-violet"
+          : characterId === "sera"
+            ? "ult-silver"
+            : "ult-red";
+    ultPanel.classList.remove("ult-red", "ult-blue", "ult-violet", "ult-silver");
+    ultPanel.classList.add(toneClass);
+    ultEyebrow.textContent = t("ultimateEyebrow");
+    ultTitle.textContent = getCharacterCopy(characterId, "ultLabel");
+    ultSubtitle.textContent = getCharacterCopy(characterId, "baseBody");
+    ultOverlay.classList.remove("hidden");
+    ultimateCutin = { active: true, timer: 0.52 };
+  }
+
   function triggerBossFinish(defeatedBoss) {
     const mode = getCurrentMode();
     const region = getCurrentRegion();
+    const bossName = getRegionCopy(region.id, "bossName") || defeatedBoss.name;
     finisher.active = true;
     finisher.timer = 1.05;
-    finishPanel.classList.remove("finish-red", "finish-blue");
+    finishPanel.classList.remove("finish-red", "finish-blue", "finish-green");
     if (region.id === "sanctuary") {
       finishPanel.classList.add("finish-blue");
-      finishEyebrow.textContent =
-        mode.id === "boss" ? "WORLD BOSS // SANCTUARY" : "IRON SANCTUARY // FINISHER";
-      finishTitle.textContent =
-        mode.id === "boss" ? "ARCHON DISMANTLED" : "SANCTUARY TITAN SHATTERED";
-      finishSubtitle.textContent =
-        `${defeatedBoss.name} // signal spine cracked // archive harvested`;
+      finishEyebrow.textContent = t(
+        mode.id === "boss"
+          ? "finishEyebrowSanctuaryBoss"
+          : "finishEyebrowSanctuaryHunt",
+      );
+      finishTitle.textContent = t(
+        mode.id === "boss"
+          ? "finishTitleSanctuaryBoss"
+          : "finishTitleSanctuaryHunt",
+      );
+      finishSubtitle.textContent = fmt("finishSubtitleSanctuary", {
+        boss: bossName,
+      });
+    } else if (region.id === "blacktide") {
+      finishPanel.classList.add("finish-green");
+      finishEyebrow.textContent = t(
+        mode.id === "boss"
+          ? "finishEyebrowBlacktideBoss"
+          : "finishEyebrowBlacktideHunt",
+      );
+      finishTitle.textContent = t(
+        mode.id === "boss" ? "finishTitleBlacktideBoss" : "finishTitleBlacktideHunt",
+      );
+      finishSubtitle.textContent = fmt("finishSubtitleBlacktide", {
+        boss: bossName,
+      });
     } else {
       finishPanel.classList.add("finish-red");
-      finishEyebrow.textContent =
-        mode.id === "boss" ? "WORLD BOSS // RED CITY" : "RED CITY // FINISHER";
-      finishTitle.textContent =
-        mode.id === "boss" ? "APOSTATE PURGED" : "APOSTATE TITAN SUNDERED";
-      finishSubtitle.textContent =
-        `${defeatedBoss.name} // heart ripped free // bloodline advanced`;
+      finishEyebrow.textContent = t(
+        mode.id === "boss" ? "finishEyebrowRedcityBoss" : "finishEyebrowRedcityHunt",
+      );
+      finishTitle.textContent = t(
+        mode.id === "boss" ? "finishTitleRedcityBoss" : "finishTitleRedcityHunt",
+      );
+      finishSubtitle.textContent = fmt("finishSubtitleRedcity", {
+        boss: bossName,
+      });
     }
     playTone("finish");
     pulseVibration([40, 30, 60]);
@@ -2887,17 +3499,17 @@
     levelOverlay.classList.remove("hidden");
     const character = characterDefs[player.characterId] ?? characterDefs.cain;
     if (player.characterId === "dex") {
-      levelEyebrow.textContent = "DEX MUTATION SELECT";
-      levelTitle.textContent = "Choose an overdrive module";
+      levelEyebrow.textContent = lang() === "ko" ? "덱스 모듈 선택" : "DEX MUTATION SELECT";
+      levelTitle.textContent = lang() === "ko" ? "오버드라이브 모듈을 고르세요" : "Choose an overdrive module";
     } else if (player.characterId === "ria") {
-      levelEyebrow.textContent = "RIA RITUAL SELECT";
-      levelTitle.textContent = "Choose a ruin invocation";
+      levelEyebrow.textContent = lang() === "ko" ? "리아 의식 선택" : "RIA RITUAL SELECT";
+      levelTitle.textContent = lang() === "ko" ? "파멸 의식을 고르세요" : "Choose a ruin invocation";
     } else if (player.characterId === "sera") {
-      levelEyebrow.textContent = "SERA EXECUTION SELECT";
-      levelTitle.textContent = "Choose a reaper pattern";
+      levelEyebrow.textContent = lang() === "ko" ? "세라 패턴 선택" : "SERA EXECUTION SELECT";
+      levelTitle.textContent = lang() === "ko" ? "사신 패턴을 고르세요" : "Choose a reaper pattern";
     } else {
-      levelEyebrow.textContent = "CAIN MUTATION SELECT";
-      levelTitle.textContent = "Choose a blood mutation";
+      levelEyebrow.textContent = lang() === "ko" ? "카인 변이 선택" : "CAIN MUTATION SELECT";
+      levelTitle.textContent = lang() === "ko" ? "혈계 변이를 고르세요" : "Choose a blood mutation";
     }
 
     const characterPool = getCharacterUpgradeDefs(player.characterId);
@@ -2929,8 +3541,12 @@
       button.className = "choice-button";
       button.type = "button";
       const prefix =
-        characterPool.includes(pick) ? `${character.name.toUpperCase()} SYNC // ` : "CORE // ";
-      button.innerHTML = `<span class="choice-button__title">${pick.title}</span><span class="choice-button__desc">${prefix}${pick.description}</span>`;
+        characterPool.includes(pick)
+          ? `${getCharacterSyncLabel(character.id)} // `
+          : lang() === "ko"
+            ? "공용 // "
+            : "CORE // ";
+      button.innerHTML = `<span class="choice-button__title">${lt(pick.title)}</span><span class="choice-button__desc">${prefix}${lt(pick.description)}</span>`;
       button.addEventListener("click", () => {
         pick.apply(player);
         player.selectedUpgrades.push(pick.id);
@@ -2950,13 +3566,13 @@
     if (idx >= 0) enemies.splice(idx, 1);
 
     addEffect(enemy.x, enemy.y, enemy.radius * 2.2, "rgba(255, 120, 90, 0.35)", 0.3);
-    if (enemy.type === "elite") {
+    if (enemy.type === "elite" || enemy.type === "warden") {
       addFloatingText(enemy.x, enemy.y - 18, "ELITE DOWN", "#ffd270", 0.55, 16);
       shakeScreen(9, 0.16);
     }
-    spawnOrb(enemy.x, enemy.y, enemy.type === "elite" ? 26 : 8);
+    spawnOrb(enemy.x, enemy.y, enemy.type === "elite" || enemy.type === "warden" ? 26 : 8);
     player.kills += 1;
-    gainRage(enemy.type === "elite" ? 18 : 8);
+    gainRage(enemy.type === "elite" || enemy.type === "warden" ? 18 : 8);
     player.seasonStacks = Math.min(player.seasonStackCap, player.seasonStacks + 1);
     player.seasonTimer = 5;
     player.rewardMultiplier += 0.006;
@@ -3187,6 +3803,12 @@
         ? bossSpawned
           ? 1.55
           : 1.1
+        : mode.id === "rift"
+          ? elapsed < 36
+            ? 0.58
+            : elapsed < 88
+              ? 0.42
+              : 0.34
         : elapsed < 30
           ? 0.75
           : elapsed < 70
@@ -3201,11 +3823,22 @@
     const y = player.y + Math.sin(angle) * distanceFromPlayer;
 
     let type = "grunt";
-    const shooterBias = region.id === "sanctuary" ? 0.36 : 0.22;
-    const chargerBias = region.id === "sanctuary" ? 0.1 : 0.18;
+    const shooterBias = region.id === "sanctuary" ? 0.36 : region.id === "blacktide" ? 0.18 : 0.22;
+    const chargerBias = region.id === "sanctuary" ? 0.1 : region.id === "blacktide" ? 0.14 : 0.18;
+    const drifterBias = region.id === "blacktide" ? 0.24 : 0;
+    const wardenBias =
+      region.id === "blacktide"
+        ? mode.id === "boss"
+          ? 0.08
+          : mode.id === "rift"
+            ? 0.16
+            : 0.12
+        : 0;
     if (elapsed > 22 && Math.random() < shooterBias) type = "shooter";
+    if (elapsed > 28 && Math.random() < drifterBias) type = "drifter";
     if (elapsed > 36 && Math.random() < chargerBias) type = "charger";
-    if (elapsed > 42 && Math.random() < (mode.id === "boss" ? 0.04 : 0.08)) type = "elite";
+    if (elapsed > 46 && Math.random() < wardenBias) type = "warden";
+    if (type === "grunt" && elapsed > 42 && Math.random() < (mode.id === "boss" ? 0.04 : mode.id === "rift" ? 0.12 : 0.08)) type = "elite";
 
     enemies.push(createEnemy(type, clamp(x, -WORLD, WORLD), clamp(y, -WORLD, WORLD)));
   }
@@ -3220,9 +3853,14 @@
       boss.maxHp = boss.hp;
       boss.ringTimer = 1.8;
       boss.slamTimer = 3.6;
+    } else if (mode.id === "rift") {
+      boss.hp = Math.floor(boss.hp * 1.22);
+      boss.maxHp = boss.hp;
+      boss.ringTimer *= 0.85;
+      boss.slamTimer *= 0.88;
     }
     bossSpawned = true;
-    bossLabel.textContent = boss.name;
+    bossLabel.textContent = getRegionCopy(region.id, "bossName") || boss.name;
     bossWrap.classList.remove("hidden");
     playTone("boss");
     pulseVibration([24, 24, 24]);
@@ -3280,15 +3918,103 @@
     }
   }
 
+  function doUltimate() {
+    if (pausedForLevel || gameOver || screen !== "run" || player.ultimateCooldown > 0) return;
+    triggerUltimateCutin(player.characterId);
+
+    const eventKey =
+      player.characterId === "dex"
+        ? "ultDexEvent"
+        : player.characterId === "ria"
+          ? "ultRiaEvent"
+          : player.characterId === "sera"
+            ? "ultSeraEvent"
+            : "ultCainEvent";
+
+    player.ultimateCooldown = player.ultimateMaxCooldown;
+    pushEvent(t(eventKey), 1.8);
+    playTone("boss");
+    pulseVibration([18, 24, 18]);
+    shakeScreen(14, 0.24);
+
+    if (player.characterId === "dex") {
+      player.overdriveTimer = Math.max(player.overdriveTimer, 7);
+      player.projectileBurst += 2;
+      for (const enemy of [...enemies]
+        .sort((a, b) => distance(player, a) - distance(player, b))
+        .slice(0, 8)) {
+        addEffect(enemy.x, enemy.y, 90, "rgba(130, 232, 210, 0.24)", 0.2);
+        hitEnemy(enemy, player.damage * 1.9);
+      }
+      if (boss) {
+        for (const target of getBossTargets()) {
+          if (target.kind === "boss-weakpoint") hitBossWeakpoint(target.ref, player.damage * 1.4);
+          else boss.hp -= player.damage * 1.8 * player.bossDamageMultiplier;
+        }
+      }
+      return;
+    }
+
+    if (player.characterId === "ria") {
+      for (const enemy of [...enemies]) {
+        enemy.curseStacks = player.curseThreshold;
+        triggerCurseBurst(enemy);
+      }
+      if (boss) {
+        for (const target of getBossTargets()) {
+          if (target.kind === "boss-weakpoint") hitBossWeakpoint(target.ref, player.damage * 1.35);
+          else boss.hp -= player.damage * 1.7 * player.bossDamageMultiplier;
+        }
+        addEffect(boss.x, boss.y, 170, "rgba(216, 140, 255, 0.26)", 0.3);
+      }
+      return;
+    }
+
+    if (player.characterId === "sera") {
+      player.killRushTimer = Math.max(player.killRushTimer, 5.5);
+      player.dashTimer = 0;
+      const targets = enemies
+        .slice()
+        .sort((a, b) => distance(player, a) - distance(player, b))
+        .slice(0, 6);
+      for (const enemy of targets) {
+        player.x = enemy.x;
+        player.y = enemy.y;
+        addEffect(enemy.x, enemy.y, 84, "rgba(170, 214, 255, 0.24)", 0.18);
+        hitEnemy(enemy, player.damage * 2.2);
+      }
+      if (boss) {
+        for (const target of getBossTargets()) {
+          if (target.kind === "boss-weakpoint") hitBossWeakpoint(target.ref, player.damage * 1.45);
+          else boss.hp -= player.damage * 2.1 * player.bossDamageMultiplier;
+        }
+      }
+      return;
+    }
+
+    player.rageModeTimer = Math.max(player.rageModeTimer, 8);
+    player.hp = Math.min(player.maxHp, player.hp + 150);
+    radialDamage(player.x, player.y, 190, player.damage * 1.8);
+    addEffect(player.x, player.y, 180, "rgba(255, 136, 40, 0.34)", 0.28);
+    if (boss) {
+      for (const target of getBossTargets()) {
+        if (target.kind === "boss-weakpoint") hitBossWeakpoint(target.ref, player.damage * 1.5);
+        else boss.hp -= player.damage * 2 * player.bossDamageMultiplier;
+      }
+    }
+  }
+
   function updatePlayer(dt) {
     updateMovement(dt);
     player.attackTimer -= dt;
     player.dashTimer -= dt;
+    player.ultimateCooldown = Math.max(0, player.ultimateCooldown - dt);
     player.slashFlash -= dt;
     player.shotFlash -= dt;
     player.dashBurstTimer -= dt;
     player.rageModeTimer -= dt;
     player.killRushTimer -= dt;
+    player.overdriveTimer = Math.max(0, player.overdriveTimer - dt);
     player.seasonTimer -= dt;
 
     if (player.seasonTimer <= 0 && player.seasonStacks > 0) {
@@ -3303,8 +4029,9 @@
     }
 
     orbitBlades.length = 0;
-    for (let i = 0; i < player.orbitCount; i += 1) {
-      const angle = elapsed * 2.7 + (Math.PI * 2 * i) / Math.max(1, player.orbitCount);
+    const orbitCount = player.orbitCount + (player.overdriveTimer > 0 ? 2 : 0);
+    for (let i = 0; i < orbitCount; i += 1) {
+      const angle = elapsed * 2.7 + (Math.PI * 2 * i) / Math.max(1, orbitCount);
       const blade = {
         x: player.x + Math.cos(angle) * 84,
         y: player.y + Math.sin(angle) * 84,
@@ -3355,6 +4082,66 @@
           });
           enemy.shotTimer = 1.8;
         }
+      } else if (enemy.type === "drifter") {
+        const desiredDistance = 210;
+        const d = Math.hypot(dx, dy);
+        const radialSign = d > desiredDistance ? 1 : -1;
+        const tangent = { x: -dir.y * enemy.orbitDir, y: dir.x * enemy.orbitDir };
+        enemy.x += (dir.x * radialSign * 0.55 + tangent.x) * enemy.speed * dt;
+        enemy.y += (dir.y * radialSign * 0.55 + tangent.y) * enemy.speed * dt;
+        enemy.shotTimer -= dt;
+        if (enemy.shotTimer <= 0) {
+          for (const spread of [-0.22, 0.22]) {
+            const baseAngle = Math.atan2(player.y - enemy.y, player.x - enemy.x) + spread;
+            projectiles.push({
+              x: enemy.x,
+              y: enemy.y,
+              vx: Math.cos(baseAngle) * 225,
+              vy: Math.sin(baseAngle) * 225,
+              radius: 5,
+              life: 2.9,
+              damage: 14,
+              color: "#9cf7ef",
+            });
+          }
+          enemy.shotTimer = 1.5;
+        }
+      } else if (enemy.type === "warden") {
+        const desiredDistance = 190;
+        const d = Math.hypot(dx, dy);
+        const radialSign = d > desiredDistance ? 1 : -1;
+        const tangent = { x: -dir.y * enemy.orbitDir, y: dir.x * enemy.orbitDir };
+        enemy.x += (dir.x * radialSign * 0.35 + tangent.x * 0.55) * enemy.speed * dt;
+        enemy.y += (dir.y * radialSign * 0.35 + tangent.y * 0.55) * enemy.speed * dt;
+        enemy.shotTimer -= dt;
+        enemy.pulseTimer -= dt;
+        if (enemy.shotTimer <= 0) {
+          for (const spread of [-0.28, 0, 0.28]) {
+            const baseAngle = Math.atan2(player.y - enemy.y, player.x - enemy.x) + spread;
+            projectiles.push({
+              x: enemy.x,
+              y: enemy.y,
+              vx: Math.cos(baseAngle) * 235,
+              vy: Math.sin(baseAngle) * 235,
+              radius: 6,
+              life: 3.1,
+              damage: 16,
+              color: "#c4fff8",
+            });
+          }
+          enemy.shotTimer = 2.1;
+        }
+        if (enemy.pulseTimer <= 0) {
+          addEffect(enemy.x, enemy.y, 132, "rgba(116, 255, 236, 0.2)", 0.24);
+          for (const other of [...enemies]) {
+            if (other === enemy) continue;
+            if (distance(enemy, other) < 120) {
+              other.hp = Math.min(other.maxHp, other.hp + 12);
+            }
+          }
+          if (distance(enemy, player) < 100) player.hp -= 20;
+          enemy.pulseTimer = 2.8;
+        }
       } else if (enemy.type === "elite") {
         enemy.x += dir.x * enemy.speed * dt;
         enemy.y += dir.y * enemy.speed * dt;
@@ -3380,17 +4167,96 @@
     if (!boss) return;
 
     const dir = normalize(player.x - boss.x, player.y - boss.y);
-    if (boss.regionId === "sanctuary") {
+    if (boss.regionId === "blacktide") {
       if (boss.volleyTimer < 0.5 && !boss.warningVolley) {
-        pushEvent("ARCHON VOLLEY LOCKING IN // DODGE SIDEWAYS", 1.1);
+        pushEvent(t("eventAbyssVolley"), 1.1);
+        boss.warningVolley = true;
+      }
+      if (boss.ringTimer < 0.58 && !boss.warningRing) {
+        pushEvent(t("eventAbyssRing"), 1.1);
+        boss.warningRing = true;
+      }
+      if (boss.slamTimer < 0.78 && !boss.warningSlam) {
+        boss.mortarTargets = [
+          { x: player.x, y: player.y },
+          { x: player.x + 92, y: player.y - 46 },
+          { x: player.x - 92, y: player.y + 46 },
+        ];
+        pushEvent(t("eventAbyssMortar"), 1.15);
+        boss.warningSlam = true;
+      }
+
+      const currentDistance = distance(boss, player);
+      const maintain = currentDistance > 280 ? 1 : -0.35;
+      boss.x += dir.x * boss.speed * maintain * dt;
+      boss.y += dir.y * boss.speed * maintain * dt;
+
+      boss.ringTimer -= dt;
+      boss.volleyTimer -= dt;
+      boss.slamTimer -= dt;
+
+      if (boss.volleyTimer <= 0) {
+        const baseAngle = Math.atan2(player.y - boss.y, player.x - boss.x);
+        for (const spread of [-0.34, -0.17, 0, 0.17, 0.34]) {
+          const angle = baseAngle + spread;
+          projectiles.push({
+            x: boss.x,
+            y: boss.y,
+            vx: Math.cos(angle) * 255,
+            vy: Math.sin(angle) * 255,
+            radius: 6,
+            life: 3.3,
+            damage: boss.shielded ? 15 : 23,
+            color: boss.shielded ? boss.projectileColor : boss.projectileColorHot,
+          });
+        }
+        boss.volleyTimer = boss.shielded ? 2.1 : 1.45;
+        boss.warningVolley = false;
+      }
+
+      if (boss.ringTimer <= 0) {
+        const shots = boss.shielded ? 12 : 16;
+        for (let i = 0; i < shots; i += 1) {
+          const angle = (Math.PI * 2 * i) / shots + elapsed * 0.7;
+          projectiles.push({
+            x: boss.x,
+            y: boss.y,
+            vx: Math.cos(angle) * (boss.shielded ? 118 : 146),
+            vy: Math.sin(angle) * (boss.shielded ? 118 : 146),
+            radius: 7,
+            life: 4.4,
+            damage: boss.shielded ? 12 : 19,
+            color: boss.shielded ? boss.projectileColor : boss.projectileColorHot,
+          });
+        }
+        boss.ringTimer = boss.shielded ? 2.9 : 2.1;
+        boss.warningRing = false;
+      }
+
+      if (boss.slamTimer <= 0) {
+        for (const target of boss.mortarTargets) {
+          addEffect(target.x, target.y, 124, "rgba(74, 192, 179, 0.26)", 0.28);
+          if (distance(target, player) < 96) player.hp -= boss.bodyDamage * 1.9;
+        }
+        boss.mortarTargets = [];
+        boss.slamTimer = boss.shielded ? 5.8 : 4.4;
+        boss.warningSlam = false;
+      }
+
+      if (distance(boss, player) < boss.radius + player.radius) {
+        player.hp -= boss.bodyDamage * 0.85 * dt;
+      }
+    } else if (boss.regionId === "sanctuary") {
+      if (boss.volleyTimer < 0.5 && !boss.warningVolley) {
+        pushEvent(t("eventArchonVolley"), 1.1);
         boss.warningVolley = true;
       }
       if (boss.ringTimer < 0.55 && !boss.warningRing) {
-        pushEvent("SIGNAL RINGS EXPANDING // DON'T DRIFT CENTER", 1.1);
+        pushEvent(t("eventArchonRing"), 1.1);
         boss.warningRing = true;
       }
       if (boss.slamTimer < 0.65 && !boss.warningSlam) {
-        pushEvent("ARCHON IMPACT MARKED // BREAK LINE NOW", 1.1);
+        pushEvent(t("eventArchonImpact"), 1.1);
         boss.warningSlam = true;
       }
 
@@ -3456,11 +4322,11 @@
       }
     } else {
       if (boss.ringTimer < 0.58 && !boss.warningRing) {
-        pushEvent("TITAN RING CHARGE // DASH THROUGH THE GAP", 1.1);
+        pushEvent(t("eventTitanRing"), 1.1);
         boss.warningRing = true;
       }
       if (boss.slamTimer < 0.7 && !boss.warningSlam) {
-        pushEvent("TITAN LEAP MARKED // LEAVE THE IMPACT ZONE", 1.1);
+        pushEvent(t("eventTitanLeap"), 1.1);
         boss.warningSlam = true;
       }
 
@@ -3617,10 +4483,39 @@
 
   function renderEnemy(enemy) {
     const pos = worldToScreen(enemy.x, enemy.y);
-    ctx.fillStyle = enemy.color;
-    ctx.beginPath();
-    ctx.arc(pos.x, pos.y, enemy.radius, 0, Math.PI * 2);
-    ctx.fill();
+    if (enemy.type === "warden") {
+      ctx.strokeStyle = enemy.color;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, enemy.radius + 6, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = "rgba(196, 255, 248, 0.18)";
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, enemy.radius - 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y - enemy.radius - 4);
+      ctx.lineTo(pos.x + enemy.radius + 4, pos.y);
+      ctx.lineTo(pos.x, pos.y + enemy.radius + 4);
+      ctx.lineTo(pos.x - enemy.radius - 4, pos.y);
+      ctx.closePath();
+      ctx.stroke();
+    } else if (enemy.type === "drifter") {
+      ctx.strokeStyle = enemy.color;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, enemy.radius + 4, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = "rgba(156, 247, 239, 0.24)";
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, enemy.radius - 3, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = enemy.color;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, enemy.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     if (enemy.curseStacks > 0) {
       ctx.strokeStyle = "rgba(216, 140, 255, 0.7)";
@@ -3657,7 +4552,53 @@
     if (!boss) return;
     ctx.save();
 
-    if (boss.regionId === "sanctuary") {
+    if (boss.regionId === "blacktide") {
+      if (boss.volleyTimer < 0.5) {
+        const baseAngle = Math.atan2(player.y - boss.y, player.x - boss.x);
+        const start = worldToScreen(boss.x, boss.y);
+        ctx.strokeStyle = "rgba(169, 255, 242, 0.42)";
+        ctx.lineWidth = 5;
+        for (const spread of [-0.34, -0.17, 0, 0.17, 0.34]) {
+          const endX = boss.x + Math.cos(baseAngle + spread) * 480;
+          const endY = boss.y + Math.sin(baseAngle + spread) * 480;
+          const end = worldToScreen(endX, endY);
+          ctx.beginPath();
+          ctx.moveTo(start.x, start.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.stroke();
+        }
+      }
+
+      if (boss.ringTimer < 0.55) {
+        const pos = worldToScreen(boss.x, boss.y);
+        ctx.strokeStyle = "rgba(120, 235, 255, 0.3)";
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 110, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 170, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 230, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      if (boss.slamTimer < 0.75 && boss.mortarTargets.length > 0) {
+        ctx.fillStyle = "rgba(74, 192, 179, 0.18)";
+        ctx.strokeStyle = "rgba(169, 255, 242, 0.34)";
+        ctx.lineWidth = 3;
+        for (const target of boss.mortarTargets) {
+          const pos = worldToScreen(target.x, target.y);
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 96, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 96, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+      }
+    } else if (boss.regionId === "sanctuary") {
       if (boss.volleyTimer < 0.45) {
         const baseAngle = Math.atan2(player.y - boss.y, player.x - boss.x);
         ctx.strokeStyle = "rgba(184, 255, 244, 0.42)";
@@ -3787,6 +4728,14 @@
       ctx.arc(centerX, centerY, 28 + Math.sin(elapsed * 12) * 4, 0, Math.PI * 2);
       ctx.stroke();
     }
+
+    if (player.overdriveTimer > 0) {
+      ctx.strokeStyle = "rgba(130, 232, 210, 0.32)";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 38 + Math.sin(elapsed * 10) * 5, 0, Math.PI * 2);
+      ctx.stroke();
+    }
   }
 
   function renderXp() {
@@ -3845,6 +4794,10 @@
     killsText.textContent = fmt("hudKills", { count: player.kills });
     levelText.textContent = fmt("hudLevel", { level: player.level });
     dashButton.textContent = player.dashTimer > 0 ? fmt("hudDashCooldown", { time: player.dashTimer.toFixed(1) }) : t("hudDashReady");
+    const ultName = getCharacterCopy(player.characterId, "ultLabel");
+    ultimateButton.textContent = player.ultimateCooldown > 0
+      ? fmt("hudUltCooldown", { name: ultName, time: player.ultimateCooldown.toFixed(1) })
+      : fmt("hudUltReady", { name: ultName });
     runObjectiveText.textContent = getRunObjectiveText();
     eventText.textContent = eventBanner.text || "";
     eventText.classList.toggle("hidden", eventBanner.timer <= 0);
@@ -3905,6 +4858,8 @@
           ? t("eventBossSanctuary")
           : mode.id === "boss"
             ? t("eventBossWorld")
+            : mode.id === "rift"
+              ? t("eventBossRift")
             : t("eventBossTitan"),
         4.5,
       );
@@ -3915,11 +4870,22 @@
   function getRunObjectiveText() {
     const mode = getCurrentMode();
     const region = getCurrentRegion();
+    const regionBossName = getRegionCopy(region.id, "bossName") || region.bossName;
     if (mode.id === "boss") {
       if (!bossSpawned) return t("worldBossInbound");
       if (boss && boss.shielded) return t("breakBothWeakpoints");
-      if (boss) return fmt("exposedCore", { boss: region.bossName });
+      if (boss) return fmt("exposedCore", { boss: regionBossName });
       return t("titanDown");
+    }
+
+    if (mode.id === "rift") {
+      if (!bossSpawned) {
+        const remaining = Math.max(0, Math.ceil(mode.bossTime - elapsed));
+        return fmt("holdTheRift", { seconds: remaining });
+      }
+      if (boss && boss.shielded) return t("collapseRiftArmor");
+      if (boss) return t("sealRiftCore");
+      return t("riftSealed");
     }
 
     if (!bossSpawned) {
@@ -3969,7 +4935,9 @@
     const mode = getCurrentMode();
     const firstRun = meta.runs === 0;
     const firstTitanKill = victory && meta.bossKills === 0;
-    const rewardMult = player.rewardMultiplier * (mode.id === "boss" ? 1.35 : 1);
+    const rewardMult =
+      player.rewardMultiplier *
+      (mode.id === "boss" ? 1.35 : mode.id === "rift" ? 1.22 : 1);
     let gold = Math.floor((player.kills * 8 + player.level * 24 + (victory ? 180 : 45)) * rewardMult);
     let cores = Math.floor((Math.max(2, player.level + Math.floor(player.kills / 12)) + (victory ? 8 : 0)) * rewardMult);
     let data = Math.floor((player.level * 4 + (victory ? 20 : 6)) * rewardMult);
@@ -3979,7 +4947,7 @@
       player.kills * 0.9 +
       player.level * 6 +
       (victory ? 20 : 8) +
-      (mode.id === "boss" ? 18 : 0),
+      (mode.id === "boss" ? 18 : mode.id === "rift" ? 12 : 0),
     );
     const seasonProgress = {
       kills: Math.min(player.kills, seasonDef.killTarget),
@@ -4007,6 +4975,8 @@
       genes = Math.max(2, Math.floor(((victory ? 12 : 4) + player.level + player.kills / 20) * rewardMult));
       bonusLines.push(t("worldBossPayoutLine"));
       bonusLines.push(fmt("genomeSampleLine", { genes }));
+    } else if (mode.id === "rift") {
+      bonusLines.push(t("riftPayoutLine"));
     }
 
     let newSeasonRelic = null;
@@ -4017,7 +4987,7 @@
       newSeasonRelic = unlockNextSeasonRelic();
       bonusLines.push(t("seasonBreakpointBonusLine"));
       if (newSeasonRelic) {
-        bonusLines.push(fmt("seasonRelicUnlockedLine", { title: newSeasonRelic.title }));
+        bonusLines.push(fmt("seasonRelicUnlockedLine", { title: lt(newSeasonRelic.title) }));
       }
     }
 
@@ -4033,7 +5003,16 @@
       );
     }
 
-    const dropCount = mode.id === "boss" ? (victory ? 2 : 1) : 1;
+    const dropCount =
+      mode.id === "boss"
+        ? victory
+          ? 2
+          : 1
+        : mode.id === "rift"
+          ? victory
+            ? 3
+            : 2
+          : 1;
     const droppedItems = [];
     for (let i = 0; i < dropCount; i += 1) {
       const item = generateLootDrop({ victory, modeId: mode.id });
@@ -4055,6 +5034,9 @@
     }
     if (victory && mode.id === "boss") {
       meta.worldBossWins += 1;
+    }
+    if (victory && mode.id === "rift") {
+      meta.riftWins += 1;
     }
 
     const ftueLines = processFtueMilestones();
@@ -4082,15 +5064,16 @@
     applyRunRewards(reason);
     resultsOverlay.classList.remove("hidden");
     finishOverlay.classList.add("hidden");
+    hideUltimateCutin();
     renderShellLabels();
     resultTitle.textContent = reason === "victory" ? t("resultVictory") : t("resultDefeat");
     resultBody.textContent =
       fmt("resultRecoveredLine", { gold: currentRewards.gold, cores: currentRewards.cores, data: currentRewards.data, genes: currentRewards.genes }) +
       fmt("resultSeasonXpLine", { xp: currentRewards.seasonPassGain }) +
-      (currentRewards.newRelic ? fmt("resultNewRelicLine", { title: currentRewards.newRelic.title }) : "") +
-      (currentRewards.newSeasonRelic ? fmt("resultNewSeasonRelicLine", { title: currentRewards.newSeasonRelic.title }) : "") +
+      (currentRewards.newRelic ? fmt("resultNewRelicLine", { title: lt(currentRewards.newRelic.title) }) : "") +
+      (currentRewards.newSeasonRelic ? fmt("resultNewSeasonRelicLine", { title: lt(currentRewards.newSeasonRelic.title) }) : "") +
       (currentRewards.droppedItems.length > 0
-        ? fmt("resultLootLine", { items: currentRewards.droppedItems.map((item) => item.name).join(", ") })
+        ? fmt("resultLootLine", { items: currentRewards.droppedItems.map((item) => localizeItemName(item.name)).join(", ") })
         : "");
     if (currentRewards.bonusLines.length > 0) {
       resultBonus.textContent = currentRewards.bonusLines.join(" // ");
@@ -4116,6 +5099,7 @@
   function startRun() {
     ensureSelectionsUnlocked();
     const mode = getCurrentMode();
+    const region = getCurrentRegion();
     player = createPlayerFromMeta();
     runDuration = mode.duration;
     enemies.length = 0;
@@ -4133,6 +5117,7 @@
     eventBanner = { text: "", timer: 0 };
     runFlags = { intro: false, levelHint: false, eliteHint: false, bossHint: false };
     finisher = { active: false, timer: 0 };
+    hideUltimateCutin();
     cameraShake = { time: 0, power: 0 };
     levelOverlay.classList.add("hidden");
     finishOverlay.classList.add("hidden");
@@ -4142,6 +5127,7 @@
     introOverlay.classList.add("hidden");
     baseOverlay.classList.add("hidden");
     bossWrap.classList.add("hidden");
+    bossLabel.textContent = getRegionCopy(region.id, "bossName") || region.bossName;
     resultRewardStrip.innerHTML = "";
     resultLootGrid.innerHTML = "";
     resultSeasonProgress.innerHTML = "";
@@ -4165,6 +5151,7 @@
     screen = "title";
     eventBanner = { text: "", timer: 0 };
     finisher = { active: false, timer: 0 };
+    hideUltimateCutin();
     titleOverlay.classList.remove("hidden");
     introOverlay.classList.add("hidden");
     baseOverlay.classList.add("hidden");
@@ -4187,6 +5174,7 @@
     screen = "intro";
     eventBanner = { text: "", timer: 0 };
     finisher = { active: false, timer: 0 };
+    hideUltimateCutin();
     titleOverlay.classList.add("hidden");
     introOverlay.classList.remove("hidden");
     baseOverlay.classList.add("hidden");
@@ -4202,6 +5190,7 @@
     screen = "base";
     eventBanner = { text: "", timer: 0 };
     finisher = { active: false, timer: 0 };
+    hideUltimateCutin();
     titleOverlay.classList.add("hidden");
     introOverlay.classList.add("hidden");
     baseOverlay.classList.remove("hidden");
@@ -4222,14 +5211,14 @@
         const set = gearSetDefs[setId];
         if (!set) return "";
         const activeBits = [];
-        if (count >= 2) activeBits.push(fmt("twoPieceLive", { body: set.twoPiece }));
-        else activeBits.push(fmt("twoPiece", { body: set.twoPiece }));
-        if (count >= 3) activeBits.push(fmt("threePieceLive", { body: set.threePiece }));
-        else activeBits.push(fmt("threePiece", { body: set.threePiece }));
+        if (count >= 2) activeBits.push(fmt("twoPieceLive", { body: lt(set.twoPiece) }));
+        else activeBits.push(fmt("twoPiece", { body: lt(set.twoPiece) }));
+        if (count >= 3) activeBits.push(fmt("threePieceLive", { body: lt(set.threePiece) }));
+        else activeBits.push(fmt("threePiece", { body: lt(set.threePiece) }));
         return `
           <article class="loot-card ${count >= 3 ? "loot-card--legendary" : count >= 2 ? "loot-card--epic" : "loot-card--common"}">
             <span class="loot-card__label">${fmt("setActiveLabel", { count })}</span>
-            <h2 class="loot-card__title">${set.name}</h2>
+            <h2 class="loot-card__title">${lt(set.name)}</h2>
             <p class="loot-card__body">${activeBits.join(" // ")}</p>
           </article>
         `;
@@ -4241,7 +5230,7 @@
         return `
           <article class="base-card">
             <span class="base-card__label">${fmt("equippedLabel", { slot: slotTitle(slot.id).toUpperCase() })}</span>
-            <h2 class="base-card__title">${item ? item.name : t("empty")}</h2>
+            <h2 class="base-card__title">${item ? localizeItemName(item.name) : t("empty")}</h2>
             <p class="base-card__body">${item ? `${getAffinityLabel(item)}${getSetName(item.setId) ? ` // ${getSetName(item.setId)}` : ""} // ${describeItemStats(item, selectedCharacter)}` : t("noItemEquipped")}</p>
           </article>
         `;
@@ -4266,7 +5255,7 @@
         return `
           <article class="base-card">
             <span class="base-card__label">${rarity.label} ${slotTitle(item.slot).toUpperCase()} // ${getAffinityLabel(item)}${getSetName(item.setId) ? ` // ${getSetName(item.setId).toUpperCase()}` : ""}</span>
-            <h2 class="base-card__title">${item.name}</h2>
+            <h2 class="base-card__title">${localizeItemName(item.name)}</h2>
             <p class="base-card__body">${describeItemStats(item, selectedCharacter)}</p>
             <span class="upgrade-meta">${deltaText}</span>
             <div class="button-row">
@@ -4312,8 +5301,8 @@
         (character) => {
           const unlocked = isCharacterUnlocked(character.id);
           return `
-          <button class="selector-button${meta.selectedCharacter === character.id ? " is-active" : ""}${unlocked ? "" : " is-locked"}" data-action="select-character" data-id="${character.id}" type="button" ${unlocked ? "" : "disabled"}>
-            <span class="selector-button__title">${character.name}</span>
+          <button class="selector-button${meta.selectedCharacter === character.id ? " is-active" : ""}${unlocked ? "" : " is-locked"}" data-type="hunter" data-action="select-character" data-id="${character.id}" type="button" ${unlocked ? "" : "disabled"}>
+            <span class="selector-button__title">${getCharacterName(character.id)}</span>
             <span class="selector-button__body">${unlocked ? getCharacterCopy(character.id, "cardBody") : fmt("lockedCharacter", { rule: getCharacterCopy(character.id, "unlockRule") })}</span>
           </button>
         `;
@@ -4326,9 +5315,9 @@
         (mode) => {
           const unlocked = isModeUnlocked(mode.id);
           return `
-          <button class="selector-button${meta.selectedMode === mode.id ? " is-active" : ""}${unlocked ? "" : " is-locked"}" data-action="select-mode" data-id="${mode.id}" type="button" ${unlocked ? "" : "disabled"}>
+          <button class="selector-button${meta.selectedMode === mode.id ? " is-active" : ""}${unlocked ? "" : " is-locked"}" data-type="mode" data-action="select-mode" data-id="${mode.id}" type="button" ${unlocked ? "" : "disabled"}>
             <span class="selector-button__title">${getModeCopy(mode.id, "name")}</span>
-            <span class="selector-button__body">${unlocked ? getModeCopy(mode.id, "body") : t("lockedMode")}</span>
+            <span class="selector-button__body">${unlocked ? getModeCopy(mode.id, "body") : fmt("lockedCharacter", { rule: getModeCopy(mode.id, "unlockRule") || t("lockedMode") })}</span>
           </button>
         `;
         },
@@ -4339,8 +5328,8 @@
       .map((region) => {
         const unlocked = isRegionUnlocked(region.id);
         return `
-          <button class="selector-button${meta.selectedRegion === region.id ? " is-active" : ""}${unlocked ? "" : " is-locked"}" data-action="select-region" data-id="${region.id}" type="button" ${unlocked ? "" : "disabled"}>
-            <span class="selector-button__title">${region.name}</span>
+          <button class="selector-button${meta.selectedRegion === region.id ? " is-active" : ""}${unlocked ? "" : " is-locked"}" data-type="region" data-action="select-region" data-id="${region.id}" type="button" ${unlocked ? "" : "disabled"}>
+            <span class="selector-button__title">${getRegionCopy(region.id, "name") || region.name}</span>
             <span class="selector-button__body">${unlocked ? getRegionCopy(region.id, "body") : t("lockedRegion")}</span>
           </button>
         `;
@@ -4351,7 +5340,7 @@
   function renderRelicsTab() {
     const equippedSet = new Set(meta.equippedRelics.filter(Boolean));
     const equipped = meta.equippedRelics
-      .map((id, idx) => fmt("slotLabel", { index: idx + 1, name: id ? getRelic(id).title : t("empty") }))
+      .map((id, idx) => fmt("slotLabel", { index: idx + 1, name: id ? lt(getRelic(id).title) : t("empty") }))
       .join(" / ");
 
     return `
@@ -4367,9 +5356,9 @@
             const equippedClass = equippedSet.has(relic.id) ? " is-equipped" : "";
             return `
               <button class="relic-button${equippedClass}" data-action="toggle-relic" data-id="${relic.id}" type="button" ${unlocked ? "" : "disabled"}>
-                <span class="relic-button__title">${relic.title}</span>
+                <span class="relic-button__title">${lt(relic.title)}</span>
                 <span class="relic-meta">${unlocked ? t("unlocked") : getRelicUnlockRule(relic.id)}</span>
-                <span class="relic-button__body">${relic.description}</span>
+                <span class="relic-button__body">${lt(relic.description)}</span>
               </button>
             `;
           })
@@ -4387,8 +5376,8 @@
         return `
           <article class="base-card">
             <span class="base-card__label">${t("researchLabel")}</span>
-            <h2 class="base-card__title">${track.title} LV ${level}</h2>
-            <p class="base-card__body">${track.description}</p>
+            <h2 class="base-card__title">${lt(track.title)} LV ${level}</h2>
+            <p class="base-card__body">${lt(track.description)}</p>
             <span class="upgrade-meta">${track.getEffect(level)}</span>
             <button class="upgrade-button" data-action="upgrade-research" data-id="${track.id}" type="button">
               <span class="upgrade-button__title">${capped ? t("maxed") : fmt("researchFor", { data: cost.data })}</span>
@@ -4409,11 +5398,11 @@
         return `
           <article class="base-card">
             <span class="base-card__label">${t("hunterAwakening")}</span>
-            <h2 class="base-card__title">${character.name} // ${awakening.title}</h2>
-            <p class="base-card__body">${awakening.description}</p>
+            <h2 class="base-card__title">${getCharacterName(character.id)} // ${lt(awakening.title)}</h2>
+            <p class="base-card__body">${lt(awakening.description)}</p>
             <span class="upgrade-meta">${unlocked ? t("awakenedActive") : fmt("costGenes", { genes: awakening.cost })}</span>
             <button class="upgrade-button${unlocked ? " is-equipped" : ""}" data-action="upgrade-awakening" data-id="${character.id}" type="button">
-              <span class="upgrade-button__title">${unlocked ? t("awakened") : fmt("awakenHunter", { name: character.name })}</span>
+              <span class="upgrade-button__title">${unlocked ? t("awakened") : fmt("awakenHunter", { name: getCharacterName(character.id) })}</span>
               <span class="upgrade-button__body">${unlocked ? t("awakenedBody") : character.id === meta.selectedCharacter ? t("selectedHunterBody") : t("unlockSwapBody")}</span>
             </button>
           </article>
@@ -4437,8 +5426,8 @@
           return `
             <article class="base-card">
               <span class="base-card__label">${t("ascensionLabel")}</span>
-              <h2 class="base-card__title">${track.title} LV ${level}</h2>
-              <p class="base-card__body">${track.description}</p>
+              <h2 class="base-card__title">${lt(track.title)} LV ${level}</h2>
+              <p class="base-card__body">${lt(track.description)}</p>
               <span class="upgrade-meta">${track.getEffect(level)}</span>
               <button class="upgrade-button" data-action="upgrade-ascension" data-id="${track.id}" type="button">
                 <span class="upgrade-button__title">${capped ? t("maxed") : fmt("ascendFor", { genes: cost.genes })}</span>
@@ -4503,9 +5492,9 @@
       .join("");
     return `
       <article class="base-card">
-        <span class="base-card__label">${fmt("seasonLabel", { name: seasonDef.name.toUpperCase() })}</span>
-        <h2 class="base-card__title">${seasonDef.ruleTitle}</h2>
-        <p class="base-card__body">${seasonDef.ruleBody}</p>
+        <span class="base-card__label">${fmt("seasonLabel", { name: lt(seasonDef.name).toUpperCase() })}</span>
+        <h2 class="base-card__title">${lt(seasonDef.ruleTitle)}</h2>
+        <p class="base-card__body">${lt(seasonDef.ruleBody)}</p>
         <span class="upgrade-meta">${fmt("seasonLiveBonus", { bonus: activeBonus })}</span>
       </article>
       <article class="base-card">
@@ -4526,15 +5515,15 @@
         ${passCards}
       </div>
       <article class="base-card">
-        <span class="base-card__label">${seasonDef.missionTitle.toUpperCase()}</span>
+        <span class="base-card__label">${lt(seasonDef.missionTitle).toUpperCase()}</span>
         <h2 class="base-card__title">${t("seasonBreakpointTitle")}</h2>
-        <p class="base-card__body">${seasonDef.missionBody}</p>
-        <span class="upgrade-meta">${seasonDef.rewardLabel} // ${seasonDef.rewardBody}</span>
+        <p class="base-card__body">${lt(seasonDef.missionBody)}</p>
+        <span class="upgrade-meta">${lt(seasonDef.rewardLabel)} // ${lt(seasonDef.rewardBody)}</span>
       </article>
       <article class="base-card">
         <span class="base-card__label">${t("seasonRelicsLabel")}</span>
         <h2 class="base-card__title">${fmt("seasonBreakpointClears", { count: meta.seasonClears })}</h2>
-        <p class="base-card__body">${nextSeasonRelic ? fmt("seasonNextUnlock", { title: nextSeasonRelic.title, description: nextSeasonRelic.description }) : t("seasonAllRelicsUnlocked")}</p>
+        <p class="base-card__body">${nextSeasonRelic ? fmt("seasonNextUnlock", { title: lt(nextSeasonRelic.title), description: lt(nextSeasonRelic.description) }) : t("seasonAllRelicsUnlocked")}</p>
         <span class="upgrade-meta">${nextSeasonRelic ? getRelicUnlockRule(nextSeasonRelic.id) : t("seasonTrackComplete")}</span>
       </article>
       <article class="base-card">
@@ -4542,6 +5531,12 @@
         <h2 class="base-card__title">${fmt("genomeBank", { genes: meta.genes })}</h2>
         <p class="base-card__body">${t("worldBossResourceBody")}</p>
         <span class="upgrade-meta">${t("worldBossExclusive")}</span>
+      </article>
+      <article class="base-card">
+        <span class="base-card__label">${t("riftResourceLabel")}</span>
+        <h2 class="base-card__title">${fmt("riftBank", { count: meta.riftWins })}</h2>
+        <p class="base-card__body">${t("riftResourceBody")}</p>
+        <span class="upgrade-meta">${t("riftExclusive")}</span>
       </article>
       <article class="base-card">
         <span class="base-card__label">${t("howItPlaysLabel")}</span>
@@ -4558,8 +5553,8 @@
     return `
       <article class="base-card">
         <span class="base-card__label">${t("settings")}</span>
-        <h2 class="base-card__title">Prototype feedback toggles</h2>
-        <p class="base-card__body">Use these to tune the mobile feel. Sound drives simple synth cues, vibration hits on dash, level-up, boss spawn, and finish.</p>
+        <h2 class="base-card__title">${t("settingsFeedbackTitle")}</h2>
+        <p class="base-card__body">${t("settingsFeedbackBody")}</p>
       </article>
       <article class="base-card">
         <span class="base-card__label">${t("language")}</span>
@@ -4605,12 +5600,54 @@
     `;
   }
 
+  function renderBaseShowcase(character, mode, region) {
+    const hunterName = getCharacterName(character.id);
+    const regionName = getRegionCopy(region.id, "name") || region.name;
+    const bossName = getRegionCopy(region.id, "bossName") || region.bossName;
+    return `
+      <span class="base-showcase__eyebrow">${t("showcaseLabel")}</span>
+      <h2 class="base-showcase__title">${hunterName}</h2>
+      <p class="base-showcase__subtitle">${bossName} // ${getModeCopy(mode.id, "name")} // ${regionName}</p>
+      <div class="base-showcase__art">
+        <div class="base-showcase__weapon"></div>
+        <div class="base-showcase__sigil">${getCharacterShowcase(character.id, "sigil")}</div>
+      </div>
+      <div class="base-showcase__grid">
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseRoleLabel")}</span>
+          <strong class="showcase-chip__value">${getCharacterShowcase(character.id, "role")}</strong>
+        </article>
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseWeaponLabel")}</span>
+          <strong class="showcase-chip__value">${getCharacterShowcase(character.id, "weapon")}</strong>
+        </article>
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseRegionLabel")}</span>
+          <strong class="showcase-chip__value">${regionName}</strong>
+        </article>
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseRewardLabel")}</span>
+          <strong class="showcase-chip__value">${getModeShowcasePayout(mode.id)}</strong>
+        </article>
+      </div>
+    `;
+  }
+
   function renderBase() {
     renderShellLabels();
     const character = characterDefs[meta.selectedCharacter] ?? characterDefs.cain;
     const mode = getCurrentMode();
     const region = getCurrentRegion();
+    const regionName = getRegionCopy(region.id, "name") || region.name;
+    const bossName = getRegionCopy(region.id, "bossName") || region.bossName;
+    const hunterName = getCharacterName(character.id);
     const objective = getFtueObjective();
+
+    baseOverlay.dataset.region = region.id;
+    basePanel.dataset.region = region.id;
+    baseShowcase.dataset.region = region.id;
+    baseShowcase.dataset.hunter = character.id;
+    baseShowcase.innerHTML = renderBaseShowcase(character, mode, region);
 
     goldText.textContent = String(meta.gold);
     coreText.textContent = String(meta.cores);
@@ -4619,16 +5656,23 @@
     powerText.textContent = String(computePower());
     runsText.textContent = String(meta.runs);
     bestKillsText.textContent = String(meta.bestKills);
-    baseEyebrow.textContent = character.eyebrow;
+    baseEyebrow.textContent = lt(character.eyebrow);
     baseTitle.textContent =
       mode.id === "boss"
-        ? fmt("baseBossTitle", { hunter: character.name, boss: region.bossName })
-        : fmt("baseRegionTitle", { hunter: character.name, region: region.name });
+        ? fmt("baseBossTitle", { hunter: hunterName, boss: bossName })
+        : fmt("baseRegionTitle", { hunter: hunterName, region: regionName });
     baseBody.textContent =
       mode.id === "boss"
-        ? fmt("baseBossSummary", { body: getCharacterCopy(character.id, "baseBody"), region: region.name })
+        ? fmt("baseBossSummary", { body: getCharacterCopy(character.id, "baseBody"), region: regionName })
+        : mode.id === "rift"
+          ? fmt("baseRiftSummary", { body: getCharacterCopy(character.id, "baseBody"), region: regionName })
         : fmt("baseRegionSummary", { body: getCharacterCopy(character.id, "baseBody"), regionBody: getRegionCopy(region.id, "body") });
-    startRunButton.textContent = mode.id === "boss" ? t("deployWorldBoss") : getCharacterCopy(character.id, "startLabel");
+    startRunButton.textContent =
+      mode.id === "boss"
+        ? t("deployWorldBoss")
+        : mode.id === "rift"
+          ? t("deployRift")
+          : getCharacterCopy(character.id, "startLabel");
     resourceLabel.textContent = getCharacterCopy(character.id, "resourceLabel");
     objectiveTitle.textContent = objective.title;
     objectiveBody.textContent = objective.body;
@@ -4775,13 +5819,19 @@
   function setLanguage(id) {
     if (!["en", "ko"].includes(id)) return;
     meta.settings.language = id;
+    const currentRegion = getCurrentRegion();
+    bossLabel.textContent = getRegionCopy(currentRegion.id, "bossName") || currentRegion.bossName;
+    if (boss) {
+      boss.name = getRegionCopy(boss.regionId, "bossName") || boss.name;
+      bossLabel.textContent = boss.name;
+    }
     saveMeta();
     pushEvent(t("languageChanged"), 1.2);
     renderBase();
   }
 
   function resetProgress() {
-    if (!window.confirm("Reset all prototype progress and restart the FTUE?")) return;
+    if (!window.confirm(t("resetConfirm"))) return;
     meta = defaultMeta();
     activeBaseTab = "equipment";
     currentRewards = {
@@ -4817,6 +5867,10 @@
           endRun("victory");
         }
       } else {
+        if (ultimateCutin.active) {
+          ultimateCutin.timer -= dt;
+          if (ultimateCutin.timer <= 0) hideUltimateCutin();
+        }
         elapsed += dt;
         updatePlayer(dt);
         spawnEnemyWave(dt);
@@ -4882,6 +5936,7 @@
   joystickBase.addEventListener("pointercancel", releaseJoystick);
 
   dashButton.addEventListener("click", doDash);
+  ultimateButton.addEventListener("click", doUltimate);
   startRunButton.addEventListener("click", startRun);
   restartButton.addEventListener("click", startRun);
   baseButton.addEventListener("click", showBase);
@@ -4938,6 +5993,7 @@
     if (event.key === "a" || event.key === "ArrowLeft") input.keyboard.left = true;
     if (event.key === "d" || event.key === "ArrowRight") input.keyboard.right = true;
     if (event.code === "Space") doDash();
+    if (event.code === "KeyF") doUltimate();
   });
 
   window.addEventListener("keyup", (event) => {

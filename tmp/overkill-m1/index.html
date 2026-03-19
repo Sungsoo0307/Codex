@@ -45,14 +45,15 @@
       <section class="overlay overlay--base hidden" id="baseOverlay">
         <div class="panel panel--base">
           <div class="base-hero">
-            <div>
+            <div class="base-hero__copy">
               <div class="panel__eyebrow" id="baseEyebrow">OVERKILL // BASE LOOP</div>
               <h1 class="panel__title" id="baseTitle">Cain in the Red City</h1>
               <p class="panel__body" id="baseBody">
                 Break the titan, bring home scrap, and mutate before the next run.
               </p>
+              <button class="primary-button" id="startRunButton" type="button">Enter Red City</button>
             </div>
-            <button class="primary-button" id="startRunButton" type="button">Enter Red City</button>
+            <div class="base-showcase" id="baseShowcase"></div>
           </div>
 
           <div class="selector-grid">
@@ -173,7 +174,10 @@
         <div class="joystick" id="joystickBase">
           <div class="joystick__thumb" id="joystickThumb"></div>
         </div>
-        <button class="action-button" id="dashButton" type="button">DASH</button>
+        <div class="controls__actions">
+          <button class="action-button action-button--ult" id="ultimateButton" type="button">ULT</button>
+          <button class="action-button" id="dashButton" type="button">DASH</button>
+        </div>
       </section>
 
       <section class="overlay overlay--level hidden" id="levelOverlay">
@@ -181,6 +185,14 @@
           <div class="panel__eyebrow" id="levelEyebrow">LEVEL UP</div>
           <h1 class="panel__title" id="levelTitle">Choose a mutation</h1>
           <div class="choices" id="levelChoices"></div>
+        </div>
+      </section>
+
+      <section class="overlay overlay--ult hidden" id="ultOverlay">
+        <div class="panel panel--title panel--ult" id="ultPanel">
+          <div class="panel__eyebrow" id="ultEyebrow">ULTIMATE</div>
+          <h1 class="finish-title" id="ultTitle">BLOODLUST</h1>
+          <p class="finish-subtitle" id="ultSubtitle">The whole lane is yours.</p>
         </div>
       </section>
 

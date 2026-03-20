@@ -18,6 +18,20 @@
   const introBody = document.getElementById("introBody");
   const introNextButton = document.getElementById("introNextButton");
   const introSkipButton = document.getElementById("introSkipButton");
+  const deployOverlay = document.getElementById("deployOverlay");
+  const deployPanel = document.getElementById("deployPanel");
+  const deployEyebrow = document.getElementById("deployEyebrow");
+  const deployTitle = document.getElementById("deployTitle");
+  const deploySubtitle = document.getElementById("deploySubtitle");
+  const deployBody = document.getElementById("deployBody");
+  const chapterOverlay = document.getElementById("chapterOverlay");
+  const chapterPanel = document.getElementById("chapterPanel");
+  const chapterEyebrow = document.getElementById("chapterEyebrow");
+  const chapterTitle = document.getElementById("chapterTitle");
+  const chapterSubtitle = document.getElementById("chapterSubtitle");
+  const chapterBody = document.getElementById("chapterBody");
+  const chapterThreat = document.getElementById("chapterThreat");
+  const chapterCommand = document.getElementById("chapterCommand");
   const baseOverlay = document.getElementById("baseOverlay");
   const basePanel = document.querySelector(".panel--base");
   const startRunButton = document.getElementById("startRunButton");
@@ -32,6 +46,8 @@
   const hunterLabel = document.getElementById("hunterLabel");
   const modeLabel = document.getElementById("modeLabel");
   const regionLabel = document.getElementById("regionLabel");
+  const operationLabel = document.getElementById("operationLabel");
+  const operationMap = document.getElementById("operationMap");
   const objectiveTitle = document.getElementById("objectiveTitle");
   const objectiveBody = document.getElementById("objectiveBody");
   const objectiveLabel = document.getElementById("objectiveLabel");
@@ -47,7 +63,9 @@
   const tabRelics = document.getElementById("tabRelics");
   const tabResearch = document.getElementById("tabResearch");
   const tabAscension = document.getElementById("tabAscension");
+  const tabRecords = document.getElementById("tabRecords");
   const tabSeason = document.getElementById("tabSeason");
+  const tabShop = document.getElementById("tabShop");
   const tabSettings = document.getElementById("tabSettings");
   const ftueTrack = document.getElementById("ftueTrack");
   const goldText = document.getElementById("goldText");
@@ -133,6 +151,23 @@
       titleSubtitle: "Kill the god. Harvest the heart. Go back stronger.",
       titleBody:
         "Hyper-action mobile RPG prototype with hunter choice, region choice, boss kills, loot drops, and build spikes.",
+      deployEyebrow: "DROP SEQUENCE // LIVE",
+      chapterUnlockEyebrow: "CHAPTER UNLOCKED",
+      chapterUnlockSubtitle: "NEW OPERATION OPEN",
+      chapterUnlockBody: "{region} is now available on the operation map. Push the new front before the next titan mutates.",
+      regionRedcityReward: "Payout: early gear spikes, Reaver set pieces, and fast route tempo.",
+      regionRedcityThreat: "Threat: collapsing streets and feral swarm surges.",
+      regionRedcityCommand: "Command: cut the lane open, build tempo, and rip the titan core free.",
+      regionSanctuaryReward: "Payout: genes, precision defense drops, and Signal-aligned kit.",
+      regionSanctuaryThreat: "Threat: machine cult fortifications and signal distortion.",
+      regionSanctuaryCommand: "Command: break the outer line fast and secure a foothold before the archon stabilizes.",
+      regionBlacktideReward: "Payout: abyss set pieces, Rift salvage, and high-end season gains.",
+      regionBlacktideThreat: "Threat: abyss bloom pools and leviathan pressure from every angle.",
+      regionBlacktideCommand: "Command: keep moving, deny the tide encirclement, and sever the spine before the flats drown you.",
+      deployBodyHunt: "Sweep the lane, stack your spike, and break the titan before the route collapses.",
+      deployBodyBoss: "Immediate titan pressure. Break weakpoints fast and bank genes before the lane closes.",
+      deployBodyRift: "Hold the collapse longer. Expect denser waves, later failure, and richer salvage.",
+      deployBodyGauntlet: "No titan. No pause. Hold the corridor against nonstop elites and cash out the overkill lane.",
       showcaseLabel: "HUNTER PROFILE",
       showcaseRoleLabel: "COMBAT LOOP",
       showcaseWeaponLabel: "WEAPON SIGNATURE",
@@ -141,6 +176,7 @@
       showcaseBackdropHunt: "Field route // loot and tempo spike",
       showcaseBackdropBoss: "Boss route // genes and titanforged drops",
       showcaseBackdropRift: "Rift route // data and Riftcut salvage",
+      showcaseBackdropGauntlet: "Gauntlet route // score pressure and overclocked loot",
       cainShowcaseRole: "Frontline berserker with self-sustain and execute pressure.",
       cainShowcaseWeapon: "Cleaver-class overkill blade",
       dexShowcaseRole: "Ranged suppression loop with drones and overdrive rhythm.",
@@ -166,11 +202,30 @@
       bestKills: "Best Kills",
       objective: "OBJECTIVE",
       launchTrack: "LAUNCH TRACK",
+      operationMap: "OPERATION MAP",
+      operationBriefing: "FIELD BRIEFING",
+      operationTarget: "TARGET",
+      operationThreat: "THREAT",
+      operationCommand: "COMMAND",
+      operationReward: "PAYOUT",
+      operationMode: "RECOMMENDED LOOP",
+      operationHunter: "RECOMMENDED HUNTER",
+      operationDeploy: "DEPLOY RECOMMENDED LOADOUT",
+      operationDeployBody: "Apply the suggested hunter and loop for this chapter, then drop straight into the lane.",
+      operationNodeClears: "{count} CLEARS",
+      operationNodeUncleared: "UNCLEARED",
+      operationNodeActive: "ACTIVE",
+      operationNodeLocked: "LOCKED",
+      operationNodeCleared: "LIVE",
+      operationNodeNew: "NEW",
+      operationChapter: "CH.{index}",
       tabEquipment: "Equipment",
       tabRelics: "Relics",
       tabResearch: "Research",
       tabAscension: "Ascension",
+      tabRecords: "Records",
       tabSeason: "Season",
+      tabShop: "Shop",
       tabSettings: "Settings",
       runOver: "RUN OVER",
       kills: "Kills",
@@ -179,6 +234,56 @@
       retryNow: "Retry Now",
       backToBase: "Back To Base",
       settings: "SETTINGS",
+      shopLabel: "STORE LOOP",
+      shopTitle: "Prototype monetization board",
+      shopBody: "These offers are mockups only. They frame how a live mobile build would pace pass upgrades, starter conversion, and cosmetic upsell.",
+      shopSeasonPassTitle: "Crimson Eclipse pass upgrade",
+      shopSeasonPassBody: "Premium track focused on season XP acceleration, exclusive cosmetics, and a cleaner reward rail.",
+      shopStarterTitle: "Starter blood cache",
+      shopStarterBody: "Low-friction first purchase with gear tempo, cores, and an early power spike that still leaves the loop intact.",
+      shopWeeklyTitle: "Weekly field supply",
+      shopWeeklyBody: "Retention pack for daily check-ins: steady cores, data, and one extra push into the weekly grind.",
+      shopSkinTitle: "Skin vault bundle",
+      shopSkinBody: "Pure presentation layer: hunter showcase frames, finisher variants, and kill-flash color swaps.",
+      shopPremiumNoteTitle: "Prototype-only checkout",
+      shopPremiumNoteBody: "No real payments are wired in. This tab exists to show where live-service pressure and visual merchandising would sit.",
+      starterCacheLabel: "STARTER PACK",
+      cosmeticVaultLabel: "COSMETICS",
+      premiumNoteLabel: "PREMIUM NOTE",
+      shopPreviewLabel: "COSMETIC PREVIEW",
+      shopPreviewTitle: "Identity-first upsell lane",
+      shopPreviewBody: "These mock cosmetic cards sit above the offer rail to show how presentation items would sell after the power loop is already hooked.",
+      shopPreviewBodyHunter: "Current spotlight hunter: {hunter}. Cosmetic previews shift with the selected hunter so the store feels tied to identity, not generic inventory.",
+      shopPreviewFinisher: "Crimson finisher flare",
+      shopPreviewFrame: "Signal frame kit",
+      shopPreviewTrail: "Rift trail burst",
+      shopPreviewFinisherHunter: "{hunter} finisher flare",
+      shopPreviewFrameHunter: "{hunter} signal frame",
+      shopPreviewTrailHunter: "{hunter} rift trail",
+      shopOfferPassMeta: "Premium pass // reward acceleration",
+      shopOfferStarterMeta: "First conversion // early tempo spike",
+      shopOfferWeeklyMeta: "Retention pack // daily loop support",
+      shopOfferSkinMeta: "Cosmetic bundle // identity-only sale",
+      shopPreviewSkinOn: "Preview skin active",
+      shopPreviewSkinOff: "Preview skin inactive",
+      shopToggleSkinPreview: "Toggle skin preview",
+      shopPreviewActiveBody: "The current hunter showcase, deploy card, and ult cut-in are now tinted with the cosmetic preview theme.",
+      shopPreviewInactiveBody: "Cosmetic preview is off. Re-enable it to re-skin the showcase and combat presentation panels.",
+      shopSkinPreviewEnabled: "{hunter} cosmetic preview live.",
+      shopSkinPreviewDisabled: "{hunter} cosmetic preview cleared.",
+      showcasePreviewSkin: "PREVIEW SKIN",
+      deployPreviewLabel: "COSMETIC PREVIEW // LIVE",
+      ultimatePreviewLabel: "COSMETIC PREVIEW // CUT-IN",
+      finishPreviewLabel: "COSMETIC PREVIEW // FINISHER",
+      shopSpotlightLabel: "OFFER SPOTLIGHT",
+      openShop: "Open shop",
+      shopJumpPassBody: "Season XP is already moving. This is where a premium pass upsell would naturally attach to the reward loop.",
+      shopJumpStarterBody: "Early progression is still forming. A starter bundle would sit here as the first-conversion offer.",
+      shopJumpWeeklyBody: "You are already deep in repeat runs. A weekly supply pack would reinforce the retention loop here.",
+      shopJumpSkinBody: "The power loop is established. This is the point where a cosmetic bundle can sell on identity, not stats.",
+      viewOffer: "View offer",
+      previewOnly: "Preview only",
+      noCheckout: "No checkout wired. Offer previewed in prototype mode.",
       settingsFeedbackTitle: "Prototype feedback controls",
       settingsFeedbackBody:
         "Tune the mobile feel here. Sound drives short synth cues, and vibration lands on dash, level-up, boss spawn, and finish moments.",
@@ -190,7 +295,7 @@
       objectiveFirstBloodTitle: "First blood",
       objectiveFirstBloodBody: "Enter Main Hunt and survive long enough to meet the titan.",
       objectivePushTitle: "Push the prototype",
-      objectivePushBody: "Swap hunters, alternate Hunt and World Boss, and tune the strongest route.",
+      objectivePushBody: "Swap hunters, rotate Hunt, World Boss, Rift, and Gauntlet, then tune the strongest route.",
       intro1Eyebrow: "PROLOGUE // 01",
       intro1Title: "The world already lost.",
       intro1Body: "Cities fell first. Then armies. Then physics. The only thing left to do is kill bigger.",
@@ -201,6 +306,7 @@
       intro3Title: "Start violent. End impossible.",
       intro3Body: "Your first ten seconds must already feel powerful. Everything after that is escalation.",
       resultVictory: "Titan erased",
+      resultVictoryGauntlet: "Corridor locked",
       resultDefeat: "Run collapsed",
       bossStateDead: "Dead",
       bossStateAlive: "Alive",
@@ -301,8 +407,11 @@
       modeBossBody: "Start under pressure. Boss arrives almost immediately with fewer adds.",
       modeRiftName: "Abyss Rift",
       modeRiftBody: "Longer collapse run. Denser waves, later titan, richer loot and data.",
+      modeGauntletName: "Gauntlet",
+      modeGauntletBody: "No titan showdown. Survive an elite-heavy corridor and cash out overclocked drops.",
       modeBossUnlockRule: "Unlocked after the first titan kill",
       modeRiftUnlockRule: "Unlocked after the second titan kill",
+      modeGauntletUnlockRule: "Unlocked after the third titan kill",
       regionRedcityName: "Red City",
       regionSanctuaryName: "Iron Sanctuary",
       regionBlacktideName: "Black Tide",
@@ -345,10 +454,12 @@
       seraResource: "MOMENTUM",
       baseBossSummary: "{body} World Boss mode starts almost immediately in {region} and pays out harder.",
       baseRiftSummary: "{body} Abyss Rift keeps the collapse open longer in {region} and pays out richer salvage.",
+      baseGauntletSummary: "{body} Gauntlet strips out the titan in {region} and replaces it with nonstop elite pressure and overclocked loot.",
       baseRegionSummary: "{body} Current region: {regionBody}",
       baseBossTitle: "{hunter} vs {boss}",
       baseRegionTitle: "{hunter} in {region}",
       deployRift: "Dive Into Abyss Rift",
+      deployGauntlet: "Lock Into Gauntlet",
       ftueClaimed: "CLAIMED",
       ftueReady: "READY TO CACHE",
       ftueProgress: "PROGRESS // {progress}",
@@ -403,6 +514,8 @@
       contractSalvageBody: "Salvage 2 dropped items.",
       contractRiftTitle: "Rift Lockdown",
       contractRiftBody: "Seal 2 Abyss Rift runs.",
+      contractGauntletTitle: "Gauntlet Lock",
+      contractGauntletBody: "Clear 2 Gauntlet runs.",
       resultEquipNow: "Equip now",
       resultEquippedNextRun: "Equipped for next run",
       resultAlreadyActive: "This drop is already active.",
@@ -440,6 +553,39 @@
       riftBank: "Rift seals: {count}",
       riftResourceBody: "Abyss Rift is the long salvage lane. It pays richer drops, more data, and mode-specific forged gear.",
       riftExclusive: "ABYSS RIFT EXCLUSIVE // RIFTCUT gear + salvage spikes",
+      gauntletResourceLabel: "GAUNTLET CIRCUIT",
+      gauntletBank: "Gauntlet clears: {count}",
+      gauntletResourceBody: "Gauntlet is the score lane. No titan spawns here, just escalating elites, faster pass gains, and overclocked gear drops.",
+      gauntletExclusive: "GAUNTLET EXCLUSIVE // Overclocked gear + pass spikes",
+      gauntletRecordLabel: "GAUNTLET RECORD",
+      gauntletRecordTitle: "Best lockdown: {score}",
+      gauntletRecordBody: "Best kill-count score saved on this device. Use it as the local leaderboard until real ranking exists.",
+      gauntletRecordEmpty: "No Gauntlet record yet. Clear one run to seed the local board.",
+      gauntletBoardLabel: "LOCAL TOP RUNS",
+      gauntletBoardEntry: "#{rank} // {hunter} // {region} // {score}",
+      recordsLabel: "RECORDS",
+      recordsTitle: "Prototype performance board",
+      recordsBody: "This is the local progression readout: total runs, clear counts, and the current Gauntlet board.",
+      regionRecordsLabel: "REGION PEAKS",
+      regionRecordBody: "{region} // {kills} kills // {mode} // {hunter}",
+      regionRecordEmpty: "{region} // no record yet",
+      recordHuntBest: "Main Hunt best kills",
+      recordBossBest: "World Boss best time",
+      recordRiftBest: "Abyss Rift best kills",
+      recordWorldBossWins: "World Boss clears",
+      recordRiftWins: "Rift clears",
+      recordGauntletWins: "Gauntlet clears",
+      recordGauntletBest: "Best Gauntlet score",
+      recordNoClear: "No clear yet",
+      recentRunsLabel: "RECENT RUNS",
+      recentRunsEmpty: "No runs logged yet.",
+      runStateVictory: "CLEAR",
+      runStateDefeat: "FAIL",
+      recentRunEntry: "#{rank} // {mode} // {state} // {kills}K // LV {level} // {time} // {region} // {hunter}",
+      huntRecordLine: " Main Hunt best kills {count}.",
+      bossRecordLine: " World Boss best time {time}.",
+      riftRecordLine: " Abyss Rift best kills {count}.",
+      newModeRecordLine: " New mode record.",
       howItPlaysLabel: "HOW IT PLAYS",
       howItPlaysTitle: "Kill fast, stay hot",
       howItPlaysBody: "Every kill refreshes the blood echo timer. While active, your auto-attack rhythm accelerates and payouts creep upward, so the best loop is constant aggression.",
@@ -459,18 +605,25 @@
       opsRewardBanked: "This ops reward is already banked.",
       cashOutNow: "Cash out this short-session reward now.",
       keepLooping: "Keep looping runs, boss kills, and salvage to clear it.",
+      contractGauntletTitle: "Gauntlet Lock",
+      contractGauntletBody: "Clear 2 Gauntlet runs.",
       worldBossInbound: "WORLD BOSS INBOUND",
       breakBothWeakpoints: "BREAK BOTH WEAKPOINTS",
       exposedCore: "{boss} // EXPOSED CORE",
       titanDown: "TITAN DOWN",
       surviveUntilTitan: "SURVIVE {seconds}s UNTIL TITAN",
+      holdTheGauntlet: "HOLD THE CORRIDOR // {seconds}s LEFT",
       shatterTitanArmor: "SHATTER THE TITAN ARMOR",
       bloodRushEndRun: "BLOOD RUSH // END THE RUN",
+      gauntletBurn: "GAUNTLET BURN // HOLD THE SCORE",
+      gauntletRunComplete: "GAUNTLET LOCKED DOWN",
       runCompleteText: "RUN COMPLETE",
       firstRunCacheLine: "First run cache: +120 gold / +6 cores / +10 data",
       firstTitanBountyLine: "First titan kill bounty: +220 gold / +10 cores / +24 data",
       worldBossPayoutLine: "World Boss payout boosted by 35%",
       riftPayoutLine: "Abyss Rift payout boosted by 22%",
+      gauntletPayoutLine: "Gauntlet payout boosted by 18%",
+      gauntletLiveLine: "Gauntlet clear banked: +1 lockdown",
       genomeSampleLine: "Genome sample secured: +{genes} genes",
       seasonBreakpointBonusLine: "Season breakpoint cleared: +90 gold / +16 data",
       seasonRelicUnlockedLine: "Season relic unlocked: {title}",
@@ -480,6 +633,8 @@
       resultNewRelicLine: " New relic unlocked: {title}.",
       resultNewSeasonRelicLine: " Season relic unlocked: {title}.",
       resultLootLine: " Loot: {items}.",
+      gauntletNewRecordLine: " New Gauntlet record: {score}.",
+      gauntletScoreLine: " Gauntlet score {score}.",
       resultModeLabel: "MODE",
       resultModeHuntTitle: "Main Hunt sweep",
       resultModeHuntBody: "Standard field payout. Build tempo and lane control decide the run.",
@@ -487,6 +642,9 @@
       resultModeBossBody: "Gene payout and Titanforged drops spike here. This is the permanent power lane.",
       resultModeRiftTitle: "Abyss Rift collapse",
       resultModeRiftBody: "Long-form salvage lane. More drops, more data, and denser collapse pressure.",
+      resultModeGauntletTitle: "Gauntlet lockdown",
+      resultModeGauntletBody: "Pure survival lane. No titan, only escalating elites, overclocked drops, and higher pass momentum.",
+      bossStateCleared: "Cleared",
       hudKills: "KILLS {count}",
       hudLevel: "LV {level}",
       hudDashReady: "DASH",
@@ -508,6 +666,7 @@
       lootSourceHunt: "FIELD DROP",
       lootSourceBoss: "TITANFORGED",
       lootSourceRift: "RIFTCUT",
+      lootSourceGauntlet: "OVERCLOCKED",
       eventIntroCain: "MOVE WITH THE LEFT PAD. CAIN ATTACKS AUTOMATICALLY.",
       eventIntroDex: "MOVE WITH THE LEFT PAD. DEX SUPPRESSES TARGETS FROM RANGE.",
       eventIntroRia: "MOVE WITH THE LEFT PAD. RIA TAGS TARGETS WITH CURSE MARKS.",
@@ -562,6 +721,23 @@
       titleSubtitle: "신을 죽이고, 심장을 수확하고, 더 강해져 돌아와라.",
       titleBody:
         "헌터 선택, 지역 선택, 보스 처치, 루트 드랍, 빌드 스파이크를 담은 하이퍼 액션 모바일 RPG 프로토타입.",
+      deployEyebrow: "출격 시퀀스 // 라이브",
+      chapterUnlockEyebrow: "챕터 해금",
+      chapterUnlockSubtitle: "신규 작전 개방",
+      chapterUnlockBody: "작전 지도에서 {region}이 개방됐다. 다음 타이탄이 변이하기 전에 새 전선을 밀어붙여라.",
+      regionRedcityReward: "보상: 초반 장비 스파이크, 리버 세트 조각, 빠른 템포 확보.",
+      regionRedcityThreat: "위협: 붕괴한 도로와 야생 군체 돌입.",
+      regionRedcityCommand: "명령: 라인을 찢고 템포를 쌓은 뒤 타이탄 코어를 적출해라.",
+      regionSanctuaryReward: "보상: 유전자 회수, 정밀 방어 장비, 시그널 계열 파밍.",
+      regionSanctuaryThreat: "위협: 기계 교단 요새화와 신호 왜곡.",
+      regionSanctuaryCommand: "명령: 아콘이 안정화되기 전에 외곽 전선을 부수고 발판을 확보해라.",
+      regionBlacktideReward: "보상: 심연 세트, 균열 분해물, 고점 시즌 보상.",
+      regionBlacktideThreat: "위협: 심연 개화 수역과 전 방향 레비아탄 압박.",
+      regionBlacktideCommand: "명령: 계속 움직이며 조수 포위를 끊고, 평원이 잠기기 전에 척추를 잘라라.",
+      deployBodyHunt: "라인을 밀어붙여 스파이크를 쌓고, 루트가 닫히기 전에 타이탄을 부숴라.",
+      deployBodyBoss: "보스 압박이 즉시 들어온다. 약점을 빠르게 깨고 유전자를 회수해라.",
+      deployBodyRift: "붕괴를 더 오래 버텨라. 웨이브는 더 빽빽하고 보상은 더 크다.",
+      deployBodyGauntlet: "타이탄은 없다. 끊임없이 몰려오는 엘리트를 버티며 학살 회랑을 봉쇄해라.",
       showcaseLabel: "헌터 프로필",
       showcaseRoleLabel: "전투 루프",
       showcaseWeaponLabel: "핵심 무장",
@@ -570,6 +746,7 @@
       showcaseBackdropHunt: "현장 루트 // 드랍과 템포 스파이크",
       showcaseBackdropBoss: "보스 루트 // 유전자와 타이탄단조 드랍",
       showcaseBackdropRift: "균열 루트 // 데이터와 균열단조 분해 보상",
+      showcaseBackdropGauntlet: "학살 회랑 // 점수 압박과 오버클럭 드랍",
       cainShowcaseRole: "전열을 박살내며 버티는 광전사. 흡혈과 처형 압박이 강하다.",
       cainShowcaseWeapon: "클리버 계열 오버킬 대형 무기",
       dexShowcaseRole: "드론과 오버드라이브 리듬으로 라인을 잠그는 원거리 제압형.",
@@ -595,11 +772,30 @@
       bestKills: "최고 처치",
       objective: "목표",
       launchTrack: "런치 트랙",
+      operationMap: "작전 지도",
+      operationBriefing: "지역 브리핑",
+      operationTarget: "표적",
+      operationThreat: "위협",
+      operationCommand: "지시",
+      operationReward: "보상",
+      operationMode: "추천 모드",
+      operationHunter: "추천 헌터",
+      operationDeploy: "추천 출격 시작",
+      operationDeployBody: "이 챕터에 맞는 추천 헌터와 모드를 적용한 뒤 바로 전장으로 투입된다.",
+      operationNodeClears: "{count}회 클리어",
+      operationNodeUncleared: "미클리어",
+      operationNodeActive: "선택",
+      operationNodeLocked: "잠금",
+      operationNodeCleared: "활성",
+      operationNodeNew: "신규",
+      operationChapter: "{index}장",
       tabEquipment: "장비",
       tabRelics: "리릭",
       tabResearch: "연구",
       tabAscension: "각성",
+      tabRecords: "기록",
       tabSeason: "시즌",
+      tabShop: "상점",
       tabSettings: "설정",
       runOver: "런 종료",
       kills: "처치",
@@ -608,6 +804,56 @@
       retryNow: "즉시 재도전",
       backToBase: "베이스 복귀",
       settings: "설정",
+      shopLabel: "상점 루프",
+      shopTitle: "프로토타입 수익 구조 보드",
+      shopBody: "이 탭의 상품은 전부 더미다. 시즌 패스 업그레이드, 첫 결제 전환, 코스메틱 판매를 어디에 둘지 보여주는 용도다.",
+      shopSeasonPassTitle: "붉은 월식 패스 업그레이드",
+      shopSeasonPassBody: "시즌 XP 가속, 전용 코스메틱, 더 촘촘한 보상선을 중심으로 설계한 프리미엄 트랙이다.",
+      shopStarterTitle: "스타터 혈흔 캐시",
+      shopStarterBody: "첫 결제를 가볍게 여는 저가 패키지. 장비 템포와 코어를 주되 게임 루프를 깨지 않는다.",
+      shopWeeklyTitle: "주간 전장 보급",
+      shopWeeklyBody: "매일 접속할수록 가치가 올라가는 유지형 상품. 코어, 데이터, 주간 파밍 여유를 묶어 준다.",
+      shopSkinTitle: "스킨 볼트 번들",
+      shopSkinBody: "전투력과 무관한 외형 상품. 헌터 쇼케이스 프레임, 피니시 연출, 킬 플래시 색을 바꾼다.",
+      shopPremiumNoteTitle: "프로토타입 전용 결제 더미",
+      shopPremiumNoteBody: "실제 결제는 연결되어 있지 않다. 라이브 서비스에서 어느 자리에 BM이 들어갈지만 보여준다.",
+      starterCacheLabel: "스타터 팩",
+      cosmeticVaultLabel: "코스메틱",
+      premiumNoteLabel: "프리미엄 안내",
+      shopPreviewLabel: "코스메틱 프리뷰",
+      shopPreviewTitle: "정체성 판매 구간",
+      shopPreviewBody: "이 프리뷰 카드는 전투력 루프가 잡힌 뒤에 어떤 외형 상품을 위에 노출할지 보여주는 더미다.",
+      shopPreviewBodyHunter: "현재 기준 헌터는 {hunter}이다. 코스메틱 프리뷰도 선택한 헌터에 맞춰 바뀌어, 상점이 단순 인벤토리보다 정체성 판매 화면처럼 보이게 한다.",
+      shopPreviewFinisher: "붉은 피니시 플레어",
+      shopPreviewFrame: "시그널 프레임 키트",
+      shopPreviewTrail: "균열 궤적 버스트",
+      shopPreviewFinisherHunter: "{hunter} 전용 피니시 플레어",
+      shopPreviewFrameHunter: "{hunter} 시그널 프레임",
+      shopPreviewTrailHunter: "{hunter} 균열 궤적",
+      shopOfferPassMeta: "프리미엄 패스 // 보상 가속",
+      shopOfferStarterMeta: "첫 결제 전환 // 초반 템포 상승",
+      shopOfferWeeklyMeta: "유지형 상품 // 일일 루프 보강",
+      shopOfferSkinMeta: "코스메틱 번들 // 정체성 판매",
+      shopPreviewSkinOn: "미리보기 스킨 활성",
+      shopPreviewSkinOff: "미리보기 스킨 비활성",
+      shopToggleSkinPreview: "스킨 미리보기 전환",
+      shopPreviewActiveBody: "현재 헌터의 쇼케이스, 출격 카드, 궁극 컷인이 코스메틱 프리뷰 톤으로 바뀐다.",
+      shopPreviewInactiveBody: "코스메틱 프리뷰가 꺼져 있다. 다시 켜면 쇼케이스와 전투 연출 패널이 함께 바뀐다.",
+      shopSkinPreviewEnabled: "{hunter} 코스메틱 프리뷰 적용.",
+      shopSkinPreviewDisabled: "{hunter} 코스메틱 프리뷰 해제.",
+      showcasePreviewSkin: "미리보기 스킨",
+      deployPreviewLabel: "코스메틱 프리뷰 // 출격",
+      ultimatePreviewLabel: "코스메틱 프리뷰 // 컷인",
+      finishPreviewLabel: "코스메틱 프리뷰 // 피니시",
+      shopSpotlightLabel: "추천 상품",
+      openShop: "상점 열기",
+      shopJumpPassBody: "이미 시즌 XP가 돌고 있다. 실제 서비스라면 이 지점에 프리미엄 패스 업셀이 가장 자연스럽게 붙는다.",
+      shopJumpStarterBody: "초반 성장선이 아직 만들어지는 구간이다. 첫 결제 전환용 스타터 팩은 여기에 놓는 게 맞다.",
+      shopJumpWeeklyBody: "반복 플레이 구간에 들어왔다. 여기서는 주간 보급형 상품이 리텐션 루프를 가장 자연스럽게 받친다.",
+      shopJumpSkinBody: "전투력 루프는 이미 잡혔다. 이제는 수치보다 정체성을 파는 코스메틱 번들이 어울린다.",
+      viewOffer: "상품 보기",
+      previewOnly: "프리뷰 전용",
+      noCheckout: "실제 결제는 없다. 프로토타입용 상품 프리뷰만 표시한다.",
       settingsFeedbackTitle: "프로토타입 피드백 제어",
       settingsFeedbackBody:
         "모바일 손맛을 여기서 조정한다. 사운드는 짧은 신스 효과음으로, 진동은 대시, 레벨업, 보스 등장, 피니시 순간에 들어간다.",
@@ -619,7 +865,7 @@
       objectiveFirstBloodTitle: "첫 피",
       objectiveFirstBloodBody: "메인 사냥에 들어가 타이탄을 만날 때까지 버텨라.",
       objectivePushTitle: "프로토타입 밀어붙이기",
-      objectivePushBody: "헌터를 바꾸고, 메인 사냥과 월드 보스를 번갈아 돌며 최적 루프를 찾자.",
+      objectivePushBody: "헌터를 바꾸고 메인 사냥, 월드 보스, 균열, 학살 회랑을 돌며 최적 루프를 찾자.",
       intro1Eyebrow: "프롤로그 // 01",
       intro1Title: "세계는 이미 졌다.",
       intro1Body: "먼저 도시가 무너졌고, 그다음 군대가 사라졌고, 마지막엔 물리 법칙이 찢어졌다. 남은 건 더 큰 걸 죽이는 일뿐이다.",
@@ -630,6 +876,7 @@
       intro3Title: "시작은 난폭하게. 끝은 불가능하게.",
       intro3Body: "첫 10초부터 이미 강해야 한다. 그 이후는 전부 과잉 성장이다.",
       resultVictory: "타이탄 말살",
+      resultVictoryGauntlet: "회랑 봉쇄",
       resultDefeat: "런 붕괴",
       bossStateDead: "처치",
       bossStateAlive: "생존",
@@ -730,8 +977,11 @@
       modeBossBody: "처음부터 압박 상태로 시작한다. 잡몹은 적고 보스가 거의 즉시 등장한다.",
       modeRiftName: "심연 균열",
       modeRiftBody: "더 길게 버티는 붕괴 런. 웨이브는 더 빽빽하고 드랍과 데이터가 더 크다.",
+      modeGauntletName: "학살 회랑",
+      modeGauntletBody: "타이탄 없이 엘리트 압박만 이어진다. 버티고 오버클럭 드랍을 회수하라.",
       modeBossUnlockRule: "첫 타이탄 처치 후 해금",
       modeRiftUnlockRule: "두 번째 타이탄 처치 후 해금",
+      modeGauntletUnlockRule: "세 번째 타이탄 처치 후 해금",
       regionRedcityName: "붉은 폐도",
       regionSanctuaryName: "철신 성역",
       regionBlacktideName: "검은 조수",
@@ -774,10 +1024,12 @@
       seraResource: "모멘텀",
       baseBossSummary: "{body} 월드 보스 모드는 {region}에서 거의 즉시 시작되고 보상도 더 세다.",
       baseRiftSummary: "{body} 심연 균열은 {region}의 붕괴를 더 오래 열어두고 더 좋은 분해 보상을 준다.",
+      baseGauntletSummary: "{body} 학살 회랑은 {region}의 타이탄을 빼고 끊임없는 엘리트 압박과 오버클럭 드랍으로 바꿔버린다.",
       baseRegionSummary: "{body} 현재 지역: {regionBody}",
       baseBossTitle: "{hunter} vs {boss}",
       baseRegionTitle: "{hunter} // {region}",
       deployRift: "심연 균열 진입",
+      deployGauntlet: "학살 회랑 진입",
       ftueClaimed: "수령 완료",
       ftueReady: "캐시 수령 가능",
       ftueProgress: "진행도 // {progress}",
@@ -832,6 +1084,8 @@
       contractSalvageBody: "드랍 아이템 2개를 분해하라.",
       contractRiftTitle: "균열 봉쇄",
       contractRiftBody: "심연 균열 런을 2회 봉인하라.",
+      contractGauntletTitle: "회랑 봉쇄",
+      contractGauntletBody: "학살 회랑 런을 2회 클리어하라.",
       resultEquipNow: "지금 장착",
       resultEquippedNextRun: "다음 런 장착 완료",
       resultAlreadyActive: "이 드랍은 이미 활성 상태다.",
@@ -869,6 +1123,39 @@
       riftBank: "균열 봉인 수: {count}",
       riftResourceBody: "심연 균열은 장기 분해 파밍 라인이다. 더 좋은 드랍, 더 많은 데이터, 전용 단조 장비를 준다.",
       riftExclusive: "심연 균열 전용 // 균열단조 장비 + 분해 스파이크",
+      gauntletResourceLabel: "학살 회랑 회선",
+      gauntletBank: "학살 회랑 클리어: {count}",
+      gauntletResourceBody: "학살 회랑은 점수형 생존 라인이다. 타이탄은 나오지 않고, 엘리트 압박과 패스 효율, 오버클럭 장비만 남는다.",
+      gauntletExclusive: "학살 회랑 전용 // 오버클럭 장비 + 패스 가속",
+      gauntletRecordLabel: "학살 회랑 기록",
+      gauntletRecordTitle: "최고 봉쇄 점수: {score}",
+      gauntletRecordBody: "이 기기에 저장된 최고 처치 점수다. 실제 리더보드 전까지는 로컬 기록판으로 쓴다.",
+      gauntletRecordEmpty: "아직 학살 회랑 기록이 없다. 한 번 클리어해서 로컬 기록판을 열어라.",
+      gauntletBoardLabel: "로컬 상위 런",
+      gauntletBoardEntry: "#{rank} // {hunter} // {region} // {score}",
+      recordsLabel: "기록",
+      recordsTitle: "프로토타입 성과 보드",
+      recordsBody: "총 런 수, 모드별 클리어 수, 현재 학살 회랑 기록판을 모아 보여준다.",
+      regionRecordsLabel: "지역별 최고 기록",
+      regionRecordBody: "{region} // {kills}처치 // {mode} // {hunter}",
+      regionRecordEmpty: "{region} // 아직 기록 없음",
+      recordHuntBest: "메인 사냥 최고 처치",
+      recordBossBest: "월드 보스 최고 시간",
+      recordRiftBest: "심연 균열 최고 처치",
+      recordWorldBossWins: "월드 보스 클리어",
+      recordRiftWins: "균열 클리어",
+      recordGauntletWins: "학살 회랑 클리어",
+      recordGauntletBest: "최고 학살 회랑 점수",
+      recordNoClear: "아직 기록 없음",
+      recentRunsLabel: "최근 런",
+      recentRunsEmpty: "아직 기록된 런이 없다.",
+      runStateVictory: "클리어",
+      runStateDefeat: "실패",
+      recentRunEntry: "#{rank} // {mode} // {state} // {kills}처치 // LV {level} // {time} // {region} // {hunter}",
+      huntRecordLine: " 메인 사냥 최고 처치 {count}.",
+      bossRecordLine: " 월드 보스 최고 시간 {time}.",
+      riftRecordLine: " 심연 균열 최고 처치 {count}.",
+      newModeRecordLine: " 모드 신기록 갱신.",
       howItPlaysLabel: "플레이 방식",
       howItPlaysTitle: "빠르게 죽이고, 열기를 유지하라",
       howItPlaysBody: "적을 죽일 때마다 블러드 에코 타이머가 갱신된다. 활성 중에는 자동 공격 리듬이 빨라지고 보상도 조금씩 올라가므로 최적 루프는 끊임없는 공격이다.",
@@ -893,13 +1180,18 @@
       exposedCore: "{boss} // 코어 노출",
       titanDown: "타이탄 격파",
       surviveUntilTitan: "타이탄까지 {seconds}초 생존",
+      holdTheGauntlet: "회랑 유지 // {seconds}초 남음",
       shatterTitanArmor: "타이탄 장갑을 파쇄하라",
       bloodRushEndRun: "블러드 러시 // 런 마무리",
+      gauntletBurn: "학살 회랑 // 점수를 지켜라",
+      gauntletRunComplete: "학살 회랑 봉쇄 완료",
       runCompleteText: "런 완료",
       firstRunCacheLine: "첫 런 캐시: +120 골드 / +6 코어 / +10 데이터",
       firstTitanBountyLine: "첫 타이탄 처치 보상: +220 골드 / +10 코어 / +24 데이터",
       worldBossPayoutLine: "월드 보스 보상 35% 증폭",
       riftPayoutLine: "심연 균열 보상 22% 증폭",
+      gauntletPayoutLine: "학살 회랑 보상 18% 증폭",
+      gauntletLiveLine: "학살 회랑 클리어 적립: +1 봉쇄",
       genomeSampleLine: "유전자 샘플 확보: +{genes} 유전자",
       seasonBreakpointBonusLine: "시즌 브레이크포인트 보상: +90 골드 / +16 데이터",
       seasonRelicUnlockedLine: "시즌 리릭 해금: {title}",
@@ -909,6 +1201,8 @@
       resultNewRelicLine: " 신규 리릭 해금: {title}.",
       resultNewSeasonRelicLine: " 시즌 리릭 해금: {title}.",
       resultLootLine: " 드랍: {items}.",
+      gauntletNewRecordLine: " 학살 회랑 신기록: {score}.",
+      gauntletScoreLine: " 학살 회랑 점수 {score}.",
       resultModeLabel: "모드",
       resultModeHuntTitle: "메인 사냥 정리",
       resultModeHuntBody: "기본 현장 보상 루프다. 빌드 템포와 라인 제어가 성패를 가른다.",
@@ -916,6 +1210,9 @@
       resultModeBossBody: "유전자와 타이탄단조 드랍이 여기서 크게 튄다. 영구 성장의 핵심 라인이다.",
       resultModeRiftTitle: "심연 균열 붕괴",
       resultModeRiftBody: "장기 분해 파밍 라인이다. 드랍과 데이터가 더 크고 압박도 더 빽빽하다.",
+      resultModeGauntletTitle: "학살 회랑 봉쇄",
+      resultModeGauntletBody: "순수 생존 라인이다. 타이탄 없이 엘리트 압박, 오버클럭 드랍, 높은 패스 효율만 남는다.",
+      bossStateCleared: "클리어",
       hudKills: "처치 {count}",
       hudLevel: "레벨 {level}",
       hudDashReady: "대시",
@@ -937,6 +1234,7 @@
       lootSourceHunt: "현장 드랍",
       lootSourceBoss: "타이탄단조",
       lootSourceRift: "균열단조",
+      lootSourceGauntlet: "오버클럭",
       eventIntroCain: "왼쪽 패드로 이동한다. 카인은 자동으로 공격한다.",
       eventIntroDex: "왼쪽 패드로 이동한다. 덱스는 원거리에서 적을 제압한다.",
       eventIntroRia: "왼쪽 패드로 이동한다. 리아는 적에게 저주 표식을 남긴다.",
@@ -1138,6 +1436,17 @@
     return getCharacterCopy(id, "name") || characterDefs[id]?.name || "";
   }
 
+  function computeGauntletScore({ kills, level, victory }) {
+    return Math.round(kills * 100 + level * 60 + (victory ? 500 : 0));
+  }
+
+  function updateGauntletBoard(entry) {
+    const board = Array.isArray(meta.gauntletBoard) ? meta.gauntletBoard.slice() : [];
+    board.push(entry);
+    board.sort((a, b) => b.score - a.score);
+    meta.gauntletBoard = board.slice(0, 3);
+  }
+
   function getCharacterShowcase(id, field) {
     const table = {
       cain: {
@@ -1177,7 +1486,19 @@
   function getModeShowcasePayout(id) {
     if (id === "boss") return t("showcaseBackdropBoss");
     if (id === "rift") return t("showcaseBackdropRift");
+    if (id === "gauntlet") return t("showcaseBackdropGauntlet");
     return t("showcaseBackdropHunt");
+  }
+
+  function hasCosmeticPreview(characterId = meta.selectedCharacter) {
+    return (meta.cosmeticPreview?.[characterId] ?? 0) > 0;
+  }
+
+  function getDeployBody(modeId) {
+    if (modeId === "boss") return t("deployBodyBoss");
+    if (modeId === "rift") return t("deployBodyRift");
+    if (modeId === "gauntlet") return t("deployBodyGauntlet");
+    return t("deployBodyHunt");
   }
 
   function getModeCopy(id, field) {
@@ -1193,6 +1514,11 @@
         body: t("modeRiftBody"),
         unlockRule: t("modeRiftUnlockRule"),
       },
+      gauntlet: {
+        name: t("modeGauntletName"),
+        body: t("modeGauntletBody"),
+        unlockRule: t("modeGauntletUnlockRule"),
+      },
     };
     return table[id]?.[field] ?? "";
   }
@@ -1203,18 +1529,39 @@
         name: t("regionRedcityName"),
         bossName: t("regionRedcityBossName"),
         body: t("regionRedcityBody"),
+        threat: t("regionRedcityThreat"),
+        command: t("regionRedcityCommand"),
+        reward: t("regionRedcityReward"),
+        mode: getModeCopy("hunt", "name"),
+        modeId: "hunt",
+        hunter: getCharacterName("cain"),
+        hunterId: "cain",
         unlockRule: t("regionStarter"),
       },
       sanctuary: {
         name: t("regionSanctuaryName"),
         bossName: t("regionSanctuaryBossName"),
         body: t("regionSanctuaryBody"),
+        threat: t("regionSanctuaryThreat"),
+        command: t("regionSanctuaryCommand"),
+        reward: t("regionSanctuaryReward"),
+        mode: getModeCopy("boss", "name"),
+        modeId: "boss",
+        hunter: getCharacterName("dex"),
+        hunterId: "dex",
         unlockRule: t("regionAfterFirstTitan"),
       },
       blacktide: {
         name: t("regionBlacktideName"),
         bossName: t("regionBlacktideBossName"),
         body: t("regionBlacktideBody"),
+        threat: t("regionBlacktideThreat"),
+        command: t("regionBlacktideCommand"),
+        reward: t("regionBlacktideReward"),
+        mode: getModeCopy("rift", "name"),
+        modeId: "rift",
+        hunter: getCharacterName("ria"),
+        hunterId: "ria",
         unlockRule: t("regionAfterSeasonBreak"),
       },
     };
@@ -1253,6 +1600,7 @@
       "contract-titans": { title: t("contractTitansTitle"), body: t("contractTitansBody") },
       "contract-salvage": { title: t("contractSalvageTitle"), body: t("contractSalvageBody") },
       "contract-rift": { title: t("contractRiftTitle"), body: t("contractRiftBody") },
+      "contract-gauntlet": { title: t("contractGauntletTitle"), body: t("contractGauntletBody") },
     };
     return table[id]?.[field] ?? "";
   }
@@ -1381,6 +1729,7 @@
       body: "Build from weak mobs into a late titan showdown.",
       duration: 120,
       bossTime: 75,
+      hasBoss: true,
     },
     boss: {
       id: "boss",
@@ -1388,6 +1737,7 @@
       body: "Start under pressure. Boss arrives almost immediately with fewer adds.",
       duration: 95,
       bossTime: 4,
+      hasBoss: true,
     },
     rift: {
       id: "rift",
@@ -1395,6 +1745,15 @@
       body: "Longer collapse run with denser waves and richer salvage.",
       duration: 150,
       bossTime: 100,
+      hasBoss: true,
+    },
+    gauntlet: {
+      id: "gauntlet",
+      name: "Gauntlet",
+      body: "No titan. Escalating elite pressure and overclocked loot.",
+      duration: 135,
+      bossTime: 999,
+      hasBoss: false,
     },
   };
 
@@ -1840,6 +2199,18 @@
         return lang() === "ko" ? "계약 완료: +22 데이터 / +8 코어" : "Contract cleared: +22 data / +8 cores";
       },
     },
+    {
+      id: "contract-gauntlet",
+      title: "Gauntlet Lock",
+      body: "Clear 2 Gauntlet runs.",
+      progress: () => ({ current: Math.min(meta.gauntletWins, 2), target: 2 }),
+      isComplete: () => meta.gauntletWins >= 2,
+      claim: (meta) => {
+        meta.cores += 14;
+        meta.gold += 130;
+        return lang() === "ko" ? "계약 완료: +14 코어 / +130 골드" : "Contract cleared: +14 cores / +130 gold";
+      },
+    },
   ];
 
   const lootPools = {
@@ -2147,6 +2518,8 @@
     cores: 0,
     data: 0,
     genes: 0,
+    gauntletScore: 0,
+    gauntletRecord: false,
     newRelic: null,
     newSeasonRelic: null,
     bonusLines: [],
@@ -2158,6 +2531,9 @@
   let runFlags = { intro: false, levelHint: false, eliteHint: false, bossHint: false };
   let finisher = { active: false, timer: 0 };
   let ultimateCutin = { active: false, timer: 0 };
+  let deployIntro = { active: false, timer: 0 };
+  let chapterUnlockIntro = { active: false, timer: 0 };
+  const pendingRegionUnlocks = [];
   const introSlides = [1, 2, 3];
   let introIndex = 0;
 
@@ -2181,11 +2557,14 @@
     bestKillsLabel.textContent = t("bestKills");
     objectiveLabel.textContent = t("objective");
     launchTrackLabel.textContent = t("launchTrack");
+    operationLabel.textContent = t("operationMap");
     tabEquipment.textContent = t("tabEquipment");
     tabRelics.textContent = t("tabRelics");
     tabResearch.textContent = t("tabResearch");
     tabAscension.textContent = t("tabAscension");
+    tabRecords.textContent = t("tabRecords");
     tabSeason.textContent = t("tabSeason");
+    tabShop.textContent = t("tabShop");
     tabSettings.textContent = t("tabSettings");
     resultEyebrow.textContent = t("runOver");
     resultKillsLabel.textContent = t("kills");
@@ -2215,6 +2594,7 @@
     if (id === "hunt") return true;
     if (id === "boss") return meta.bossKills >= 1;
     if (id === "rift") return meta.bossKills >= 2;
+    if (id === "gauntlet") return meta.bossKills >= 3;
     return false;
   }
 
@@ -2598,6 +2978,15 @@
       contractClaims: [],
       worldBossWins: 0,
       riftWins: 0,
+      huntBestKills: 0,
+      bossBestTime: 0,
+      riftBestKills: 0,
+      regionRecords: {},
+      regionClears: {},
+      gauntletWins: 0,
+      gauntletBest: 0,
+      gauntletBoard: [],
+      recentRuns: [],
       runs: 0,
       bestKills: 0,
       bossKills: 0,
@@ -2605,6 +2994,9 @@
       selectedCharacter: "cain",
       selectedMode: "hunt",
       selectedRegion: "redcity",
+      seenRegionUnlocks: ["redcity"],
+      announcedRegionUnlocks: ["redcity"],
+      cosmeticPreview: { cain: 0, dex: 0, ria: 0, sera: 0 },
       nextItemId: 4,
       inventory: starters.inventory,
       equippedGear: starters.equippedGear,
@@ -2624,6 +3016,19 @@
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) return defaultMeta();
       const merged = { ...defaultMeta(), ...JSON.parse(raw) };
+      merged.cosmeticPreview = {
+        cain: 0,
+        dex: 0,
+        ria: 0,
+        sera: 0,
+        ...(merged.cosmeticPreview ?? {}),
+      };
+      merged.seenRegionUnlocks = Array.isArray(merged.seenRegionUnlocks)
+        ? merged.seenRegionUnlocks
+        : ["redcity"];
+      merged.announcedRegionUnlocks = Array.isArray(merged.announcedRegionUnlocks)
+        ? merged.announcedRegionUnlocks
+        : ["redcity"];
       hydrateInventory(merged);
       return merged;
     } catch {
@@ -2693,6 +3098,38 @@
 
     if (typeof metaState.nextItemId !== "number") {
       metaState.nextItemId = metaState.inventory.length + 1;
+    }
+
+    if (!Array.isArray(metaState.gauntletBoard)) {
+      metaState.gauntletBoard = [];
+    }
+
+    if (!Array.isArray(metaState.recentRuns)) {
+      metaState.recentRuns = [];
+    }
+
+    if (typeof metaState.gauntletBest !== "number") {
+      metaState.gauntletBest = 0;
+    }
+
+    if (typeof metaState.huntBestKills !== "number") {
+      metaState.huntBestKills = 0;
+    }
+
+    if (typeof metaState.bossBestTime !== "number") {
+      metaState.bossBestTime = 0;
+    }
+
+    if (typeof metaState.riftBestKills !== "number") {
+      metaState.riftBestKills = 0;
+    }
+
+    if (!metaState.regionRecords || typeof metaState.regionRecords !== "object") {
+      metaState.regionRecords = {};
+    }
+
+    if (!metaState.regionClears || typeof metaState.regionClears !== "object") {
+      metaState.regionClears = {};
     }
   }
 
@@ -2797,6 +3234,13 @@
         tone: "rift",
       };
     }
+    if (modeId === "gauntlet") {
+      return {
+        title: t("resultModeGauntletTitle"),
+        body: t("resultModeGauntletBody"),
+        tone: "gauntlet",
+      };
+    }
     return {
       title: t("resultModeHuntTitle"),
       body: t("resultModeHuntBody"),
@@ -2853,12 +3297,16 @@
             ? t("lootSourceBoss")
             : item.sourceMode === "rift"
               ? t("lootSourceRift")
+              : item.sourceMode === "gauntlet"
+                ? t("lootSourceGauntlet")
               : t("lootSourceHunt");
         const toneClass =
           item.sourceMode === "boss"
             ? "loot-card--boss"
             : item.sourceMode === "rift"
               ? "loot-card--rift"
+              : item.sourceMode === "gauntlet"
+                ? "loot-card--gauntlet"
               : "loot-card--hunt";
         return `
           ${index === 0 ? `<article class="loot-card loot-card--${modeSummary.tone === "boss" ? "epic" : modeSummary.tone === "rift" ? "rare" : "common"} ${toneClass}">
@@ -2913,6 +3361,7 @@
         <h2 class="loot-card__title">${fmt("seasonTotalXp", { xp: meta.seasonPassXp })}</h2>
         <p class="loot-card__body">${unlockedText}</p>
       </article>
+      ${renderShopSpotlightCard(getCurrentMode().id)}
     `;
   }
 
@@ -2933,6 +3382,8 @@
     const roll = Math.random();
     if (modeId === "boss") {
       rarity = roll > 0.86 ? "legendary" : roll > 0.56 ? "epic" : roll > 0.18 ? "rare" : "common";
+    } else if (modeId === "gauntlet") {
+      rarity = roll > 0.9 ? "legendary" : roll > 0.58 ? "epic" : roll > 0.22 ? "rare" : "common";
     } else if (victory) {
       rarity = roll > 0.92 ? "legendary" : roll > 0.64 ? "epic" : roll > 0.28 ? "rare" : "common";
     } else {
@@ -2988,6 +3439,23 @@
       } else {
         item.stats.xp = Number(((item.stats.xp ?? 0) + 0.05).toFixed(3));
         item.stats.reward = Number(((item.stats.reward ?? 0) + 0.04).toFixed(3));
+      }
+    } else if (modeId === "gauntlet") {
+      item.name =
+        region.id === "blacktide"
+          ? `Undercurrent ${base.name}`
+          : region.id === "sanctuary"
+            ? `Overclock Ward ${base.name}`
+            : `Killchain ${base.name}`;
+      if (slot === "weapon") {
+        item.stats.damage = (item.stats.damage ?? 0) + 5;
+        item.stats.attackSpeed = Number(((item.stats.attackSpeed ?? 0) + 0.04).toFixed(3));
+      } else if (slot === "armor") {
+        item.stats.hp = (item.stats.hp ?? 0) + 30;
+        item.stats.reward = Number(((item.stats.reward ?? 0) + 0.05).toFixed(3));
+      } else {
+        item.stats.xp = Number(((item.stats.xp ?? 0) + 0.06).toFixed(3));
+        item.stats.attackSpeed = Number(((item.stats.attackSpeed ?? 0) + 0.03).toFixed(3));
       }
     } else if (region.id === "blacktide") {
       item.name = `Tideworn ${base.name}`;
@@ -3377,6 +3845,65 @@
     ultOverlay.classList.add("hidden");
   }
 
+  function hideDeployIntro() {
+    deployIntro = { active: false, timer: 0 };
+    deployOverlay.classList.add("hidden");
+  }
+
+  function hideChapterUnlock() {
+    chapterUnlockIntro = { active: false, timer: 0 };
+    chapterOverlay.classList.add("hidden");
+    if (screen === "base" && pendingRegionUnlocks.length > 0) {
+      triggerChapterUnlock(pendingRegionUnlocks.shift());
+    }
+  }
+
+  function triggerChapterUnlock(regionId) {
+    const region = regionDefs[regionId];
+    if (!region) return;
+    chapterUnlockIntro = { active: true, timer: 1.9 };
+    chapterPanel.dataset.region = regionId;
+    chapterEyebrow.textContent = t("chapterUnlockEyebrow");
+    chapterTitle.textContent = `${fmt("operationChapter", { index: Object.keys(regionDefs).indexOf(regionId) + 1 })} // ${getRegionCopy(regionId, "name") || region.name}`;
+    chapterSubtitle.textContent = t("chapterUnlockSubtitle");
+    chapterBody.textContent = fmt("chapterUnlockBody", {
+      region: getRegionCopy(regionId, "name") || region.name,
+    });
+    chapterThreat.textContent = getRegionCopy(regionId, "threat");
+    chapterCommand.textContent = getRegionCopy(regionId, "command");
+    chapterOverlay.classList.remove("hidden");
+  }
+
+  function queueUnlockedRegionOverlays() {
+    let mutated = false;
+    for (const regionId of Object.keys(regionDefs)) {
+      if (!isRegionUnlocked(regionId)) continue;
+      if (meta.announcedRegionUnlocks.includes(regionId)) continue;
+      meta.announcedRegionUnlocks.push(regionId);
+      pendingRegionUnlocks.push(regionId);
+      mutated = true;
+    }
+    if (mutated) saveMeta();
+    if (screen === "base" && !chapterUnlockIntro.active && pendingRegionUnlocks.length > 0) {
+      triggerChapterUnlock(pendingRegionUnlocks.shift());
+    }
+  }
+
+  function triggerDeployIntro(character, mode, region) {
+    deployIntro = { active: true, timer: 0.95 };
+    deployPanel.dataset.region = region.id;
+    deployPanel.dataset.hunter = character.id;
+    deployPanel.dataset.preview = hasCosmeticPreview(character.id) ? "1" : "0";
+    deployEyebrow.textContent = t("deployEyebrow");
+    if (hasCosmeticPreview(character.id)) {
+      deployEyebrow.textContent = t("deployPreviewLabel");
+    }
+    deployTitle.textContent = `${getCharacterName(character.id)} // ${getRegionCopy(region.id, "name") || region.name}`;
+    deploySubtitle.textContent = `${getModeCopy(mode.id, "name")} // ${getRegionCopy(region.id, "bossName") || region.bossName}`;
+    deployBody.textContent = getDeployBody(mode.id);
+    deployOverlay.classList.remove("hidden");
+  }
+
   function triggerUltimateCutin(characterId) {
     const toneClass =
       characterId === "dex"
@@ -3388,7 +3915,9 @@
             : "ult-red";
     ultPanel.classList.remove("ult-red", "ult-blue", "ult-violet", "ult-silver");
     ultPanel.classList.add(toneClass);
-    ultEyebrow.textContent = t("ultimateEyebrow");
+    ultPanel.dataset.hunter = characterId;
+    ultPanel.dataset.preview = hasCosmeticPreview(characterId) ? "1" : "0";
+    ultEyebrow.textContent = hasCosmeticPreview(characterId) ? t("ultimatePreviewLabel") : t("ultimateEyebrow");
     ultTitle.textContent = getCharacterCopy(characterId, "ultLabel");
     ultSubtitle.textContent = getCharacterCopy(characterId, "baseBody");
     ultOverlay.classList.remove("hidden");
@@ -3399,9 +3928,13 @@
     const mode = getCurrentMode();
     const region = getCurrentRegion();
     const bossName = getRegionCopy(region.id, "bossName") || defeatedBoss.name;
+    const characterId = meta.selectedCharacter;
+    const previewLive = hasCosmeticPreview(characterId);
     finisher.active = true;
     finisher.timer = 1.05;
     finishPanel.classList.remove("finish-red", "finish-blue", "finish-green");
+    finishPanel.dataset.hunter = characterId;
+    finishPanel.dataset.preview = previewLive ? "1" : "0";
     if (region.id === "sanctuary") {
       finishPanel.classList.add("finish-blue");
       finishEyebrow.textContent = t(
@@ -3441,6 +3974,9 @@
       finishSubtitle.textContent = fmt("finishSubtitleRedcity", {
         boss: bossName,
       });
+    }
+    if (previewLive) {
+      finishEyebrow.textContent = t("finishPreviewLabel");
     }
     playTone("finish");
     pulseVibration([40, 30, 60]);
@@ -3809,6 +4345,12 @@
             : elapsed < 88
               ? 0.42
               : 0.34
+        : mode.id === "gauntlet"
+          ? elapsed < 30
+            ? 0.48
+            : elapsed < 80
+              ? 0.34
+              : 0.26
         : elapsed < 30
           ? 0.75
           : elapsed < 70
@@ -3823,8 +4365,26 @@
     const y = player.y + Math.sin(angle) * distanceFromPlayer;
 
     let type = "grunt";
-    const shooterBias = region.id === "sanctuary" ? 0.36 : region.id === "blacktide" ? 0.18 : 0.22;
-    const chargerBias = region.id === "sanctuary" ? 0.1 : region.id === "blacktide" ? 0.14 : 0.18;
+    const shooterBias =
+      mode.id === "gauntlet"
+        ? region.id === "sanctuary"
+          ? 0.42
+          : 0.28
+        : region.id === "sanctuary"
+          ? 0.36
+          : region.id === "blacktide"
+            ? 0.18
+            : 0.22;
+    const chargerBias =
+      mode.id === "gauntlet"
+        ? region.id === "sanctuary"
+          ? 0.16
+          : 0.24
+        : region.id === "sanctuary"
+          ? 0.1
+          : region.id === "blacktide"
+            ? 0.14
+            : 0.18;
     const drifterBias = region.id === "blacktide" ? 0.24 : 0;
     const wardenBias =
       region.id === "blacktide"
@@ -3832,13 +4392,21 @@
           ? 0.08
           : mode.id === "rift"
             ? 0.16
+            : mode.id === "gauntlet"
+              ? 0.18
             : 0.12
         : 0;
     if (elapsed > 22 && Math.random() < shooterBias) type = "shooter";
     if (elapsed > 28 && Math.random() < drifterBias) type = "drifter";
     if (elapsed > 36 && Math.random() < chargerBias) type = "charger";
     if (elapsed > 46 && Math.random() < wardenBias) type = "warden";
-    if (type === "grunt" && elapsed > 42 && Math.random() < (mode.id === "boss" ? 0.04 : mode.id === "rift" ? 0.12 : 0.08)) type = "elite";
+    if (
+      type === "grunt" &&
+      elapsed > 42 &&
+      Math.random() < (mode.id === "boss" ? 0.04 : mode.id === "rift" ? 0.12 : mode.id === "gauntlet" ? 0.22 : 0.08)
+    ) {
+      type = "elite";
+    }
 
     enemies.push(createEnemy(type, clamp(x, -WORLD, WORLD), clamp(y, -WORLD, WORLD)));
   }
@@ -3846,6 +4414,7 @@
   function spawnBossIfNeeded() {
     const mode = getCurrentMode();
     const region = getCurrentRegion();
+    if (mode.hasBoss === false) return;
     if (bossSpawned || elapsed < mode.bossTime) return;
     boss = createBoss();
     if (mode.id === "boss") {
@@ -4446,6 +5015,7 @@
 
   function renderBackground() {
     const region = getCurrentRegion();
+    const deployGlow = deployIntro.active ? deployIntro.timer / 0.95 : 0;
     ctx.fillStyle = region.palette.bg;
     ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
@@ -4478,6 +5048,57 @@
       ctx.beginPath();
       ctx.arc(pos.x, pos.y, 70 + (i % 3) * 18, 0, Math.PI * 2);
       ctx.fill();
+    }
+
+    ctx.save();
+    ctx.globalAlpha = 0.2 + deployGlow * 0.12;
+    if (region.id === "sanctuary") {
+      ctx.fillStyle = "rgba(184, 255, 244, 0.18)";
+      for (let i = 0; i < 4; i += 1) {
+        const pos = worldToScreen(-920 + i * 460, -260 + (i % 2) * 180);
+        ctx.fillRect(pos.x, pos.y, 54 + i * 10, 200 + i * 28);
+      }
+    } else if (region.id === "blacktide") {
+      ctx.fillStyle = "rgba(169, 255, 242, 0.14)";
+      for (let i = 0; i < 5; i += 1) {
+        const pos = worldToScreen(-980 + i * 420, -180 + (i % 3) * 120);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y - 120);
+        ctx.lineTo(pos.x + 74, pos.y + 40);
+        ctx.lineTo(pos.x - 74, pos.y + 40);
+        ctx.closePath();
+        ctx.fill();
+      }
+    } else {
+      ctx.fillStyle = "rgba(255, 176, 92, 0.12)";
+      for (let i = 0; i < 5; i += 1) {
+        const pos = worldToScreen(-980 + i * 430, -250 + (i % 2) * 160);
+        ctx.beginPath();
+        ctx.rect(pos.x, pos.y, 58 + i * 10, 180 + i * 26);
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+
+    if (deployGlow > 0) {
+      ctx.save();
+      ctx.globalAlpha = deployGlow * 0.34;
+      const beamColor =
+        region.id === "sanctuary"
+          ? "rgba(120, 235, 255, 0.18)"
+          : region.id === "blacktide"
+            ? "rgba(110, 255, 228, 0.18)"
+            : "rgba(255, 176, 92, 0.18)";
+      ctx.fillStyle = beamColor;
+      ctx.beginPath();
+      ctx.moveTo(window.innerWidth * 0.5, 0);
+      ctx.lineTo(window.innerWidth * 0.5 + 120, window.innerHeight * 0.55);
+      ctx.lineTo(window.innerWidth * 0.5 - 120, window.innerHeight * 0.55);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = "rgba(255, 255, 255, 0.04)";
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.restore();
     }
   }
 
@@ -4674,11 +5295,30 @@
   function renderPlayer() {
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
+    const deployGlow = deployIntro.active ? deployIntro.timer / 0.95 : 0;
 
     ctx.fillStyle = player.rageModeTimer > 0 ? player.rageColor : player.color;
     ctx.beginPath();
     ctx.arc(centerX, centerY, player.radius, 0, Math.PI * 2);
     ctx.fill();
+
+    if (deployGlow > 0) {
+      ctx.strokeStyle =
+        player.characterId === "dex"
+          ? `rgba(120, 235, 255, ${0.18 + deployGlow * 0.28})`
+          : player.characterId === "ria"
+            ? `rgba(216, 140, 255, ${0.18 + deployGlow * 0.28})`
+            : player.characterId === "sera"
+              ? `rgba(187, 214, 255, ${0.18 + deployGlow * 0.28})`
+              : `rgba(255, 146, 51, ${0.18 + deployGlow * 0.28})`;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 26 + (1 - deployGlow) * 28, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 42 + (1 - deployGlow) * 36, 0, Math.PI * 2);
+      ctx.stroke();
+    }
 
     if (player.slashFlash > 0) {
       ctx.save();
@@ -4713,6 +5353,38 @@
       ctx.fill();
     }
 
+    if (player.characterId === "ria") {
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(elapsed * 0.9);
+      const runeAlpha = 0.14 + Math.min(0.22, player.seasonStacks * 0.012);
+      ctx.strokeStyle = `rgba(216, 140, 255, ${runeAlpha})`;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(0, -34);
+      ctx.lineTo(30, 18);
+      ctx.lineTo(-30, 18);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.rotate(-elapsed * 1.6);
+      ctx.beginPath();
+      ctx.arc(0, 0, 40 + Math.sin(elapsed * 6) * 2.5, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      if (player.shotFlash > 0 || player.seasonStacks > 0) {
+        for (let i = 0; i < 3; i += 1) {
+          const angle = elapsed * 1.8 + i * (Math.PI * 2 / 3);
+          const px = centerX + Math.cos(angle) * 24;
+          const py = centerY + Math.sin(angle) * 24;
+          ctx.fillStyle = `rgba(255, 168, 231, ${0.18 + i * 0.04})`;
+          ctx.beginPath();
+          ctx.arc(px, py, 4 + i, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
     if (player.dashBurstTimer > 0) {
       ctx.strokeStyle = "rgba(103, 211, 255, 0.4)";
       ctx.lineWidth = 4;
@@ -4727,6 +5399,37 @@
       ctx.beginPath();
       ctx.arc(centerX, centerY, 28 + Math.sin(elapsed * 12) * 4, 0, Math.PI * 2);
       ctx.stroke();
+    }
+
+    if (player.characterId === "sera") {
+      const facingAngle = Math.atan2(player.facingY, player.facingX);
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(facingAngle);
+      ctx.strokeStyle =
+        player.killRushTimer > 0 ? "rgba(196, 220, 255, 0.42)" : "rgba(170, 214, 255, 0.2)";
+      ctx.lineWidth = 3;
+      for (const offset of [-18, -8, 2]) {
+        ctx.beginPath();
+        ctx.moveTo(-20 + offset, -18);
+        ctx.lineTo(36 + offset, 0);
+        ctx.lineTo(-20 + offset, 18);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      if (player.killRushTimer > 0 || player.dashBurstTimer > 0) {
+        ctx.save();
+        ctx.translate(centerX - player.facingX * 18, centerY - player.facingY * 18);
+        ctx.rotate(facingAngle);
+        ctx.fillStyle = "rgba(187, 214, 255, 0.14)";
+        for (let i = 0; i < 3; i += 1) {
+          ctx.beginPath();
+          ctx.ellipse(-12 - i * 16, 0, 10 - i * 2, 18 - i * 3, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
     }
 
     if (player.overdriveTimer > 0) {
@@ -4865,6 +5568,11 @@
       );
       runFlags.bossHint = true;
     }
+
+    if (mode.id === "gauntlet" && !runFlags.bossHint && elapsed > 8) {
+      pushEvent(t("gauntletBurn"), 3.8);
+      runFlags.bossHint = true;
+    }
   }
 
   function getRunObjectiveText() {
@@ -4886,6 +5594,11 @@
       if (boss && boss.shielded) return t("collapseRiftArmor");
       if (boss) return t("sealRiftCore");
       return t("riftSealed");
+    }
+
+    if (mode.id === "gauntlet") {
+      const remaining = Math.max(0, Math.ceil(runDuration - elapsed));
+      return bossSpawned ? t("gauntletBurn") : fmt("holdTheGauntlet", { seconds: remaining });
     }
 
     if (!bossSpawned) {
@@ -4933,21 +5646,24 @@
   function applyRunRewards(reason) {
     const victory = reason === "victory";
     const mode = getCurrentMode();
+    const bossMode = mode.hasBoss !== false;
     const firstRun = meta.runs === 0;
-    const firstTitanKill = victory && meta.bossKills === 0;
+    const firstTitanKill = victory && bossMode && meta.bossKills === 0;
     const rewardMult =
       player.rewardMultiplier *
-      (mode.id === "boss" ? 1.35 : mode.id === "rift" ? 1.22 : 1);
+      (mode.id === "boss" ? 1.35 : mode.id === "rift" ? 1.22 : mode.id === "gauntlet" ? 1.18 : 1);
     let gold = Math.floor((player.kills * 8 + player.level * 24 + (victory ? 180 : 45)) * rewardMult);
     let cores = Math.floor((Math.max(2, player.level + Math.floor(player.kills / 12)) + (victory ? 8 : 0)) * rewardMult);
     let data = Math.floor((player.level * 4 + (victory ? 20 : 6)) * rewardMult);
     let genes = 0;
+    let gauntletScore = 0;
+    let gauntletRecord = false;
     const bonusLines = [];
     const passXpGain = Math.floor(
       player.kills * 0.9 +
       player.level * 6 +
       (victory ? 20 : 8) +
-      (mode.id === "boss" ? 18 : mode.id === "rift" ? 12 : 0),
+      (mode.id === "boss" ? 18 : mode.id === "rift" ? 12 : mode.id === "gauntlet" ? 14 : 0),
     );
     const seasonProgress = {
       kills: Math.min(player.kills, seasonDef.killTarget),
@@ -4977,6 +5693,9 @@
       bonusLines.push(fmt("genomeSampleLine", { genes }));
     } else if (mode.id === "rift") {
       bonusLines.push(t("riftPayoutLine"));
+    } else if (mode.id === "gauntlet") {
+      bonusLines.push(t("gauntletPayoutLine"));
+      gauntletScore = computeGauntletScore({ kills: player.kills, level: player.level, victory });
     }
 
     let newSeasonRelic = null;
@@ -5012,6 +5731,10 @@
           ? victory
             ? 3
             : 2
+        : mode.id === "gauntlet"
+          ? victory
+            ? 2
+            : 1
           : 1;
     const droppedItems = [];
     for (let i = 0; i < dropCount; i += 1) {
@@ -5028,16 +5751,74 @@
     meta.bestKills = Math.max(meta.bestKills, player.kills);
 
     let newRelic = null;
-    if (victory) {
+    if (victory && bossMode) {
       meta.bossKills += 1;
       newRelic = unlockNextRelic();
     }
+    if (victory) {
+      meta.regionClears[meta.selectedRegion] = (meta.regionClears[meta.selectedRegion] ?? 0) + 1;
+    }
     if (victory && mode.id === "boss") {
       meta.worldBossWins += 1;
+      if (meta.bossBestTime === 0 || elapsed < meta.bossBestTime) {
+        meta.bossBestTime = elapsed;
+        bonusLines.push(t("newModeRecordLine"));
+        bonusLines.push(fmt("bossRecordLine", { time: formatTime(elapsed) }));
+      }
     }
     if (victory && mode.id === "rift") {
       meta.riftWins += 1;
+      if (player.kills > meta.riftBestKills) {
+        meta.riftBestKills = player.kills;
+        bonusLines.push(t("newModeRecordLine"));
+        bonusLines.push(fmt("riftRecordLine", { count: player.kills }));
+      }
     }
+    if (victory && mode.id === "gauntlet") {
+      meta.gauntletWins += 1;
+      bonusLines.push(t("gauntletLiveLine"));
+      if (gauntletScore > meta.gauntletBest) {
+        meta.gauntletBest = gauntletScore;
+        gauntletRecord = true;
+        bonusLines.push(fmt("gauntletNewRecordLine", { score: gauntletScore }));
+      } else {
+        bonusLines.push(fmt("gauntletScoreLine", { score: gauntletScore }));
+      }
+      updateGauntletBoard({
+        score: gauntletScore,
+        kills: player.kills,
+        level: player.level,
+        hunter: meta.selectedCharacter,
+        region: meta.selectedRegion,
+      });
+    }
+    if (mode.id === "hunt" && player.kills > meta.huntBestKills) {
+      meta.huntBestKills = player.kills;
+      bonusLines.push(t("newModeRecordLine"));
+      bonusLines.push(fmt("huntRecordLine", { count: player.kills }));
+    }
+
+    const currentRegionRecord = meta.regionRecords?.[meta.selectedRegion];
+    if (!currentRegionRecord || player.kills > currentRegionRecord.kills) {
+      meta.regionRecords[meta.selectedRegion] = {
+        kills: player.kills,
+        mode: mode.id,
+        hunter: meta.selectedCharacter,
+      };
+    }
+
+    meta.recentRuns = [
+      {
+        mode: mode.id,
+        region: meta.selectedRegion,
+        hunter: meta.selectedCharacter,
+        victory,
+        kills: player.kills,
+        level: player.level,
+        time: elapsed,
+      },
+      ...(meta.recentRuns ?? []),
+    ].slice(0, 5);
 
     const ftueLines = processFtueMilestones();
     bonusLines.push(...ftueLines);
@@ -5048,6 +5829,8 @@
       cores,
       data,
       genes,
+      gauntletScore,
+      gauntletRecord,
       newRelic,
       newSeasonRelic,
       bonusLines,
@@ -5066,10 +5849,17 @@
     finishOverlay.classList.add("hidden");
     hideUltimateCutin();
     renderShellLabels();
-    resultTitle.textContent = reason === "victory" ? t("resultVictory") : t("resultDefeat");
+    const mode = getCurrentMode();
+    resultTitle.textContent =
+      reason === "victory"
+        ? mode.id === "gauntlet"
+          ? t("resultVictoryGauntlet")
+          : t("resultVictory")
+        : t("resultDefeat");
     resultBody.textContent =
       fmt("resultRecoveredLine", { gold: currentRewards.gold, cores: currentRewards.cores, data: currentRewards.data, genes: currentRewards.genes }) +
       fmt("resultSeasonXpLine", { xp: currentRewards.seasonPassGain }) +
+      (mode.id === "gauntlet" ? fmt("gauntletScoreLine", { score: currentRewards.gauntletScore }) : "") +
       (currentRewards.newRelic ? fmt("resultNewRelicLine", { title: lt(currentRewards.newRelic.title) }) : "") +
       (currentRewards.newSeasonRelic ? fmt("resultNewSeasonRelicLine", { title: lt(currentRewards.newSeasonRelic.title) }) : "") +
       (currentRewards.droppedItems.length > 0
@@ -5083,7 +5873,14 @@
     }
     resultKills.textContent = String(player.kills);
     resultLevel.textContent = String(player.level);
-    resultBoss.textContent = reason === "victory" ? t("bossStateDead") : bossSpawned ? t("bossStateAlive") : t("bossStateNotSpawned");
+    resultBoss.textContent =
+      mode.id === "gauntlet" && reason === "victory"
+        ? t("bossStateCleared")
+        : reason === "victory"
+          ? t("bossStateDead")
+          : bossSpawned
+            ? t("bossStateAlive")
+            : t("bossStateNotSpawned");
     renderResultRewards();
     renderSeasonResult();
     renderBase();
@@ -5100,6 +5897,7 @@
     ensureSelectionsUnlocked();
     const mode = getCurrentMode();
     const region = getCurrentRegion();
+    const character = characterDefs[meta.selectedCharacter] ?? characterDefs.cain;
     player = createPlayerFromMeta();
     runDuration = mode.duration;
     enemies.length = 0;
@@ -5117,6 +5915,8 @@
     eventBanner = { text: "", timer: 0 };
     runFlags = { intro: false, levelHint: false, eliteHint: false, bossHint: false };
     finisher = { active: false, timer: 0 };
+    deployIntro = { active: false, timer: 0 };
+    hideChapterUnlock();
     hideUltimateCutin();
     cameraShake = { time: 0, power: 0 };
     levelOverlay.classList.add("hidden");
@@ -5131,6 +5931,7 @@
     resultRewardStrip.innerHTML = "";
     resultLootGrid.innerHTML = "";
     resultSeasonProgress.innerHTML = "";
+    triggerDeployIntro(character, mode, region);
     setGameVisibility(true);
     screen = "run";
   }
@@ -5151,6 +5952,8 @@
     screen = "title";
     eventBanner = { text: "", timer: 0 };
     finisher = { active: false, timer: 0 };
+    hideDeployIntro();
+    hideChapterUnlock();
     hideUltimateCutin();
     titleOverlay.classList.remove("hidden");
     introOverlay.classList.add("hidden");
@@ -5174,6 +5977,8 @@
     screen = "intro";
     eventBanner = { text: "", timer: 0 };
     finisher = { active: false, timer: 0 };
+    hideDeployIntro();
+    hideChapterUnlock();
     hideUltimateCutin();
     titleOverlay.classList.add("hidden");
     introOverlay.classList.remove("hidden");
@@ -5190,6 +5995,8 @@
     screen = "base";
     eventBanner = { text: "", timer: 0 };
     finisher = { active: false, timer: 0 };
+    hideDeployIntro();
+    hideChapterUnlock();
     hideUltimateCutin();
     titleOverlay.classList.add("hidden");
     introOverlay.classList.add("hidden");
@@ -5202,6 +6009,7 @@
     resultLootGrid.innerHTML = "";
     resultSeasonProgress.innerHTML = "";
     setGameVisibility(false);
+    queueUnlockedRegionOverlays();
   }
 
   function renderEquipmentTab() {
@@ -5335,6 +6143,73 @@
         `;
       })
       .join("");
+  }
+
+  function renderOperationMap() {
+    const activeRegion = getCurrentRegion();
+    const nodes = Object.values(regionDefs)
+      .map((region, index) => {
+        const unlocked = isRegionUnlocked(region.id);
+        const active = meta.selectedRegion === region.id;
+        const isNew = unlocked && !(meta.seenRegionUnlocks ?? []).includes(region.id);
+        const clearCount = meta.regionClears?.[region.id] ?? 0;
+        const state = active
+          ? t("operationNodeActive")
+          : unlocked
+            ? t("operationNodeCleared")
+            : t("operationNodeLocked");
+        return `
+          <button class="operation-node${active ? " is-active" : ""}${unlocked ? "" : " is-locked"}${isNew ? " is-new" : ""}" data-action="select-region" data-id="${region.id}" type="button" ${unlocked ? "" : "disabled"}>
+            <span class="operation-node__chapter">${fmt("operationChapter", { index: index + 1 })}</span>
+            <strong class="operation-node__title">${getRegionCopy(region.id, "name") || region.name}</strong>
+            <span class="operation-node__state">${state}${isNew ? ` // ${t("operationNodeNew")}` : ""}</span>
+            <span class="operation-node__meta">${unlocked ? (clearCount > 0 ? fmt("operationNodeClears", { count: clearCount }) : t("operationNodeUncleared")) : "&nbsp;"}</span>
+            <span class="operation-node__body">${unlocked ? getRegionCopy(region.id, "body") : getRegionCopy(region.id, "unlockRule")}</span>
+          </button>
+        `;
+      })
+      .join("");
+
+    operationMap.innerHTML = `
+      <div class="operation-map__nodes">
+        ${nodes}
+      </div>
+      <article class="base-card operation-briefing" data-region="${activeRegion.id}">
+        <span class="base-card__label">${t("operationBriefing")}</span>
+        <h2 class="base-card__title">${getRegionCopy(activeRegion.id, "name") || activeRegion.name}</h2>
+        <p class="base-card__body">${getRegionCopy(activeRegion.id, "body")}</p>
+        <div class="operation-briefing__grid">
+          <article class="showcase-chip">
+            <span class="showcase-chip__label">${t("operationTarget")}</span>
+            <strong class="showcase-chip__value">${getRegionCopy(activeRegion.id, "bossName") || activeRegion.bossName}</strong>
+          </article>
+          <article class="showcase-chip">
+            <span class="showcase-chip__label">${t("operationThreat")}</span>
+            <strong class="showcase-chip__value">${getRegionCopy(activeRegion.id, "threat")}</strong>
+          </article>
+          <article class="showcase-chip">
+            <span class="showcase-chip__label">${t("operationCommand")}</span>
+            <strong class="showcase-chip__value">${getRegionCopy(activeRegion.id, "command")}</strong>
+          </article>
+          <article class="showcase-chip">
+            <span class="showcase-chip__label">${t("operationReward")}</span>
+            <strong class="showcase-chip__value">${getRegionCopy(activeRegion.id, "reward")}</strong>
+          </article>
+          <button class="showcase-chip showcase-chip--interactive" data-action="apply-operation-mode" data-id="${getRegionCopy(activeRegion.id, "modeId")}" type="button">
+            <span class="showcase-chip__label">${t("operationMode")}</span>
+            <strong class="showcase-chip__value">${getRegionCopy(activeRegion.id, "mode")}</strong>
+          </button>
+          <button class="showcase-chip showcase-chip--interactive" data-action="apply-operation-hunter" data-id="${getRegionCopy(activeRegion.id, "hunterId")}" type="button">
+            <span class="showcase-chip__label">${t("operationHunter")}</span>
+            <strong class="showcase-chip__value">${getRegionCopy(activeRegion.id, "hunter")}</strong>
+          </button>
+        </div>
+        <div class="operation-briefing__actions">
+          <p class="base-card__body">${t("operationDeployBody")}</p>
+          <button class="primary-button" data-action="deploy-operation" data-id="${activeRegion.id}" type="button">${t("operationDeploy")}</button>
+        </div>
+      </article>
+    `;
   }
 
   function renderRelicsTab() {
@@ -5539,9 +6414,258 @@
         <span class="upgrade-meta">${t("riftExclusive")}</span>
       </article>
       <article class="base-card">
+        <span class="base-card__label">${t("gauntletResourceLabel")}</span>
+        <h2 class="base-card__title">${fmt("gauntletBank", { count: meta.gauntletWins })}</h2>
+        <p class="base-card__body">${t("gauntletResourceBody")}</p>
+        <span class="upgrade-meta">${t("gauntletExclusive")}</span>
+      </article>
+      <article class="base-card">
         <span class="base-card__label">${t("howItPlaysLabel")}</span>
         <h2 class="base-card__title">${t("howItPlaysTitle")}</h2>
         <p class="base-card__body">${t("howItPlaysBody")}</p>
+      </article>
+      <div class="upgrade-row">
+        ${renderShopSpotlightCard()}
+      </div>
+    `;
+  }
+
+  function renderRecordsTab() {
+    const gauntletBoard = (meta.gauntletBoard ?? [])
+      .map((entry, index) => fmt("gauntletBoardEntry", {
+        rank: index + 1,
+        hunter: getCharacterName(entry.hunter),
+        region: getRegionCopy(entry.region, "name") || entry.region,
+        score: entry.score,
+      }))
+      .join("<br />");
+    const regionRecords = Object.keys(regionDefs)
+      .map((regionId) => {
+        const regionName = getRegionCopy(regionId, "name") || regionId;
+        const entry = meta.regionRecords?.[regionId];
+        if (!entry) return t("regionRecordEmpty").replace("{region}", regionName);
+        return fmt("regionRecordBody", {
+          region: regionName,
+          kills: entry.kills,
+          mode: getModeCopy(entry.mode, "name") || entry.mode,
+          hunter: getCharacterName(entry.hunter),
+        });
+      })
+      .join("<br />");
+    const recentRuns = (meta.recentRuns ?? [])
+      .map((entry, index) => fmt("recentRunEntry", {
+        rank: index + 1,
+        mode: getModeCopy(entry.mode, "name") || entry.mode,
+        state: entry.victory ? t("runStateVictory") : t("runStateDefeat"),
+        kills: entry.kills,
+        level: entry.level,
+        time: formatTime(entry.time),
+        region: getRegionCopy(entry.region, "name") || entry.region,
+        hunter: getCharacterName(entry.hunter),
+      }))
+      .join("<br />");
+
+    return `
+      <article class="base-card">
+        <span class="base-card__label">${t("recordsLabel")}</span>
+        <h2 class="base-card__title">${t("recordsTitle")}</h2>
+        <p class="base-card__body">${t("recordsBody")}</p>
+      </article>
+      <div class="results-grid results-grid--base">
+        <div class="result-card">
+          <span class="result-card__label">${t("runs")}</span>
+          <strong class="result-card__value">${meta.runs}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("bestKills")}</span>
+          <strong class="result-card__value">${meta.bestKills}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordHuntBest")}</span>
+          <strong class="result-card__value">${meta.huntBestKills}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordBossBest")}</span>
+          <strong class="result-card__value">${meta.bossBestTime > 0 ? formatTime(meta.bossBestTime) : t("recordNoClear")}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordRiftBest")}</span>
+          <strong class="result-card__value">${meta.riftBestKills}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordWorldBossWins")}</span>
+          <strong class="result-card__value">${meta.worldBossWins}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordRiftWins")}</span>
+          <strong class="result-card__value">${meta.riftWins}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordGauntletWins")}</span>
+          <strong class="result-card__value">${meta.gauntletWins}</strong>
+        </div>
+        <div class="result-card">
+          <span class="result-card__label">${t("recordGauntletBest")}</span>
+          <strong class="result-card__value">${meta.gauntletBest}</strong>
+        </div>
+      </div>
+      <article class="base-card">
+        <span class="base-card__label">${t("gauntletRecordLabel")}</span>
+        <h2 class="base-card__title">${fmt("gauntletRecordTitle", { score: meta.gauntletBest })}</h2>
+        <p class="base-card__body">${meta.gauntletBest > 0 ? t("gauntletRecordBody") : t("gauntletRecordEmpty")}</p>
+        <span class="upgrade-meta">${t("gauntletBoardLabel")}</span>
+        <p class="base-card__body">${gauntletBoard || t("gauntletRecordEmpty")}</p>
+      </article>
+      <article class="base-card">
+        <span class="base-card__label">${t("regionRecordsLabel")}</span>
+        <h2 class="base-card__title">${t("regionRecordsLabel")}</h2>
+        <p class="base-card__body">${regionRecords}</p>
+      </article>
+      <article class="base-card">
+        <span class="base-card__label">${t("recentRunsLabel")}</span>
+        <h2 class="base-card__title">${t("recentRunsLabel")}</h2>
+        <p class="base-card__body">${recentRuns || t("recentRunsEmpty")}</p>
+      </article>
+    `;
+  }
+
+  function renderShopTab() {
+    const hunterId = meta.selectedCharacter;
+    const hunterName = getCharacterName(hunterId);
+    const previewLive = hasCosmeticPreview(hunterId);
+    const offers = [
+      {
+        id: "season-pass",
+        label: t("seasonPassLabel"),
+        title: t("shopSeasonPassTitle"),
+        body: t("shopSeasonPassBody"),
+        meta: t("shopOfferPassMeta"),
+      },
+      {
+        id: "starter-cache",
+        label: t("starterCacheLabel"),
+        title: t("shopStarterTitle"),
+        body: t("shopStarterBody"),
+        meta: t("shopOfferStarterMeta"),
+      },
+      {
+        id: "weekly-supply",
+        label: t("liveContractsLabel"),
+        title: t("shopWeeklyTitle"),
+        body: t("shopWeeklyBody"),
+        meta: t("shopOfferWeeklyMeta"),
+      },
+      {
+        id: "skin-vault",
+        label: t("cosmeticVaultLabel"),
+        title: t("shopSkinTitle"),
+        body: t("shopSkinBody"),
+        meta: t("shopOfferSkinMeta"),
+      },
+    ];
+
+    return `
+      <article class="base-card">
+        <span class="base-card__label">${t("shopLabel")}</span>
+        <h2 class="base-card__title">${t("shopTitle")}</h2>
+        <p class="base-card__body">${t("shopBody")}</p>
+      </article>
+      <article class="base-card">
+        <span class="base-card__label">${t("shopPreviewLabel")}</span>
+        <h2 class="base-card__title">${t("shopPreviewTitle")}</h2>
+        <p class="base-card__body">${t("shopPreviewBody")}</p>
+        <p class="base-card__body">${fmt("shopPreviewBodyHunter", { hunter: hunterName })}</p>
+        <span class="upgrade-meta">${previewLive ? t("shopPreviewSkinOn") : t("shopPreviewSkinOff")}</span>
+        <div class="loot-grid shop-preview-grid" data-hunter="${hunterId}">
+          <article class="loot-card loot-card--legendary shop-preview-card shop-preview-card--finisher">
+            <span class="loot-card__label">${t("premiumNoteLabel")}</span>
+            <h2 class="loot-card__title">${fmt("shopPreviewFinisherHunter", { hunter: hunterName })}</h2>
+          </article>
+          <article class="loot-card loot-card--rare shop-preview-card shop-preview-card--frame">
+            <span class="loot-card__label">${t("cosmeticVaultLabel")}</span>
+            <h2 class="loot-card__title">${fmt("shopPreviewFrameHunter", { hunter: hunterName })}</h2>
+          </article>
+          <article class="loot-card loot-card--epic shop-preview-card shop-preview-card--trail">
+            <span class="loot-card__label">${t("riftResourceLabel")}</span>
+            <h2 class="loot-card__title">${fmt("shopPreviewTrailHunter", { hunter: hunterName })}</h2>
+          </article>
+        </div>
+        <button class="upgrade-button${previewLive ? " is-equipped" : ""}" data-action="toggle-skin-preview" data-id="${hunterId}" type="button">
+          <span class="upgrade-button__title">${t("shopToggleSkinPreview")}</span>
+          <span class="upgrade-button__body">${previewLive ? t("shopPreviewActiveBody") : t("shopPreviewInactiveBody")}</span>
+        </button>
+      </article>
+      <div class="upgrade-row">
+        ${offers
+          .map(
+            (offer) => `
+              <article class="base-card shop-offer shop-offer--${offer.id}">
+                <span class="base-card__label">${offer.label}</span>
+                <h2 class="base-card__title">${offer.title}</h2>
+                <p class="base-card__body">${offer.body}</p>
+                <span class="upgrade-meta">${offer.meta}</span>
+                <button class="upgrade-button" data-action="preview-shop" data-id="${offer.id}" type="button">
+                  <span class="upgrade-button__title">${t("viewOffer")}</span>
+                  <span class="upgrade-button__body">${t("previewOnly")}</span>
+                </button>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+      <article class="base-card">
+        <span class="base-card__label">${t("premiumNoteLabel")}</span>
+        <h2 class="base-card__title">${t("shopPremiumNoteTitle")}</h2>
+        <p class="base-card__body">${t("shopPremiumNoteBody")}</p>
+        <span class="upgrade-meta">${t("noCheckout")}</span>
+      </article>
+    `;
+  }
+
+  function getShopSpotlight(modeId = getCurrentMode().id) {
+    if (getClaimableSeasonPassTiers().length > 0 || meta.seasonPassXp >= 40) {
+      return {
+        id: "season-pass",
+        label: t("seasonPassLabel"),
+        title: t("shopSeasonPassTitle"),
+        body: t("shopJumpPassBody"),
+      };
+    }
+    if (meta.runs < 4 || getNonStarterLootCount() < 4) {
+      return {
+        id: "starter-cache",
+        label: t("starterCacheLabel"),
+        title: t("shopStarterTitle"),
+        body: t("shopJumpStarterBody"),
+      };
+    }
+    if (modeId === "rift" || modeId === "gauntlet") {
+      return {
+        id: "weekly-supply",
+        label: t("liveContractsLabel"),
+        title: t("shopWeeklyTitle"),
+        body: t("shopJumpWeeklyBody"),
+      };
+    }
+    return {
+      id: "skin-vault",
+      label: t("cosmeticVaultLabel"),
+      title: t("shopSkinTitle"),
+      body: t("shopJumpSkinBody"),
+    };
+  }
+
+  function renderShopSpotlightCard(modeId = getCurrentMode().id) {
+    const offer = getShopSpotlight(modeId);
+    return `
+      <article class="loot-card loot-card--epic">
+        <span class="loot-card__label">${t("shopSpotlightLabel")} // ${offer.label}</span>
+        <h2 class="loot-card__title">${offer.title}</h2>
+        <p class="loot-card__body">${offer.body}</p>
+        <button class="upgrade-button" data-action="jump-shop" data-id="${offer.id}" type="button">
+          <span class="upgrade-button__title">${t("openShop")}</span>
+          <span class="upgrade-button__body">${t("previewOnly")}</span>
+        </button>
       </article>
     `;
   }
@@ -5604,12 +6728,21 @@
     const hunterName = getCharacterName(character.id);
     const regionName = getRegionCopy(region.id, "name") || region.name;
     const bossName = getRegionCopy(region.id, "bossName") || region.bossName;
+    const previewSkin = hasCosmeticPreview(character.id);
     return `
       <span class="base-showcase__eyebrow">${t("showcaseLabel")}</span>
       <h2 class="base-showcase__title">${hunterName}</h2>
       <p class="base-showcase__subtitle">${bossName} // ${getModeCopy(mode.id, "name")} // ${regionName}</p>
+      ${previewSkin ? `<span class="base-showcase__preview">${t("showcasePreviewSkin")}</span>` : ""}
       <div class="base-showcase__art">
+        <div class="base-showcase__horizon"></div>
+        <div class="base-showcase__shard base-showcase__shard--a"></div>
+        <div class="base-showcase__shard base-showcase__shard--b"></div>
         <div class="base-showcase__weapon"></div>
+        <div class="base-showcase__portrait">
+          <div class="base-showcase__portrait-ring"></div>
+          <div class="base-showcase__portrait-core"></div>
+        </div>
         <div class="base-showcase__sigil">${getCharacterShowcase(character.id, "sigil")}</div>
       </div>
       <div class="base-showcase__grid">
@@ -5647,6 +6780,7 @@
     basePanel.dataset.region = region.id;
     baseShowcase.dataset.region = region.id;
     baseShowcase.dataset.hunter = character.id;
+    baseShowcase.dataset.preview = hasCosmeticPreview(character.id) ? "1" : "0";
     baseShowcase.innerHTML = renderBaseShowcase(character, mode, region);
 
     goldText.textContent = String(meta.gold);
@@ -5666,12 +6800,16 @@
         ? fmt("baseBossSummary", { body: getCharacterCopy(character.id, "baseBody"), region: regionName })
         : mode.id === "rift"
           ? fmt("baseRiftSummary", { body: getCharacterCopy(character.id, "baseBody"), region: regionName })
+          : mode.id === "gauntlet"
+            ? fmt("baseGauntletSummary", { body: getCharacterCopy(character.id, "baseBody"), region: regionName })
         : fmt("baseRegionSummary", { body: getCharacterCopy(character.id, "baseBody"), regionBody: getRegionCopy(region.id, "body") });
     startRunButton.textContent =
       mode.id === "boss"
         ? t("deployWorldBoss")
         : mode.id === "rift"
           ? t("deployRift")
+          : mode.id === "gauntlet"
+            ? t("deployGauntlet")
           : getCharacterCopy(character.id, "startLabel");
     resourceLabel.textContent = getCharacterCopy(character.id, "resourceLabel");
     objectiveTitle.textContent = objective.title;
@@ -5679,6 +6817,7 @@
     ftueTrack.innerHTML = renderFtueTrack();
 
     renderSelectors();
+    renderOperationMap();
 
     for (const button of baseOverlay.querySelectorAll(".tab-button")) {
       button.classList.toggle("is-active", button.dataset.tab === activeBaseTab);
@@ -5690,8 +6829,12 @@
       baseContent.innerHTML = renderRelicsTab();
     } else if (activeBaseTab === "ascension") {
       baseContent.innerHTML = renderAscensionTab();
+    } else if (activeBaseTab === "records") {
+      baseContent.innerHTML = renderRecordsTab();
     } else if (activeBaseTab === "season") {
       baseContent.innerHTML = renderSeasonTab();
+    } else if (activeBaseTab === "shop") {
+      baseContent.innerHTML = renderShopTab();
     } else if (activeBaseTab === "settings") {
       baseContent.innerHTML = renderSettingsTab();
     } else {
@@ -5798,8 +6941,45 @@
   function selectRegion(id) {
     if (!regionDefs[id] || !isRegionUnlocked(id)) return;
     meta.selectedRegion = id;
+    if (!meta.seenRegionUnlocks.includes(id)) {
+      meta.seenRegionUnlocks.push(id);
+    }
     saveMeta();
     renderBase();
+  }
+
+  function applyRecommendedMode(id) {
+    if (!modeDefs[id] || !isModeUnlocked(id)) return;
+    meta.selectedMode = id;
+    saveMeta();
+    pushEvent(`${t("operationMode")} // ${getModeCopy(id, "name")}`, 1.2);
+    renderBase();
+  }
+
+  function applyRecommendedHunter(id) {
+    if (!characterDefs[id] || !isCharacterUnlocked(id)) return;
+    meta.selectedCharacter = id;
+    saveMeta();
+    pushEvent(`${t("operationHunter")} // ${getCharacterName(id)}`, 1.2);
+    renderBase();
+  }
+
+  function deployRecommendedOperation(regionId) {
+    if (!regionDefs[regionId] || !isRegionUnlocked(regionId)) return;
+    const modeId = getRegionCopy(regionId, "modeId");
+    const hunterId = getRegionCopy(regionId, "hunterId");
+    meta.selectedRegion = regionId;
+    if (!meta.seenRegionUnlocks.includes(regionId)) {
+      meta.seenRegionUnlocks.push(regionId);
+    }
+    if (modeDefs[modeId] && isModeUnlocked(modeId)) {
+      meta.selectedMode = modeId;
+    }
+    if (characterDefs[hunterId] && isCharacterUnlocked(hunterId)) {
+      meta.selectedCharacter = hunterId;
+    }
+    saveMeta();
+    startRun();
   }
 
   function toggleSetting(id) {
@@ -5830,6 +7010,44 @@
     renderBase();
   }
 
+  function previewShopOffer(id) {
+    if (id === "skin-vault") {
+      pushEvent(
+        `${fmt("shopPreviewFinisherHunter", { hunter: getCharacterName(meta.selectedCharacter) })} // ${t("previewOnly")}`,
+        2.4,
+      );
+      return;
+    }
+    const offerTitleKeyById = {
+      "season-pass": "shopSeasonPassTitle",
+      "starter-cache": "shopStarterTitle",
+      "weekly-supply": "shopWeeklyTitle",
+    };
+    const offerKey = offerTitleKeyById[id];
+    if (!offerKey) return;
+    pushEvent(`${t(offerKey)} // ${t("previewOnly")}`, 2.4);
+  }
+
+  function toggleSkinPreview(characterId) {
+    if (!characterDefs[characterId]) return;
+    const next = hasCosmeticPreview(characterId) ? 0 : 1;
+    meta.cosmeticPreview[characterId] = next;
+    saveMeta();
+    pushEvent(
+      fmt(next ? "shopSkinPreviewEnabled" : "shopSkinPreviewDisabled", {
+        hunter: getCharacterName(characterId),
+      }),
+      2.2,
+    );
+    renderBase();
+  }
+
+  function jumpToShop(id) {
+    activeBaseTab = "shop";
+    showBase();
+    previewShopOffer(id);
+  }
+
   function resetProgress() {
     if (!window.confirm(t("resetConfirm"))) return;
     meta = defaultMeta();
@@ -5839,6 +7057,8 @@
       cores: 0,
       data: 0,
       genes: 0,
+      gauntletScore: 0,
+      gauntletRecord: false,
       newRelic: null,
       newSeasonRelic: null,
       bonusLines: [],
@@ -5858,6 +7078,10 @@
     lastTs = timestamp;
 
     if (screen === "run" && !pausedForLevel && !gameOver) {
+      if (deployIntro.active) {
+        deployIntro.timer -= dt;
+        if (deployIntro.timer <= 0) hideDeployIntro();
+      }
       if (finisher.active) {
         finisher.timer -= dt;
         updateEffects(dt);
@@ -5890,6 +7114,11 @@
           endRun(boss ? "defeat" : "victory");
         }
       }
+    }
+
+    if (screen !== "run" && chapterUnlockIntro.active) {
+      chapterUnlockIntro.timer -= dt;
+      if (chapterUnlockIntro.timer <= 0) hideChapterUnlock();
     }
 
     if (screen !== "run" && eventBanner.timer > 0) {
@@ -5951,6 +7180,7 @@
     renderIntroSlide();
   });
   introSkipButton.addEventListener("click", finishIntro);
+  chapterOverlay.addEventListener("click", hideChapterUnlock);
 
   baseOverlay.addEventListener("click", (event) => {
     const tabButton = event.target.closest("[data-tab]");
@@ -5971,6 +7201,9 @@
     if (action === "upgrade-awakening") tryUpgradeAwakening(id);
     if (action === "claim-pass-tier") claimSeasonPassTier(id);
     if (action === "claim-contract") claimContract(id);
+    if (action === "preview-shop") previewShopOffer(id);
+    if (action === "toggle-skin-preview") toggleSkinPreview(id);
+    if (action === "jump-shop") jumpToShop(id);
     if (action === "set-language") setLanguage(id);
     if (action === "toggle-setting") toggleSetting(id);
     if (action === "reset-save") resetProgress();
@@ -5978,6 +7211,9 @@
     if (action === "select-character") selectCharacter(id);
     if (action === "select-mode") selectMode(id);
     if (action === "select-region") selectRegion(id);
+    if (action === "apply-operation-mode") applyRecommendedMode(id);
+    if (action === "apply-operation-hunter") applyRecommendedHunter(id);
+    if (action === "deploy-operation") deployRecommendedOperation(id);
   });
 
   resultsOverlay.addEventListener("click", (event) => {
@@ -5985,6 +7221,7 @@
     if (!actionButton) return;
     const { action, id } = actionButton.dataset;
     if (action === "equip-result-item") equipResultItem(id);
+    if (action === "jump-shop") jumpToShop(id);
   });
 
   window.addEventListener("keydown", (event) => {

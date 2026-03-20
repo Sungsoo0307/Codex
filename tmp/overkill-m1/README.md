@@ -8,6 +8,8 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Virtual joystick movement
 - Auto-attacks
 - Dash button plus a hunter-specific ultimate button
+- Short deployment overlay when entering a run
+- Region-themed base background treatment and hunter showcase art panel
 - Hunter-specific ultimate cut-in overlay during live combat
 - Enemy waves with grunt / charger / shooter / elite
 - Boss with weakpoint break flow
@@ -19,7 +21,7 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Relic loadout with unlock progression
 - Research upgrades that affect the next run
 - Character select: Cain, Dex, Ria, and Sera
-- Mode select: Main Hunt, World Boss, and Abyss Rift
+- Mode select: Main Hunt, World Boss, Abyss Rift, and Gauntlet
 - FTUE-style objective card and in-run objective tracker
 - FTUE launch track with one-time milestone caches
 - Scripted first-run event prompts during combat
@@ -36,12 +38,24 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - Black Tide-exclusive `warden` elite that heals nearby enemies and throws triple spreads
 - Boss telegraphs and warning prompts for major titan attacks
 - Screen shake and floating combat text for hits, breaks, and titan kills
+- Run-start drop beam / aura effect during the first second of combat
 - Title screen and short intro sequence before the base loop
 - Season tab with one live season rule prototype
 - Season pass track with claimable tier rewards
 - Live contract missions with claimable short-session rewards
+- Shop tab with BM mock cards for pass upgrade, starter pack, weekly supply, and cosmetics
+- Result and Season surfaces now include contextual shop spotlight cards that jump back into the Shop tab
+- Cosmetic previews in Shop now shift with the currently selected hunter
+- Skin preview toggle now re-themes the base showcase plus deploy/ultimate presentation panels for the selected hunter
+- Boss finisher overlay also inherits the active skin preview theme
+- Base hub now includes an operation map with chapter-like region progression and new-region badges
+- Newly unlocked regions now trigger a short chapter-unlock overlay when returning to base
+- Chapter unlock overlays now include region-specific threat and command briefing text
+- Operation map now shows a persistent region briefing card for the currently selected chapter
 - World Boss-exclusive gene resource and Titanforged drops
 - Abyss Rift-exclusive contract/resource lane with tracked seal count
+- Gauntlet-exclusive contract/resource lane with tracked lockdown clears
+- Gauntlet local record board with best score and top 3 saved runs
 - Ascension tab that spends genes on permanent upgrades
 - Character-specific awakening nodes purchased with genes
 - Boss finisher overlay before rewards resolve
@@ -52,6 +66,7 @@ Mobile-first browser prototype for the combat loop, growth loop, character selec
 - English / Korean toggle in Settings, expanded across shell UI, result flow, season tab, FTUE track, and in-run prompts
 - Save reset button for replaying the FTUE from zero
 - Local save via browser storage
+- Dedicated Records tab for local clears, mode-specific bests, region peaks, recent 5-run history, and Gauntlet top runs
 
 ## Run
 
@@ -90,6 +105,14 @@ Then open:
 - `Main Hunt`: classic wave build-up into the titan
 - `World Boss`: faster boss spawn with heavier payout
 - `Abyss Rift`: longer collapse run with denser waves and richer salvage
+- `Gauntlet`: no titan, only escalating elite pressure and overclocked loot
 - `Abyss Rift Drops`: `Collapseforged`, `Fracturecast`, and `Undertow` prefixes by region
+- `Gauntlet Drops`: `Killchain`, `Overclock Ward`, and `Undercurrent` prefixes by region
 - `Launch Track`: first 30-minute reward ladder with guaranteed gear spikes
 - `Set Bonuses`: Reaver / Signal / Ruin / Blink mini-sets across weapon, armor, and reactor
+- `Operation Briefing`: region cards now show target, threat, command, and payout previews before deployment
+- `Recommended Loop`: operation map briefing also suggests the best-fit mode for each region
+- `Recommended Hunter`: operation map briefing also calls out the strongest hunter fit for each region
+- `One-tap Prep`: recommended mode and hunter chips on the operation map now apply selection state directly
+- `Direct Deploy`: operation map briefing can now apply the recommended setup and start the run immediately
+- `Chapter Progress`: operation nodes now show persistent region clear counts

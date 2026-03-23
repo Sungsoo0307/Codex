@@ -116,3 +116,15 @@ Then open:
 - `One-tap Prep`: recommended mode and hunter chips on the operation map now apply selection state directly
 - `Direct Deploy`: operation map briefing can now apply the recommended setup and start the run immediately
 - `Chapter Progress`: operation nodes now show persistent region clear counts
+- `Region Medals`: operation nodes now award bronze / silver / gold seals at 1 / 5 / 10 clears
+- `Showcase Sync`: the base hunter showcase now mirrors current region medal and recommended setup state
+- `Smart CTA`: the main deploy button now switches to a highlighted recommended-deploy state when the current loadout matches the region recommendation
+- `Deploy Sync`: the run-start deployment overlay now also switches to a recommended-deploy briefing when the current loadout is aligned
+- `Live Sync`: recommended deploys now grant a short opening tempo/damage spike and an in-run banner during the first second
+- `Recommended Aura`: aligned deploys also render a short hunter-colored opening aura around the player
+- `First Kill Sync`: the first kill during that opening window now pops a dedicated recommended-deploy floating callout
+- `Weakpoint Sync`: the first titan weakpoint break on an aligned deploy now triggers its own breach callout and event spike
+- `Telegraph Sync`: aligned deploys now tint weakpoints and boss telegraphs with a stronger hunter-coded breach highlight
+- `Route Summary`: result flow now grades recommended deploys across first kill, weakpoint break, and clear state
+- `Finisher Sync`: full route execution now upgrades the boss finisher overlay with a hunter-tinted recommended-route presentation
+- `Field Archive`: a new Logs tab now collects hunter briefs, chapter files, boss reports, and season directives as progression unlocks them

@@ -540,6 +540,45 @@ body {
     var(--shadow);
 }
 
+.panel--finish[data-route="1"] {
+  box-shadow:
+    0 0 0 1px rgba(255, 211, 101, 0.12) inset,
+    0 0 34px rgba(255, 211, 101, 0.14),
+    var(--shadow);
+}
+
+.panel--finish[data-route="1"][data-hunter="cain"] {
+  background:
+    radial-gradient(circle at center, rgba(255, 211, 101, 0.16), transparent 34%),
+    radial-gradient(circle at center, rgba(255, 120, 73, 0.18), transparent 46%),
+    linear-gradient(180deg, rgba(28, 12, 14, 0.98), rgba(14, 10, 14, 0.98)),
+    var(--panel-strong);
+}
+
+.panel--finish[data-route="1"][data-hunter="dex"] {
+  background:
+    radial-gradient(circle at center, rgba(255, 211, 101, 0.14), transparent 34%),
+    radial-gradient(circle at center, rgba(103, 211, 255, 0.2), transparent 46%),
+    linear-gradient(180deg, rgba(10, 18, 26, 0.98), rgba(8, 13, 20, 0.98)),
+    var(--panel-strong);
+}
+
+.panel--finish[data-route="1"][data-hunter="ria"] {
+  background:
+    radial-gradient(circle at center, rgba(255, 211, 101, 0.14), transparent 34%),
+    radial-gradient(circle at center, rgba(216, 140, 255, 0.22), transparent 46%),
+    linear-gradient(180deg, rgba(20, 10, 28, 0.98), rgba(12, 8, 18, 0.98)),
+    var(--panel-strong);
+}
+
+.panel--finish[data-route="1"][data-hunter="sera"] {
+  background:
+    radial-gradient(circle at center, rgba(255, 211, 101, 0.14), transparent 34%),
+    radial-gradient(circle at center, rgba(170, 214, 255, 0.2), transparent 46%),
+    linear-gradient(180deg, rgba(14, 18, 26, 0.98), rgba(8, 10, 16, 0.98)),
+    var(--panel-strong);
+}
+
 .panel--finish[data-preview="1"][data-hunter="cain"] {
   background:
     radial-gradient(circle at center, rgba(255, 91, 71, 0.18), transparent 40%),
@@ -726,6 +765,17 @@ body {
   font-weight: 700;
 }
 
+.primary-button.is-recommended {
+  border-color: rgba(255, 211, 101, 0.52);
+  background:
+    linear-gradient(180deg, rgba(92, 66, 20, 0.96), rgba(44, 31, 12, 0.98)),
+    var(--panel);
+  box-shadow:
+    0 0 0 1px rgba(255, 211, 101, 0.2) inset,
+    0 0 22px rgba(255, 211, 101, 0.08),
+    var(--shadow);
+}
+
 .secondary-button,
 .tab-button,
 .upgrade-button,
@@ -801,6 +851,15 @@ body {
   background: radial-gradient(circle, rgba(74, 192, 179, 0.28), transparent 64%);
 }
 
+.base-showcase__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .base-showcase__eyebrow {
   position: relative;
   z-index: 1;
@@ -808,6 +867,13 @@ body {
   color: var(--muted);
   font-size: 11px;
   letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.base-showcase__medal {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
   margin-bottom: 10px;
 }
 
@@ -1193,6 +1259,27 @@ body {
     var(--shadow);
 }
 
+.operation-node.has-medal--bronze {
+  box-shadow:
+    0 0 0 1px rgba(201, 123, 82, 0.18) inset,
+    0 0 18px rgba(201, 123, 82, 0.08),
+    var(--shadow);
+}
+
+.operation-node.has-medal--silver {
+  box-shadow:
+    0 0 0 1px rgba(160, 190, 220, 0.2) inset,
+    0 0 18px rgba(160, 190, 220, 0.09),
+    var(--shadow);
+}
+
+.operation-node.has-medal--gold {
+  box-shadow:
+    0 0 0 1px rgba(255, 211, 101, 0.22) inset,
+    0 0 22px rgba(255, 211, 101, 0.1),
+    var(--shadow);
+}
+
 .operation-node__chapter,
 .operation-node__state,
 .operation-node__meta {
@@ -1205,6 +1292,40 @@ body {
 
 .operation-node__meta {
   color: rgba(255, 211, 101, 0.82);
+}
+
+.operation-node__medals {
+  position: relative;
+  z-index: 1;
+  min-height: 20px;
+}
+
+.operation-node__medal {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.operation-node__medal--bronze {
+  background: rgba(201, 123, 82, 0.14);
+  color: rgba(244, 187, 150, 0.96);
+  border-color: rgba(201, 123, 82, 0.34);
+}
+
+.operation-node__medal--silver {
+  background: rgba(160, 190, 220, 0.14);
+  color: rgba(222, 236, 249, 0.96);
+  border-color: rgba(160, 190, 220, 0.34);
+}
+
+.operation-node__medal--gold {
+  background: rgba(255, 211, 101, 0.14);
+  color: rgba(255, 233, 167, 0.98);
+  border-color: rgba(255, 211, 101, 0.38);
 }
 
 .operation-node__title {
@@ -1244,6 +1365,19 @@ body {
 
 .operation-briefing[data-region="blacktide"]::before {
   background: linear-gradient(135deg, rgba(74, 192, 179, 0.14), transparent 48%);
+}
+
+.operation-briefing__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.operation-briefing__medal {
+  flex-shrink: 0;
 }
 
 .operation-briefing__grid {
@@ -1441,6 +1575,39 @@ body {
   gap: 10px;
 }
 
+.log-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.log-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.log-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.log-card--hunter::before {
+  background: linear-gradient(135deg, rgba(255, 211, 101, 0.12), transparent 52%);
+}
+
+.log-card--region::before {
+  background: linear-gradient(135deg, rgba(103, 211, 255, 0.12), transparent 52%);
+}
+
+.log-card--boss::before {
+  background: linear-gradient(135deg, rgba(255, 120, 72, 0.14), transparent 52%);
+}
+
+.log-card--season::before {
+  background: linear-gradient(135deg, rgba(216, 140, 255, 0.14), transparent 52%);
+}
+
 .upgrade-button,
 .relic-button {
   padding: 14px;
@@ -1600,6 +1767,44 @@ body {
     var(--panel);
 }
 
+.loot-card--route {
+  gap: 12px;
+}
+
+.route-checklist {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.route-check {
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.route-check.is-live {
+  border-color: rgba(255, 211, 101, 0.3);
+  box-shadow: 0 0 0 1px rgba(255, 211, 101, 0.08) inset;
+}
+
+.route-check.is-miss {
+  opacity: 0.72;
+}
+
+.route-check__label {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  margin-bottom: 6px;
+}
+
+.route-check__value {
+  font-size: 14px;
+}
+
 .shop-offer {
   position: relative;
   overflow: hidden;
@@ -1730,6 +1935,14 @@ body {
   }
 
   .operation-briefing__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .route-checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .log-grid {
     grid-template-columns: 1fr;
   }
 

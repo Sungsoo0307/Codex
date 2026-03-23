@@ -63,6 +63,7 @@
   const tabRelics = document.getElementById("tabRelics");
   const tabResearch = document.getElementById("tabResearch");
   const tabAscension = document.getElementById("tabAscension");
+  const tabLogs = document.getElementById("tabLogs");
   const tabRecords = document.getElementById("tabRecords");
   const tabSeason = document.getElementById("tabSeason");
   const tabShop = document.getElementById("tabShop");
@@ -152,6 +153,7 @@
       titleBody:
         "Hyper-action mobile RPG prototype with hunter choice, region choice, boss kills, loot drops, and build spikes.",
       deployEyebrow: "DROP SEQUENCE // LIVE",
+      deployRecommendedLabel: "RECOMMENDED DEPLOY // LIVE",
       chapterUnlockEyebrow: "CHAPTER UNLOCKED",
       chapterUnlockSubtitle: "NEW OPERATION OPEN",
       chapterUnlockBody: "{region} is now available on the operation map. Push the new front before the next titan mutates.",
@@ -168,11 +170,37 @@
       deployBodyBoss: "Immediate titan pressure. Break weakpoints fast and bank genes before the lane closes.",
       deployBodyRift: "Hold the collapse longer. Expect denser waves, later failure, and richer salvage.",
       deployBodyGauntlet: "No titan. No pause. Hold the corridor against nonstop elites and cash out the overkill lane.",
+      deployBodyRecommended: "Recommended chapter loadout confirmed. Drop now and break the route before the titan stabilizes.",
+      recommendedDeployLiveLine: "RECOMMENDED DROP // tempo spike live",
+      recommendedFirstKillLine: "RECOMMENDED OPENING KILL",
+      recommendedWeakpointLine: "RECOMMENDED BREACH // weakpoint cracked",
+      recommendedRouteLockedLine: "RECOMMENDED ROUTE // opening chain secured",
+      recommendedRoutePartialLine: "RECOMMENDED ROUTE // partial chain connected",
+      recommendedRouteLabel: "RECOMMENDED ROUTE",
+      recommendedRoutePerfectTitle: "Route execution confirmed",
+      recommendedRoutePerfectBody:
+        "Opening kill, weakpoint break, and chapter-aligned pressure all connected before the titan stabilized.",
+      recommendedRoutePartialTitle: "Route pressure partially connected",
+      recommendedRoutePartialBody:
+        "The drop was aligned, but only part of the recommended opening chain landed before the fight normalized.",
+      recommendedRouteMissTitle: "Route opening missed",
+      recommendedRouteMissBody:
+        "Recommended deployment was active, but the opening chain never fully connected before the lane settled.",
+      recommendedRouteFirstKillLabel: "FIRST KILL",
+      recommendedRouteWeakpointLabel: "WEAKPOINT",
+      recommendedRouteVictoryLabel: "CLEAR",
+      recommendedRouteStepDone: "LIVE",
+      recommendedRouteStepMiss: "MISS",
       showcaseLabel: "HUNTER PROFILE",
       showcaseRoleLabel: "COMBAT LOOP",
       showcaseWeaponLabel: "WEAPON SIGNATURE",
       showcaseRegionLabel: "ACTIVE REGION",
       showcaseRewardLabel: "PRIME PAYOUT",
+      showcaseStatusLabel: "DEPLOY STATE",
+      showcaseRecommendedModeLabel: "SUGGESTED LOOP",
+      showcaseRecommendedHunterLabel: "SUGGESTED HUNTER",
+      showcaseReadyAligned: "Recommended loadout locked in",
+      showcaseReadyDrift: "Manual setup active",
       showcaseBackdropHunt: "Field route // loot and tempo spike",
       showcaseBackdropBoss: "Boss route // genes and titanforged drops",
       showcaseBackdropRift: "Rift route // data and Riftcut salvage",
@@ -212,8 +240,12 @@
       operationHunter: "RECOMMENDED HUNTER",
       operationDeploy: "DEPLOY RECOMMENDED LOADOUT",
       operationDeployBody: "Apply the suggested hunter and loop for this chapter, then drop straight into the lane.",
+      operationDeployReady: "RECOMMENDED LOADOUT READY",
       operationNodeClears: "{count} CLEARS",
       operationNodeUncleared: "UNCLEARED",
+      operationMedalBronze: "BRONZE SEAL",
+      operationMedalSilver: "SILVER SEAL",
+      operationMedalGold: "GOLD SEAL",
       operationNodeActive: "ACTIVE",
       operationNodeLocked: "LOCKED",
       operationNodeCleared: "LIVE",
@@ -223,10 +255,54 @@
       tabRelics: "Relics",
       tabResearch: "Research",
       tabAscension: "Ascension",
+      tabLogs: "Logs",
       tabRecords: "Records",
       tabSeason: "Season",
       tabShop: "Shop",
       tabSettings: "Settings",
+      logsLabel: "FIELD ARCHIVE",
+      logsTitle: "Recovered operation logs",
+      logsBody:
+        "Briefings, boss reports, and hunter notes unlock as the route expands. Use this archive to read why each lane matters before the next drop.",
+      logsRecoveredCount: "{count} files recovered",
+      logsEmpty: "No field logs recovered yet. Push the first lane and the archive will begin to fill.",
+      logTypeHunter: "HUNTER BRIEF",
+      logTypeRegion: "OPERATION FILE",
+      logTypeBoss: "BOSS REPORT",
+      logTypeSeason: "SEASON DIRECTIVE",
+      logHunterCainTitle: "Cain // Berserker intake",
+      logHunterCainBody:
+        "Cain is built to hold the front when the route is already breaking. Feed him a close lane, blood tempo, and anything that rewards impact over patience.",
+      logHunterDexTitle: "Dex // Suppression lattice",
+      logHunterDexBody:
+        "Dex performs best where the line keeps moving but never fully collapses. Keep him on ranged pressure routes and let the drone lattice do the work.",
+      logHunterRiaTitle: "Ria // Ruin protocol",
+      logHunterRiaBody:
+        "Ria is not a duelist. She is a fight-shaper. Use her when the lane can be infected, stacked, and detonated before the enemy line understands what changed.",
+      logHunterSeraTitle: "Sera // Blink execution frame",
+      logHunterSeraBody:
+        "Sera is a pressure closer. Do not park her in slow attrition. Give her a route with picks, resets, and a reason to keep slipping through the backline.",
+      logRegionRedcityTitle: "CH.1 // Red City opening file",
+      logRegionRedcityBody:
+        "The Red City is the first proof that the line can still be cut open. Fast scrap, fast kills, and a titan that teaches brutality before discipline.",
+      logRegionSanctuaryTitle: "CH.2 // Iron Sanctuary breach file",
+      logRegionSanctuaryBody:
+        "The Sanctuary is where timing matters. Fire lanes tighten, signal fog thickens, and the archon punishes anyone still playing the first chapter’s rhythm.",
+      logRegionBlacktideTitle: "CH.3 // Black Tide flood file",
+      logRegionBlacktideBody:
+        "Black Tide is not a place to stand still and solve. It is a place to survive while everything tries to surround you and erase the route under your feet.",
+      logBossRedcityTitle: "Apostate Titan // After-action",
+      logBossRedcityBody:
+        "Armor split under direct pressure. The shell is weaker than it looks once the lane is opened fast enough. Delay favors the titan. Tempo favors the hunter.",
+      logBossSanctuaryTitle: "Sanctuary Archon // After-action",
+      logBossSanctuaryBody:
+        "The archon does not dominate by force. It dominates by forcing bad footing. Break the weakpoints early and the whole pattern shrinks into something killable.",
+      logBossBlacktideTitle: "Abyss Leviathan // After-action",
+      logBossBlacktideBody:
+        "The Leviathan wins when the route loses shape. Its body is less dangerous than the panic it creates. Keep the line moving and the spine can still be severed.",
+      logSeasonTitle: "Crimson Eclipse // Directive",
+      logSeasonBody:
+        "Blood Echo is not a buff. It is a pressure contract. Keep the chain alive, turn every kill into tempo, and cash that tempo out before the route goes cold.",
       runOver: "RUN OVER",
       kills: "Kills",
       level: "Level",
@@ -275,6 +351,8 @@
       deployPreviewLabel: "COSMETIC PREVIEW // LIVE",
       ultimatePreviewLabel: "COSMETIC PREVIEW // CUT-IN",
       finishPreviewLabel: "COSMETIC PREVIEW // FINISHER",
+      finishRouteLabel: "RECOMMENDED ROUTE // FINISHER",
+      finishRouteSubtitle: "Opening chain held through impact. Route pressure never slipped.",
       shopSpotlightLabel: "OFFER SPOTLIGHT",
       openShop: "Open shop",
       shopJumpPassBody: "Season XP is already moving. This is where a premium pass upsell would naturally attach to the reward loop.",
@@ -635,6 +713,7 @@
       resultLootLine: " Loot: {items}.",
       gauntletNewRecordLine: " New Gauntlet record: {score}.",
       gauntletScoreLine: " Gauntlet score {score}.",
+      regionMedalUnlockedLine: " Region seal upgraded: {region} // {medal}.",
       resultModeLabel: "MODE",
       resultModeHuntTitle: "Main Hunt sweep",
       resultModeHuntBody: "Standard field payout. Build tempo and lane control decide the run.",
@@ -722,6 +801,7 @@
       titleBody:
         "헌터 선택, 지역 선택, 보스 처치, 루트 드랍, 빌드 스파이크를 담은 하이퍼 액션 모바일 RPG 프로토타입.",
       deployEyebrow: "출격 시퀀스 // 라이브",
+      deployRecommendedLabel: "추천 출격 // 라이브",
       chapterUnlockEyebrow: "챕터 해금",
       chapterUnlockSubtitle: "신규 작전 개방",
       chapterUnlockBody: "작전 지도에서 {region}이 개방됐다. 다음 타이탄이 변이하기 전에 새 전선을 밀어붙여라.",
@@ -738,11 +818,37 @@
       deployBodyBoss: "보스 압박이 즉시 들어온다. 약점을 빠르게 깨고 유전자를 회수해라.",
       deployBodyRift: "붕괴를 더 오래 버텨라. 웨이브는 더 빽빽하고 보상은 더 크다.",
       deployBodyGauntlet: "타이탄은 없다. 끊임없이 몰려오는 엘리트를 버티며 학살 회랑을 봉쇄해라.",
+      deployBodyRecommended: "추천 챕터 구성이 확인됐다. 타이탄이 안정화되기 전에 즉시 투입해 루트를 찢어라.",
+      recommendedDeployLiveLine: "추천 출격 // 시작 템포 상승",
+      recommendedFirstKillLine: "추천 출격 // 첫 처치",
+      recommendedWeakpointLine: "추천 출격 // 약점 파괴",
+      recommendedRouteLockedLine: "추천 출격 // 오프닝 체인 확보",
+      recommendedRoutePartialLine: "추천 출격 // 일부 체인 연결",
+      recommendedRouteLabel: "추천 출격 평가",
+      recommendedRoutePerfectTitle: "추천 루트 실행 완료",
+      recommendedRoutePerfectBody:
+        "첫 처치, 약점 파괴, 챕터 추천 압박이 타이탄이 안정화되기 전에 모두 이어졌다.",
+      recommendedRoutePartialTitle: "추천 루트 일부 성공",
+      recommendedRoutePartialBody:
+        "추천 출격 자체는 맞았지만, 전투가 안정화되기 전에 오프닝 체인이 일부만 이어졌다.",
+      recommendedRouteMissTitle: "추천 루트 연결 실패",
+      recommendedRouteMissBody:
+        "추천 출격 상태로 진입했지만, 전투 초반 흐름을 끝까지 연결하지는 못했다.",
+      recommendedRouteFirstKillLabel: "첫 처치",
+      recommendedRouteWeakpointLabel: "약점 파괴",
+      recommendedRouteVictoryLabel: "클리어",
+      recommendedRouteStepDone: "성공",
+      recommendedRouteStepMiss: "미달",
       showcaseLabel: "헌터 프로필",
       showcaseRoleLabel: "전투 루프",
       showcaseWeaponLabel: "핵심 무장",
       showcaseRegionLabel: "현재 지역",
       showcaseRewardLabel: "주요 보상",
+      showcaseStatusLabel: "출격 상태",
+      showcaseRecommendedModeLabel: "추천 루프",
+      showcaseRecommendedHunterLabel: "추천 헌터",
+      showcaseReadyAligned: "추천 출격 구성 적용됨",
+      showcaseReadyDrift: "수동 구성 사용 중",
       showcaseBackdropHunt: "현장 루트 // 드랍과 템포 스파이크",
       showcaseBackdropBoss: "보스 루트 // 유전자와 타이탄단조 드랍",
       showcaseBackdropRift: "균열 루트 // 데이터와 균열단조 분해 보상",
@@ -782,8 +888,12 @@
       operationHunter: "추천 헌터",
       operationDeploy: "추천 출격 시작",
       operationDeployBody: "이 챕터에 맞는 추천 헌터와 모드를 적용한 뒤 바로 전장으로 투입된다.",
+      operationDeployReady: "추천 출격 준비 완료",
       operationNodeClears: "{count}회 클리어",
       operationNodeUncleared: "미클리어",
+      operationMedalBronze: "브론즈 인장",
+      operationMedalSilver: "실버 인장",
+      operationMedalGold: "골드 인장",
       operationNodeActive: "선택",
       operationNodeLocked: "잠금",
       operationNodeCleared: "활성",
@@ -793,10 +903,54 @@
       tabRelics: "리릭",
       tabResearch: "연구",
       tabAscension: "각성",
+      tabLogs: "로그",
       tabRecords: "기록",
       tabSeason: "시즌",
       tabShop: "상점",
       tabSettings: "설정",
+      logsLabel: "작전 기록 보관소",
+      logsTitle: "회수된 작전 로그",
+      logsBody:
+        "지역 브리핑, 보스 전투 보고서, 헌터 메모는 진행에 따라 열린다. 다음 출격 전에 이 보관소에서 왜 이 루트를 뚫어야 하는지 읽어둘 수 있다.",
+      logsRecoveredCount: "회수된 기록 {count}건",
+      logsEmpty: "아직 회수된 현장 로그가 없다. 첫 루트를 밀어 붙이면 기록 보관소가 채워지기 시작한다.",
+      logTypeHunter: "헌터 브리핑",
+      logTypeRegion: "작전 파일",
+      logTypeBoss: "보스 보고서",
+      logTypeSeason: "시즌 지령",
+      logHunterCainTitle: "카인 // 광전 투입 기록",
+      logHunterCainBody:
+        "카인은 전선이 이미 무너지고 있을 때 가장 강하다. 근접 압박, 피 템포, 충돌 보상이 있는 루트일수록 이 헌터가 끝을 낸다.",
+      logHunterDexTitle: "덱스 // 제압 격자 기록",
+      logHunterDexBody:
+        "덱스는 라인이 계속 움직이되 완전히 붕괴되지는 않는 전장에서 빛난다. 원거리 압박 루트와 자동 병기 리듬을 같이 가져가라.",
+      logHunterRiaTitle: "리아 // 붕괴 의식 기록",
+      logHunterRiaBody:
+        "리아는 결투형 헌터가 아니다. 전장을 감염시키고 겹치게 만들고 한 번에 무너뜨리는 쪽이 맞다. 쌓고 터뜨릴 수 있는 루트에 넣어라.",
+      logHunterSeraTitle: "세라 // 점멸 처형 기록",
+      logHunterSeraBody:
+        "세라는 압박의 마무리다. 느린 소모전에 묶지 마라. 처치, 초기화, 후열 침투가 이어지는 루트에서 가장 빠르게 적을 접는다.",
+      logRegionRedcityTitle: "1장 // 붉은 폐도 개방 기록",
+      logRegionRedcityBody:
+        "붉은 폐도는 아직 라인을 찢어낼 수 있다는 첫 증거다. 빠른 스크랩, 빠른 처치, 그리고 규율보다 난폭함을 먼저 가르치는 타이탄이 있다.",
+      logRegionSanctuaryTitle: "2장 // 철신 성역 돌파 기록",
+      logRegionSanctuaryBody:
+        "철신 성역부터는 타이밍이 전부다. 사격선이 조여들고 신호 교란이 짙어지며, 아콘은 첫 장의 리듬으로 싸우는 헌터를 그대로 짓누른다.",
+      logRegionBlacktideTitle: "3장 // 검은 조수 침수 기록",
+      logRegionBlacktideBody:
+        "검은 조수는 멈춰 서서 푸는 지역이 아니다. 모든 게 포위하려 드는 동안 루트가 발밑에서 무너지는 걸 버티며 계속 이동해야 한다.",
+      logBossRedcityTitle: "배교 타이탄 // 사후 보고",
+      logBossRedcityBody:
+        "외피는 보이는 것보다 약했다. 전선을 빨리 열수록 장갑도 빨리 찢어진다. 지연은 타이탄 편이고, 템포는 헌터 편이다.",
+      logBossSanctuaryTitle: "성역 아콘 // 사후 보고",
+      logBossSanctuaryBody:
+        "아콘은 힘으로 장악하지 않는다. 발을 꼬이게 만들어 장악한다. 약점을 먼저 부수면 그 거대한 패턴도 결국 처치 가능한 크기로 줄어든다.",
+      logBossBlacktideTitle: "심연 레비아탄 // 사후 보고",
+      logBossBlacktideBody:
+        "레비아탄은 몸집보다 공포로 이긴다. 진짜 위험은 육체보다도 라인이 흐트러지는 순간이다. 계속 움직이면 척추는 결국 드러난다.",
+      logSeasonTitle: "붉은 월식 // 지령",
+      logSeasonBody:
+        "블러드 에코는 단순 버프가 아니다. 압박 계약이다. 처치 체인을 끊지 말고, 그 템포를 루트가 식기 전에 전부 현금화해야 한다.",
       runOver: "런 종료",
       kills: "처치",
       level: "레벨",
@@ -845,6 +999,8 @@
       deployPreviewLabel: "코스메틱 프리뷰 // 출격",
       ultimatePreviewLabel: "코스메틱 프리뷰 // 컷인",
       finishPreviewLabel: "코스메틱 프리뷰 // 피니시",
+      finishRouteLabel: "추천 루트 // 피니시",
+      finishRouteSubtitle: "오프닝 체인을 끝까지 유지했다. 추천 압박이 피니시까지 이어졌다.",
       shopSpotlightLabel: "추천 상품",
       openShop: "상점 열기",
       shopJumpPassBody: "이미 시즌 XP가 돌고 있다. 실제 서비스라면 이 지점에 프리미엄 패스 업셀이 가장 자연스럽게 붙는다.",
@@ -1203,6 +1359,7 @@
       resultLootLine: " 드랍: {items}.",
       gauntletNewRecordLine: " 학살 회랑 신기록: {score}.",
       gauntletScoreLine: " 학살 회랑 점수 {score}.",
+      regionMedalUnlockedLine: " 지역 인장 승급: {region} // {medal}.",
       resultModeLabel: "모드",
       resultModeHuntTitle: "메인 사냥 정리",
       resultModeHuntBody: "기본 현장 보상 루프다. 빌드 템포와 라인 제어가 성패를 가른다.",
@@ -1566,6 +1723,33 @@
       },
     };
     return table[id]?.[field] ?? "";
+  }
+
+  function getRegionMedal(clearCount) {
+    if (clearCount >= 10) {
+      return { tier: "gold", label: t("operationMedalGold") };
+    }
+    if (clearCount >= 5) {
+      return { tier: "silver", label: t("operationMedalSilver") };
+    }
+    if (clearCount >= 1) {
+      return { tier: "bronze", label: t("operationMedalBronze") };
+    }
+    return null;
+  }
+
+  function getRegionRecommendedState(regionId, modeId, hunterId) {
+    const aligned =
+      getRegionCopy(regionId, "modeId") === modeId &&
+      getRegionCopy(regionId, "hunterId") === hunterId;
+    return aligned ? t("showcaseReadyAligned") : t("showcaseReadyDrift");
+  }
+
+  function isRegionRecommendedLoadout(regionId, modeId, hunterId) {
+    return (
+      getRegionCopy(regionId, "modeId") === modeId &&
+      getRegionCopy(regionId, "hunterId") === hunterId
+    );
   }
 
   function getRelicUnlockRule(id) {
@@ -2525,6 +2709,7 @@
     bonusLines: [],
     droppedItems: [],
     seasonProgress: null,
+    recommendedRoute: null,
   };
   let runDuration = modeDefs.hunt.duration;
   let eventBanner = { text: "", timer: 0 };
@@ -2562,6 +2747,7 @@
     tabRelics.textContent = t("tabRelics");
     tabResearch.textContent = t("tabResearch");
     tabAscension.textContent = t("tabAscension");
+    tabLogs.textContent = t("tabLogs");
     tabRecords.textContent = t("tabRecords");
     tabSeason.textContent = t("tabSeason");
     tabShop.textContent = t("tabShop");
@@ -3248,6 +3434,47 @@
     };
   }
 
+  function renderRecommendedRouteCard() {
+    const route = currentRewards.recommendedRoute;
+    if (!route) return "";
+
+    const perfect = route.firstKill && route.weakpoint && route.victory;
+    const partial = route.firstKill || route.weakpoint;
+    const toneClass = perfect ? "loot-card--legendary" : partial ? "loot-card--epic" : "loot-card--rare";
+    const title = perfect
+      ? t("recommendedRoutePerfectTitle")
+      : partial
+        ? t("recommendedRoutePartialTitle")
+        : t("recommendedRouteMissTitle");
+    const body = perfect
+      ? t("recommendedRoutePerfectBody")
+      : partial
+        ? t("recommendedRoutePartialBody")
+        : t("recommendedRouteMissBody");
+
+    return `
+      <article class="loot-card ${toneClass} loot-card--route">
+        <span class="loot-card__label">${t("recommendedRouteLabel")}</span>
+        <h2 class="loot-card__title">${title}</h2>
+        <p class="loot-card__body">${body}</p>
+        <div class="route-checklist">
+          <div class="route-check ${route.firstKill ? "is-live" : "is-miss"}">
+            <span class="route-check__label">${t("recommendedRouteFirstKillLabel")}</span>
+            <strong class="route-check__value">${route.firstKill ? t("recommendedRouteStepDone") : t("recommendedRouteStepMiss")}</strong>
+          </div>
+          <div class="route-check ${route.weakpoint ? "is-live" : "is-miss"}">
+            <span class="route-check__label">${t("recommendedRouteWeakpointLabel")}</span>
+            <strong class="route-check__value">${route.weakpoint ? t("recommendedRouteStepDone") : t("recommendedRouteStepMiss")}</strong>
+          </div>
+          <div class="route-check ${route.victory ? "is-live" : "is-miss"}">
+            <span class="route-check__label">${t("recommendedRouteVictoryLabel")}</span>
+            <strong class="route-check__value">${route.victory ? t("recommendedRouteStepDone") : t("recommendedRouteStepMiss")}</strong>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
   function renderResultRewards() {
     const mode = getCurrentMode();
     const modeSummary = getResultModeSummary(mode.id);
@@ -3341,6 +3568,7 @@
       : t("seasonNoNewPassTier");
 
     resultSeasonProgress.innerHTML = `
+      ${renderRecommendedRouteCard()}
       <article class="loot-card ${progress.completed ? "loot-card--legendary" : "loot-card--rare"}">
         <span class="loot-card__label">${t("seasonHuntKills")}</span>
         <h2 class="loot-card__title">${progress.kills}/${seasonDef.killTarget}</h2>
@@ -3580,6 +3808,12 @@
       seasonTimer: 0,
       seasonDecayRate: 2.4,
       seasonWeakpoints: 0,
+      recommendedIntroTimer: 0,
+      recommendedRouteActive: false,
+      recommendedFirstKillPending: false,
+      recommendedFirstKillTriggered: false,
+      recommendedWeakpointPending: false,
+      recommendedWeakpointTriggered: false,
       selectedUpgrades: [],
     };
 
@@ -3890,17 +4124,18 @@
   }
 
   function triggerDeployIntro(character, mode, region) {
+    const recommendedReady = isRegionRecommendedLoadout(region.id, mode.id, character.id);
     deployIntro = { active: true, timer: 0.95 };
     deployPanel.dataset.region = region.id;
     deployPanel.dataset.hunter = character.id;
     deployPanel.dataset.preview = hasCosmeticPreview(character.id) ? "1" : "0";
-    deployEyebrow.textContent = t("deployEyebrow");
+    deployEyebrow.textContent = recommendedReady ? t("deployRecommendedLabel") : t("deployEyebrow");
     if (hasCosmeticPreview(character.id)) {
       deployEyebrow.textContent = t("deployPreviewLabel");
     }
     deployTitle.textContent = `${getCharacterName(character.id)} // ${getRegionCopy(region.id, "name") || region.name}`;
     deploySubtitle.textContent = `${getModeCopy(mode.id, "name")} // ${getRegionCopy(region.id, "bossName") || region.bossName}`;
-    deployBody.textContent = getDeployBody(mode.id);
+    deployBody.textContent = recommendedReady ? t("deployBodyRecommended") : getDeployBody(mode.id);
     deployOverlay.classList.remove("hidden");
   }
 
@@ -3930,11 +4165,16 @@
     const bossName = getRegionCopy(region.id, "bossName") || defeatedBoss.name;
     const characterId = meta.selectedCharacter;
     const previewLive = hasCosmeticPreview(characterId);
+    const routeLive =
+      player.recommendedRouteActive &&
+      player.recommendedFirstKillTriggered &&
+      player.recommendedWeakpointTriggered;
     finisher.active = true;
     finisher.timer = 1.05;
     finishPanel.classList.remove("finish-red", "finish-blue", "finish-green");
     finishPanel.dataset.hunter = characterId;
     finishPanel.dataset.preview = previewLive ? "1" : "0";
+    finishPanel.dataset.route = routeLive ? "1" : "0";
     if (region.id === "sanctuary") {
       finishPanel.classList.add("finish-blue");
       finishEyebrow.textContent = t(
@@ -3975,7 +4215,10 @@
         boss: bossName,
       });
     }
-    if (previewLive) {
+    if (routeLive) {
+      finishEyebrow.textContent = t("finishRouteLabel");
+      finishSubtitle.textContent = t("finishRouteSubtitle");
+    } else if (previewLive) {
       finishEyebrow.textContent = t("finishPreviewLabel");
     }
     playTone("finish");
@@ -4108,6 +4351,13 @@
     }
     spawnOrb(enemy.x, enemy.y, enemy.type === "elite" || enemy.type === "warden" ? 26 : 8);
     player.kills += 1;
+    if (player.recommendedIntroTimer > 0 && player.recommendedFirstKillPending) {
+      player.recommendedFirstKillPending = false;
+      player.recommendedFirstKillTriggered = true;
+      addEffect(enemy.x, enemy.y, 140, "rgba(255, 211, 101, 0.28)", 0.26);
+      addFloatingText(enemy.x, enemy.y - 28, t("recommendedFirstKillLine"), "#ffe08d", 0.58, 18);
+      shakeScreen(8, 0.16);
+    }
     gainRage(enemy.type === "elite" || enemy.type === "warden" ? 18 : 8);
     player.seasonStacks = Math.min(player.seasonStackCap, player.seasonStacks + 1);
     player.seasonTimer = 5;
@@ -4146,6 +4396,7 @@
 
   function hitEnemy(target, baseDamage) {
     let damage = baseDamage;
+    if (player.recommendedIntroTimer > 0) damage *= 1.12;
     if (player.rageModeTimer > 0) damage *= 1.45;
     if (target.hp < target.maxHp * 0.5) damage *= 1 + player.executeBonus;
 
@@ -4161,6 +4412,7 @@
   }
 
   function hitBossWeakpoint(point, damage) {
+    if (player.recommendedIntroTimer > 0) damage *= 1.12;
     point.hp -= damage * player.bossDamageMultiplier;
     addEffect(boss.x + point.ox, boss.y + point.oy, 70, "rgba(255, 208, 118, 0.4)", 0.18);
     addFloatingText(
@@ -4178,6 +4430,21 @@
       addEffect(boss.x + point.ox, boss.y + point.oy, 120, "rgba(255, 148, 57, 0.45)", 0.28);
       addFloatingText(boss.x + point.ox, boss.y + point.oy - 26, "BREAK", "#ffb45a", 0.6, 20);
       shakeScreen(12, 0.24);
+      if (player.recommendedRouteActive && player.recommendedWeakpointPending) {
+        player.recommendedWeakpointPending = false;
+        player.recommendedWeakpointTriggered = true;
+        addEffect(boss.x + point.ox, boss.y + point.oy, 156, "rgba(255, 218, 128, 0.28)", 0.26);
+        addFloatingText(
+          boss.x + point.ox,
+          boss.y + point.oy - 48,
+          t("recommendedWeakpointLine"),
+          "#ffe08d",
+          0.62,
+          18,
+        );
+        pushEvent(t("recommendedWeakpointLine"), 1.6);
+        shakeScreen(13, 0.24);
+      }
       if (boss.weakpoints.every((item) => !item.alive)) {
         boss.shielded = false;
         addEffect(boss.x, boss.y, 180, "rgba(255, 211, 100, 0.3)", 0.4);
@@ -4585,6 +4852,7 @@
     player.killRushTimer -= dt;
     player.overdriveTimer = Math.max(0, player.overdriveTimer - dt);
     player.seasonTimer -= dt;
+    player.recommendedIntroTimer = Math.max(0, player.recommendedIntroTimer - dt);
 
     if (player.seasonTimer <= 0 && player.seasonStacks > 0) {
       player.seasonStacks = Math.max(0, player.seasonStacks - dt * player.seasonDecayRate);
@@ -4592,9 +4860,10 @@
 
     if (player.attackTimer <= 0) {
       performAttack();
+      const recommendedMult = player.recommendedIntroTimer > 0 ? 0.78 : 1;
       const rushMult = player.killRushTimer > 0 ? Math.max(0.68, 1 - player.killRushBonus) : 1;
       const seasonMult = Math.max(0.72, 1 - player.seasonStacks * 0.022);
-      player.attackTimer = player.attackCooldown * rushMult * seasonMult;
+      player.attackTimer = player.attackCooldown * recommendedMult * rushMult * seasonMult;
     }
 
     orbitBlades.length = 0;
@@ -5155,10 +5424,29 @@
   function renderBoss() {
     if (!boss) return;
     const pos = worldToScreen(boss.x, boss.y);
+    const routeFocus =
+      player.recommendedRouteActive && boss.shielded
+        ? player.characterId === "dex"
+          ? "rgba(120, 235, 255, 0.78)"
+          : player.characterId === "ria"
+            ? "rgba(216, 140, 255, 0.8)"
+            : player.characterId === "sera"
+              ? "rgba(187, 214, 255, 0.8)"
+              : "rgba(255, 211, 101, 0.82)"
+        : null;
+    const routePulse = 0.72 + Math.sin(elapsed * 7.5) * 0.14;
     ctx.fillStyle = boss.shielded ? boss.bodyColor : boss.coreColor;
     ctx.beginPath();
     ctx.arc(pos.x, pos.y, boss.radius, 0, Math.PI * 2);
     ctx.fill();
+
+    if (routeFocus) {
+      ctx.strokeStyle = routeFocus.replace(/0\.\d+\)/, `${clamp(routePulse, 0.4, 0.92)})`);
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, boss.radius + 12, 0, Math.PI * 2);
+      ctx.stroke();
+    }
 
     for (const weakpoint of boss.weakpoints) {
       const wp = worldToScreen(boss.x + weakpoint.ox, boss.y + weakpoint.oy);
@@ -5166,19 +5454,55 @@
       ctx.beginPath();
       ctx.arc(wp.x, wp.y, weakpoint.radius, 0, Math.PI * 2);
       ctx.fill();
+
+      if (routeFocus && weakpoint.alive) {
+        ctx.strokeStyle = routeFocus.replace(/0\.\d+\)/, `${clamp(routePulse + 0.06, 0.45, 0.96)})`);
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(wp.x, wp.y, weakpoint.radius + 10, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = routeFocus.replace(/0\.\d+\)/, `${clamp(routePulse - 0.1, 0.28, 0.72)})`);
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(wp.x, wp.y, weakpoint.radius + 22 + Math.sin(elapsed * 6 + weakpoint.ox * 0.02) * 4, 0, Math.PI * 2);
+        ctx.stroke();
+      }
     }
   }
 
   function renderBossTelegraphs() {
     if (!boss) return;
     ctx.save();
+    const routeTelegraph =
+      player.recommendedRouteActive && boss.shielded
+        ? player.characterId === "dex"
+          ? "rgba(120, 235, 255, 0.4)"
+          : player.characterId === "ria"
+            ? "rgba(216, 140, 255, 0.42)"
+            : player.characterId === "sera"
+              ? "rgba(187, 214, 255, 0.4)"
+              : "rgba(255, 211, 101, 0.42)"
+        : null;
+
+    if (routeTelegraph) {
+      for (const weakpoint of boss.weakpoints) {
+        if (!weakpoint.alive) continue;
+        const wp = worldToScreen(boss.x + weakpoint.ox, boss.y + weakpoint.oy);
+        ctx.strokeStyle = routeTelegraph;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(wp.x, wp.y, weakpoint.radius + 28, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
 
     if (boss.regionId === "blacktide") {
       if (boss.volleyTimer < 0.5) {
         const baseAngle = Math.atan2(player.y - boss.y, player.x - boss.x);
         const start = worldToScreen(boss.x, boss.y);
-        ctx.strokeStyle = "rgba(169, 255, 242, 0.42)";
-        ctx.lineWidth = 5;
+        ctx.strokeStyle = routeTelegraph ?? "rgba(169, 255, 242, 0.42)";
+        ctx.lineWidth = routeTelegraph ? 6 : 5;
         for (const spread of [-0.34, -0.17, 0, 0.17, 0.34]) {
           const endX = boss.x + Math.cos(baseAngle + spread) * 480;
           const endY = boss.y + Math.sin(baseAngle + spread) * 480;
@@ -5192,8 +5516,8 @@
 
       if (boss.ringTimer < 0.55) {
         const pos = worldToScreen(boss.x, boss.y);
-        ctx.strokeStyle = "rgba(120, 235, 255, 0.3)";
-        ctx.lineWidth = 4;
+        ctx.strokeStyle = routeTelegraph ?? "rgba(120, 235, 255, 0.3)";
+        ctx.lineWidth = routeTelegraph ? 5 : 4;
         ctx.beginPath();
         ctx.arc(pos.x, pos.y, 110, 0, Math.PI * 2);
         ctx.stroke();
@@ -5206,9 +5530,9 @@
       }
 
       if (boss.slamTimer < 0.75 && boss.mortarTargets.length > 0) {
-        ctx.fillStyle = "rgba(74, 192, 179, 0.18)";
-        ctx.strokeStyle = "rgba(169, 255, 242, 0.34)";
-        ctx.lineWidth = 3;
+        ctx.fillStyle = routeTelegraph ? routeTelegraph.replace(/0\.\d+\)/, "0.16)") : "rgba(74, 192, 179, 0.18)";
+        ctx.strokeStyle = routeTelegraph ?? "rgba(169, 255, 242, 0.34)";
+        ctx.lineWidth = routeTelegraph ? 4 : 3;
         for (const target of boss.mortarTargets) {
           const pos = worldToScreen(target.x, target.y);
           ctx.beginPath();
@@ -5222,8 +5546,8 @@
     } else if (boss.regionId === "sanctuary") {
       if (boss.volleyTimer < 0.45) {
         const baseAngle = Math.atan2(player.y - boss.y, player.x - boss.x);
-        ctx.strokeStyle = "rgba(184, 255, 244, 0.42)";
-        ctx.lineWidth = 5;
+        ctx.strokeStyle = routeTelegraph ?? "rgba(184, 255, 244, 0.42)";
+        ctx.lineWidth = routeTelegraph ? 6 : 5;
         for (const spread of [-0.18, 0, 0.18]) {
           const endX = boss.x + Math.cos(baseAngle + spread) * 520;
           const endY = boss.y + Math.sin(baseAngle + spread) * 520;
@@ -5238,8 +5562,8 @@
 
       if (boss.ringTimer < 0.5) {
         const pos = worldToScreen(boss.x, boss.y);
-        ctx.strokeStyle = "rgba(184, 255, 244, 0.34)";
-        ctx.lineWidth = 4;
+        ctx.strokeStyle = routeTelegraph ?? "rgba(184, 255, 244, 0.34)";
+        ctx.lineWidth = routeTelegraph ? 5 : 4;
         ctx.beginPath();
         ctx.arc(pos.x, pos.y, 120, 0, Math.PI * 2);
         ctx.stroke();
@@ -5251,7 +5575,7 @@
       if (boss.slamTimer < 0.6) {
         const dashDir = normalize(player.x - boss.x, player.y - boss.y);
         const target = worldToScreen(boss.x + dashDir.x * 70, boss.y + dashDir.y * 70);
-        ctx.fillStyle = "rgba(120, 235, 255, 0.18)";
+        ctx.fillStyle = routeTelegraph ? routeTelegraph.replace(/0\.\d+\)/, "0.16)") : "rgba(120, 235, 255, 0.18)";
         ctx.beginPath();
         ctx.arc(target.x, target.y, 120, 0, Math.PI * 2);
         ctx.fill();
@@ -5259,8 +5583,8 @@
     } else {
       if (boss.ringTimer < 0.55) {
         const pos = worldToScreen(boss.x, boss.y);
-        ctx.strokeStyle = "rgba(255, 203, 112, 0.32)";
-        ctx.lineWidth = 4;
+        ctx.strokeStyle = routeTelegraph ?? "rgba(255, 203, 112, 0.32)";
+        ctx.lineWidth = routeTelegraph ? 5 : 4;
         ctx.beginPath();
         ctx.arc(pos.x, pos.y, 130, 0, Math.PI * 2);
         ctx.stroke();
@@ -5272,7 +5596,7 @@
       if (boss.slamTimer < 0.65) {
         const jumpDir = normalize(player.x - boss.x, player.y - boss.y);
         const target = worldToScreen(boss.x + jumpDir.x * 110, boss.y + jumpDir.y * 110);
-        ctx.fillStyle = "rgba(255, 98, 73, 0.2)";
+        ctx.fillStyle = routeTelegraph ? routeTelegraph.replace(/0\.\d+\)/, "0.16)") : "rgba(255, 98, 73, 0.2)";
         ctx.beginPath();
         ctx.arc(target.x, target.y, 140, 0, Math.PI * 2);
         ctx.fill();
@@ -5318,6 +5642,39 @@
       ctx.beginPath();
       ctx.arc(centerX, centerY, 42 + (1 - deployGlow) * 36, 0, Math.PI * 2);
       ctx.stroke();
+    }
+
+    if (player.recommendedIntroTimer > 0) {
+      const introAlpha = player.recommendedIntroTimer;
+      const auraColor =
+        player.characterId === "dex"
+          ? `rgba(120, 235, 255, ${0.16 + introAlpha * 0.2})`
+          : player.characterId === "ria"
+            ? `rgba(216, 140, 255, ${0.16 + introAlpha * 0.2})`
+            : player.characterId === "sera"
+              ? `rgba(187, 214, 255, ${0.16 + introAlpha * 0.2})`
+              : `rgba(255, 211, 101, ${0.16 + introAlpha * 0.2})`;
+      ctx.strokeStyle = auraColor;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 34 + (1 - introAlpha) * 18, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 52 + (1 - introAlpha) * 28, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle =
+        player.characterId === "dex"
+          ? `rgba(120, 235, 255, ${0.05 + introAlpha * 0.08})`
+          : player.characterId === "ria"
+            ? `rgba(216, 140, 255, ${0.05 + introAlpha * 0.08})`
+            : player.characterId === "sera"
+              ? `rgba(187, 214, 255, ${0.05 + introAlpha * 0.08})`
+              : `rgba(255, 211, 101, ${0.05 + introAlpha * 0.08})`;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 74 + (1 - introAlpha) * 18, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     if (player.slashFlash > 0) {
@@ -5647,6 +6004,10 @@
     const victory = reason === "victory";
     const mode = getCurrentMode();
     const bossMode = mode.hasBoss !== false;
+    const regionId = meta.selectedRegion;
+    const regionName = getRegionCopy(regionId, "name") || regionId;
+    const previousRegionClears = meta.regionClears?.[regionId] ?? 0;
+    const previousRegionMedal = getRegionMedal(previousRegionClears);
     const firstRun = meta.runs === 0;
     const firstTitanKill = victory && bossMode && meta.bossKills === 0;
     const rewardMult =
@@ -5672,6 +6033,13 @@
         player.kills >= seasonDef.killTarget &&
         player.seasonWeakpoints >= seasonDef.weakpointTarget,
     };
+    const recommendedRoute = player.recommendedRouteActive
+      ? {
+          firstKill: player.recommendedFirstKillTriggered,
+          weakpoint: player.recommendedWeakpointTriggered,
+          victory,
+        }
+      : null;
 
     if (firstRun) {
       gold += 120;
@@ -5707,6 +6075,14 @@
       bonusLines.push(t("seasonBreakpointBonusLine"));
       if (newSeasonRelic) {
         bonusLines.push(fmt("seasonRelicUnlockedLine", { title: lt(newSeasonRelic.title) }));
+      }
+    }
+
+    if (recommendedRoute) {
+      if (recommendedRoute.firstKill && recommendedRoute.weakpoint) {
+        bonusLines.push(t("recommendedRouteLockedLine"));
+      } else if (recommendedRoute.firstKill || recommendedRoute.weakpoint) {
+        bonusLines.push(t("recommendedRoutePartialLine"));
       }
     }
 
@@ -5756,7 +6132,16 @@
       newRelic = unlockNextRelic();
     }
     if (victory) {
-      meta.regionClears[meta.selectedRegion] = (meta.regionClears[meta.selectedRegion] ?? 0) + 1;
+      meta.regionClears[regionId] = previousRegionClears + 1;
+      const nextRegionMedal = getRegionMedal(meta.regionClears[regionId]);
+      if (nextRegionMedal && nextRegionMedal.tier !== previousRegionMedal?.tier) {
+        bonusLines.push(
+          fmt("regionMedalUnlockedLine", {
+            region: regionName,
+            medal: nextRegionMedal.label,
+          }),
+        );
+      }
     }
     if (victory && mode.id === "boss") {
       meta.worldBossWins += 1;
@@ -5836,6 +6221,7 @@
       bonusLines,
       droppedItems,
       seasonProgress,
+      recommendedRoute,
       seasonPassGain: passXpGain,
       seasonPassUnlocked: unlockedPassTiers,
     };
@@ -5898,7 +6284,16 @@
     const mode = getCurrentMode();
     const region = getCurrentRegion();
     const character = characterDefs[meta.selectedCharacter] ?? characterDefs.cain;
+    const recommendedReady = isRegionRecommendedLoadout(region.id, mode.id, character.id);
     player = createPlayerFromMeta();
+    if (recommendedReady) {
+      player.recommendedIntroTimer = 1;
+      player.recommendedRouteActive = true;
+      player.recommendedFirstKillPending = true;
+      player.recommendedFirstKillTriggered = false;
+      player.recommendedWeakpointPending = true;
+      player.recommendedWeakpointTriggered = false;
+    }
     runDuration = mode.duration;
     enemies.length = 0;
     xpOrbs.length = 0;
@@ -5934,6 +6329,9 @@
     triggerDeployIntro(character, mode, region);
     setGameVisibility(true);
     screen = "run";
+    if (recommendedReady) {
+      pushEvent(t("recommendedDeployLiveLine"), 1.6);
+    }
   }
 
   function renderIntroSlide() {
@@ -6147,22 +6545,26 @@
 
   function renderOperationMap() {
     const activeRegion = getCurrentRegion();
+    const activeRegionClears = meta.regionClears?.[activeRegion.id] ?? 0;
+    const activeRegionMedal = getRegionMedal(activeRegionClears);
     const nodes = Object.values(regionDefs)
       .map((region, index) => {
         const unlocked = isRegionUnlocked(region.id);
         const active = meta.selectedRegion === region.id;
         const isNew = unlocked && !(meta.seenRegionUnlocks ?? []).includes(region.id);
         const clearCount = meta.regionClears?.[region.id] ?? 0;
+        const medal = getRegionMedal(clearCount);
         const state = active
           ? t("operationNodeActive")
           : unlocked
             ? t("operationNodeCleared")
             : t("operationNodeLocked");
         return `
-          <button class="operation-node${active ? " is-active" : ""}${unlocked ? "" : " is-locked"}${isNew ? " is-new" : ""}" data-action="select-region" data-id="${region.id}" type="button" ${unlocked ? "" : "disabled"}>
+          <button class="operation-node${active ? " is-active" : ""}${unlocked ? "" : " is-locked"}${isNew ? " is-new" : ""}${medal ? ` has-medal has-medal--${medal.tier}` : ""}" data-action="select-region" data-id="${region.id}" type="button" ${unlocked ? "" : "disabled"}>
             <span class="operation-node__chapter">${fmt("operationChapter", { index: index + 1 })}</span>
             <strong class="operation-node__title">${getRegionCopy(region.id, "name") || region.name}</strong>
             <span class="operation-node__state">${state}${isNew ? ` // ${t("operationNodeNew")}` : ""}</span>
+            <span class="operation-node__medals">${medal ? `<span class="operation-node__medal operation-node__medal--${medal.tier}">${medal.label}</span>` : ""}</span>
             <span class="operation-node__meta">${unlocked ? (clearCount > 0 ? fmt("operationNodeClears", { count: clearCount }) : t("operationNodeUncleared")) : "&nbsp;"}</span>
             <span class="operation-node__body">${unlocked ? getRegionCopy(region.id, "body") : getRegionCopy(region.id, "unlockRule")}</span>
           </button>
@@ -6175,7 +6577,10 @@
         ${nodes}
       </div>
       <article class="base-card operation-briefing" data-region="${activeRegion.id}">
-        <span class="base-card__label">${t("operationBriefing")}</span>
+        <div class="operation-briefing__header">
+          <span class="base-card__label">${t("operationBriefing")}</span>
+          ${activeRegionMedal ? `<span class="operation-briefing__medal operation-node__medal operation-node__medal--${activeRegionMedal.tier}">${activeRegionMedal.label}</span>` : ""}
+        </div>
         <h2 class="base-card__title">${getRegionCopy(activeRegion.id, "name") || activeRegion.name}</h2>
         <p class="base-card__body">${getRegionCopy(activeRegion.id, "body")}</p>
         <div class="operation-briefing__grid">
@@ -6209,6 +6614,97 @@
           <button class="primary-button" data-action="deploy-operation" data-id="${activeRegion.id}" type="button">${t("operationDeploy")}</button>
         </div>
       </article>
+    `;
+  }
+
+  function getArchiveLogs() {
+    const logs = [];
+    const pushHunterLog = (id, titleKey, bodyKey) => {
+      if (!isCharacterUnlocked(id)) return;
+      logs.push({
+        id: `hunter-${id}`,
+        type: t("logTypeHunter"),
+        title: t(titleKey),
+        body: t(bodyKey),
+        meta: getCharacterName(id),
+      });
+    };
+    const pushRegionLog = (id, titleKey, bodyKey) => {
+      if (!isRegionUnlocked(id)) return;
+      logs.push({
+        id: `region-${id}`,
+        type: t("logTypeRegion"),
+        title: t(titleKey),
+        body: t(bodyKey),
+        meta: getRegionCopy(id, "name") || id,
+      });
+    };
+    const pushBossLog = (id, titleKey, bodyKey) => {
+      if ((meta.regionClears?.[id] ?? 0) < 1) return;
+      logs.push({
+        id: `boss-${id}`,
+        type: t("logTypeBoss"),
+        title: t(titleKey),
+        body: t(bodyKey),
+        meta: getRegionCopy(id, "bossName") || id,
+      });
+    };
+
+    pushRegionLog("blacktide", "logRegionBlacktideTitle", "logRegionBlacktideBody");
+    pushBossLog("blacktide", "logBossBlacktideTitle", "logBossBlacktideBody");
+    if (meta.seasonClears > 0) {
+      logs.push({
+        id: "season-crimson-eclipse",
+        type: t("logTypeSeason"),
+        title: t("logSeasonTitle"),
+        body: t("logSeasonBody"),
+        meta: seasonDef.name,
+      });
+    }
+    pushHunterLog("sera", "logHunterSeraTitle", "logHunterSeraBody");
+    pushRegionLog("sanctuary", "logRegionSanctuaryTitle", "logRegionSanctuaryBody");
+    pushBossLog("sanctuary", "logBossSanctuaryTitle", "logBossSanctuaryBody");
+    pushHunterLog("ria", "logHunterRiaTitle", "logHunterRiaBody");
+    pushHunterLog("dex", "logHunterDexTitle", "logHunterDexBody");
+    pushRegionLog("redcity", "logRegionRedcityTitle", "logRegionRedcityBody");
+    pushBossLog("redcity", "logBossRedcityTitle", "logBossRedcityBody");
+    pushHunterLog("cain", "logHunterCainTitle", "logHunterCainBody");
+
+    return logs;
+  }
+
+  function renderLogsTab() {
+    const logs = getArchiveLogs();
+
+    return `
+      <article class="base-card">
+        <span class="base-card__label">${t("logsLabel")}</span>
+        <h2 class="base-card__title">${t("logsTitle")}</h2>
+        <p class="base-card__body">${t("logsBody")}</p>
+        <span class="upgrade-meta">${fmt("logsRecoveredCount", { count: logs.length })}</span>
+      </article>
+      ${
+        logs.length === 0
+          ? `<article class="base-card">
+              <span class="base-card__label">${t("logsLabel")}</span>
+              <h2 class="base-card__title">${t("logsTitle")}</h2>
+              <p class="base-card__body">${t("logsEmpty")}</p>
+            </article>`
+          : `<div class="upgrade-row log-grid">
+              ${logs
+                .map(
+                  (entry) => `
+                    <article class="base-card log-card log-card--${entry.id.split("-")[0]}">
+                      <span class="base-card__label">${entry.type}</span>
+                      <h2 class="base-card__title">${entry.title}</h2>
+                      <span class="upgrade-meta">${entry.meta}</span>
+                      <p class="base-card__body">${entry.body}</p>
+                    </article>
+                  `,
+                )
+                .join("")}
+            </div>`
+      }
     `;
   }
 
@@ -6729,8 +7225,12 @@
     const regionName = getRegionCopy(region.id, "name") || region.name;
     const bossName = getRegionCopy(region.id, "bossName") || region.bossName;
     const previewSkin = hasCosmeticPreview(character.id);
+    const regionMedal = getRegionMedal(meta.regionClears?.[region.id] ?? 0);
     return `
-      <span class="base-showcase__eyebrow">${t("showcaseLabel")}</span>
+      <div class="base-showcase__header">
+        <span class="base-showcase__eyebrow">${t("showcaseLabel")}</span>
+        ${regionMedal ? `<span class="base-showcase__medal operation-node__medal operation-node__medal--${regionMedal.tier}">${regionMedal.label}</span>` : ""}
+      </div>
       <h2 class="base-showcase__title">${hunterName}</h2>
       <p class="base-showcase__subtitle">${bossName} // ${getModeCopy(mode.id, "name")} // ${regionName}</p>
       ${previewSkin ? `<span class="base-showcase__preview">${t("showcasePreviewSkin")}</span>` : ""}
@@ -6762,6 +7262,18 @@
           <span class="showcase-chip__label">${t("showcaseRewardLabel")}</span>
           <strong class="showcase-chip__value">${getModeShowcasePayout(mode.id)}</strong>
         </article>
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseRecommendedModeLabel")}</span>
+          <strong class="showcase-chip__value">${getRegionCopy(region.id, "mode")}</strong>
+        </article>
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseRecommendedHunterLabel")}</span>
+          <strong class="showcase-chip__value">${getRegionCopy(region.id, "hunter")}</strong>
+        </article>
+        <article class="showcase-chip">
+          <span class="showcase-chip__label">${t("showcaseStatusLabel")}</span>
+          <strong class="showcase-chip__value">${getRegionRecommendedState(region.id, mode.id, character.id)}</strong>
+        </article>
       </div>
     `;
   }
@@ -6775,6 +7287,7 @@
     const bossName = getRegionCopy(region.id, "bossName") || region.bossName;
     const hunterName = getCharacterName(character.id);
     const objective = getFtueObjective();
+    const recommendedReady = isRegionRecommendedLoadout(region.id, mode.id, character.id);
 
     baseOverlay.dataset.region = region.id;
     basePanel.dataset.region = region.id;
@@ -6804,13 +7317,16 @@
             ? fmt("baseGauntletSummary", { body: getCharacterCopy(character.id, "baseBody"), region: regionName })
         : fmt("baseRegionSummary", { body: getCharacterCopy(character.id, "baseBody"), regionBody: getRegionCopy(region.id, "body") });
     startRunButton.textContent =
-      mode.id === "boss"
-        ? t("deployWorldBoss")
-        : mode.id === "rift"
-          ? t("deployRift")
-          : mode.id === "gauntlet"
-            ? t("deployGauntlet")
-          : getCharacterCopy(character.id, "startLabel");
+      recommendedReady
+        ? t("operationDeployReady")
+        : mode.id === "boss"
+          ? t("deployWorldBoss")
+          : mode.id === "rift"
+            ? t("deployRift")
+            : mode.id === "gauntlet"
+              ? t("deployGauntlet")
+            : getCharacterCopy(character.id, "startLabel");
+    startRunButton.classList.toggle("is-recommended", recommendedReady);
     resourceLabel.textContent = getCharacterCopy(character.id, "resourceLabel");
     objectiveTitle.textContent = objective.title;
     objectiveBody.textContent = objective.body;
@@ -6827,6 +7343,8 @@
       baseContent.innerHTML = renderEquipmentTab();
     } else if (activeBaseTab === "relics") {
       baseContent.innerHTML = renderRelicsTab();
+    } else if (activeBaseTab === "logs") {
+      baseContent.innerHTML = renderLogsTab();
     } else if (activeBaseTab === "ascension") {
       baseContent.innerHTML = renderAscensionTab();
     } else if (activeBaseTab === "records") {
@@ -7064,6 +7582,7 @@
       bonusLines: [],
       droppedItems: [],
       seasonProgress: null,
+      recommendedRoute: null,
       seasonPassGain: 0,
       seasonPassUnlocked: [],
     };

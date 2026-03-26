@@ -36,6 +36,7 @@ export default defineConfig(() => {
         input: {
           main: path.resolve(here, "index.html"),
           "world-data": path.resolve(here, "world-data.html"),
+          "naver-shoppinglive-directory": path.resolve(here, "naver-shoppinglive-directory.html"),
         },
       },
       // Keep CI/onboard logs clean; current control UI chunking is intentionally above 500 kB.
